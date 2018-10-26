@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Home page</h1>
+<a th:href="@{/logout}">Logout</a>
+<div sec:authentication="principal.username"></div>
+<div sec:authorize="hasAuthority('ADMIN')">Your role is ADMIN</div>
+<div sec:authorize="hasAuthority('STUDENT')">Your role is STUDENT</div>
+</body>
+</html>
