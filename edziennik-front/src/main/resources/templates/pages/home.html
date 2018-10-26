@@ -10,6 +10,7 @@
 </head>
 <body>
 <h1>Home page</h1>
+<a th:href="@{/logout}">Logout</a>
 <div sec:authentication="principal.username"></div>
 <div sec:authorize="hasAuthority('ADMIN')">Your role is ADMIN</div>
 <div sec:authorize="hasAuthority('STUDENT')">Your role is STUDENT</div>
