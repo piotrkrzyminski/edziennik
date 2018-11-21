@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").authenticated()
                 .anyRequest().authenticated()
-                .antMatchers("/resources/**").permitAll()
+                .antMatchers("/css/**, /images/**, /fonts/**, /js** ").permitAll()
                 .anyRequest().authenticated()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().permitAll();
@@ -38,10 +38,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .permitAll()
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error");
 
         http.logout()
-                .logoutSuccessUrl("/login");
+                .logoutSuccessUrl("/login?logout");
 
         http.csrf().disable();
         http.headers().frameOptions().disable();

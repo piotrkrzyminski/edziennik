@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>edziennik</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-    <h1>Login page</h1>
-    <form th:action="@{/login}" th:method="post">
-        <input th:type="text" th:name="email" placeholder="Adres email"/><br>
-        <input th:type="password" th:name="password" placeholder="Hasło"/><br>
-        <input th:type="submit" th:value="Logowanie">
+<h1>
+    <img th:src="@{/images/logo.png}" class="w3-round" alt="logo">
+    e-dziennik</h1>
+<div class="formularz">
+    <div class="alert alert-danger" th:if="${param.error != null}">
+        <p>Podane dane są błędne, lub użytkownik nie istnieje.</p>
+    </div>
+    <div class="alert alert-success" th:if="${param.logout != null}">
+        <p>Wylogowano z systemu.</p>
+    </div>
+    <form id="login" th:action="@{/login}" th:method="post">
+        <div class="header">
+            <h3> logowanie:</h3>
+            <p>Wprowadź następujące pola by zalogować się do systemu</p>
+        </div>
+        <div class="sep"></div>
+        <div class="imputs">
+            <label for="email">E-mail</label>
+            <input id="email" th:type="email" th:name="email" placeholder="Adres email" autofocus/><br>
+            <div class="sep"></div>
+            <br/>
+            <label for="password">Hasło</label>
+            <input id="password" th:type="password" th:name="password" placeholder="Hasło"/><br>
+
+            <input class="submit-button" th:type="submit" th:value="Logowanie"/>
+        </div>
     </form>
+</div>
+
 </body>
 </html>
