@@ -7,9 +7,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "Users")
-@Inheritance(strategy = InheritanceType.JOINED)
-public class UserModel extends AbstractItemModel {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class UserModel extends AbstractItemModel {
 
     @Column(name = "first_name")
     private String firstName;
