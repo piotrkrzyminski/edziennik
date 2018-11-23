@@ -26,9 +26,7 @@ public class UserModelToUserDetailsConverter implements Converter<UserModel, Use
             userDetailsModel.setPassword(userModel.getPassword());
 
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            userModel.getRoles().forEach(role -> {
-                authorities.add(new SimpleGrantedAuthority(role.getName()));
-            });
+            authorities.add(new SimpleGrantedAuthority(userModel.getRole().getName()));
 
             userDetailsModel.setAuthorities(authorities);
         }

@@ -32,10 +32,9 @@ public abstract class UserModel extends AbstractItemModel {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private List<RoleModel> roles;
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private RoleModel role;
 
     private boolean enabled;
 
@@ -95,12 +94,12 @@ public abstract class UserModel extends AbstractItemModel {
         this.password = password;
     }
 
-    public List<RoleModel> getRoles() {
-        return roles;
+    public RoleModel getRole() {
+        return role;
     }
 
-    public void setRoles(List<RoleModel> roles) {
-        this.roles = roles;
+    public void setRole(RoleModel role) {
+        this.role = role;
     }
 
     public boolean isEnabled() {
