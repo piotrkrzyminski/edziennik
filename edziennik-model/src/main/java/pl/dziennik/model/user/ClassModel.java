@@ -13,15 +13,18 @@ public class ClassModel extends AbstractItemModel {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "classModel")
-    private Set<StudentModel> students;
+    @OneToMany(mappedBy = "classModel", fetch = FetchType.EAGER)
+    private List<StudentModel> students;
 
     @ManyToOne
-    @JoinColumn(name = "teacher_id", nullable = false)
+    @JoinColumn(name = "teacher_id")
     private TeacherModel teacher;
 
     @OneToMany(mappedBy = "classModel")
     private List<GradeSetModel> gradeSet;
+
+    @OneToMany(mappedBy = "classModel")
+    private List<MeetingModel> meetings;
 
     public String getName() {
         return name;
@@ -31,11 +34,11 @@ public class ClassModel extends AbstractItemModel {
         this.name = name;
     }
 
-    public Set<StudentModel> getStudents() {
+    public List<StudentModel> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<StudentModel> students) {
+    public void setStudents(List<StudentModel> students) {
         this.students = students;
     }
 
@@ -53,5 +56,13 @@ public class ClassModel extends AbstractItemModel {
 
     public void setGradeSet(List<GradeSetModel> gradeSet) {
         this.gradeSet = gradeSet;
+    }
+
+    public List<MeetingModel> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(List<MeetingModel> meetings) {
+        this.meetings = meetings;
     }
 }

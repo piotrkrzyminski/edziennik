@@ -1,5 +1,19 @@
 -- Standardowe hasło dla użytkowników: qwerty
 
+-- GRADE VALUES START
+INSERT INTO Grade_values (`id`, `name`) VALUES (1, 1);
+INSERT INTO Grade_values (`id`, `name`) VALUES (2, 1.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (3, 2);
+INSERT INTO Grade_values (`id`, `name`) VALUES (4, 2.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (5, 3);
+INSERT INTO Grade_values (`id`, `name`) VALUES (6, 3.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (7, 4);
+INSERT INTO Grade_values (`id`, `name`) VALUES (8, 4.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (9, 5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (10, 5.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (11, 6);
+-- GRADE VALUES END
+
 INSERT INTO Roles (`id`, `name`) VALUES (1, 'ADMIN');
 INSERT INTO Roles (`id`, `name`) VALUES (2, 'TEACHER');
 INSERT INTO Roles (`id`, `name`) VALUES (3, 'STUDENT');
@@ -359,92 +373,50 @@ INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (2, 'język polski', 2)
 
 -- MEETINGS START
 
--- ended meetings (end date in the past)
--- Zajęcia z dnia 19.11.2018 (klasa Ia, matematyka, nauczyciel o ID=1 od godziny 8:00 do 8:45)
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(1, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 1, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(2, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), false, 2, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(3, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 3, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(4, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 4, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(5, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 5, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(6, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 6, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(7, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 7, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(8, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), false, 8, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(9, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 9, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(10, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 10, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(11, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 11, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(12, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 12, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(13, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 13, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(14, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 14, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(15, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 15, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(16, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 16, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(17, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), false, 17, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(18, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 18, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(19, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 19, 1, 1);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(20, PARSEDATETIME('19/11/2018, 08:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 08:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 20, 1, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (1, 'matematyka', PARSEDATETIME('19/11/2018','dd/mm/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 1, 1, 1);
 
--- Zajęcia z dnia 19.11.2018 (klasa Ia, język polski, nauczyciel o ID=2 od godziny 9:00 do 9:45)
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(21, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 1, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(22, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), false, 2, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(23, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 3, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(24, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 4, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(25, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 5, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(26, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 6, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(27, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 7, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(28, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), false, 8, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(29, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 9, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(30, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 10, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(31, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 11, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(32, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 12, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(33, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 13, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(34, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 14, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(35, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 15, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(36, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 16, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(37, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), false, 17, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(38, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 18, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(39, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 19, 2, 2);
-INSERT INTO Meetings (`id`, `start_date`, `end_date`, `is_present`, `student_id`, `subject_id`, `teacher_id`)
-              VALUES(40, PARSEDATETIME('19/11/2018, 09:00:00', 'dd/mm/yyyy, hh:mm:ss'), PARSEDATETIME('19/11/2018, 09:45:00', 'dd/mm/yyyy, hh:mm:ss'), true, 20, 2, 2);
--- TODO: Dodanie kolejnych spotkań dla różnych klas aby zapełnić cały tydzień.
--- TODO: Dodanie przyszłych spotkań (data rozpoczęcia z przyszłości (najlepiej przyszły rok żeby nie trzeba było zmieniać z czasem). Dla przyszłych spotkań pole 'is_preset' to null.
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (1, 1, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (2, 2, false, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (3, 3, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (4, 4, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (5, 5, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (6, 6, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (7, 7, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (8, 8, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (9, 9, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (10, 10, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (11, 11, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (12, 12, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (13, 13, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (14, 14, false, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (15, 15, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (16, 16, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (17, 17, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (18, 18, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (19, 19, true, 1);
+INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
+              VALUES (20, 20, true, 1);
+              
 -- MEETINGS END
 
 -- GRADE SET START
@@ -456,40 +428,40 @@ INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id
 -- GRADE SET END
 
 -- GRADES START
--- Oceny dla uczniów z klasy Ia z matematyki z kartkówki z funkcji liniowych
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (1, 5, 1, 1);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (2, 2, 1, 3);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (3, 3, 1, 4);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (4, 3, 1, 5);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (5, 4, 1, 6);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (6, 4, 1, 7);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (7, 4, 1, 8);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (8, 4, 1, 10);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (9, 2, 1, 11);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (10, 1, 1, 12);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (11, 1, 1, 13);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (12, 2, 1, 14);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (13, 3, 1, 15);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (14, 4, 1, 16);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (15, 5, 1, 18);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (16, 6, 1, 19);
-INSERT INTO Grades (`id`, `mark`, `grade_set_id`, `student_id`)
-            VALUES (17, 1, 1, 20);
--- TODO: Dodanie kolejnych ocen
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (1, 1, 1, 2);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (2, 3, 1, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (3, 4, 1, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (4, 5, 1, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (5, 6, 1, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (6, 7, 1, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (7, 8, 1, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (8, 9, 1, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (9, 10, 1, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (10, 11, 1, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (11, 12, 1, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (12, 13, 1, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (13, 15, 1, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (14, 16, 1, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (15, 17, 1, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (16, 18, 1, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (17, 19, 1, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (18, 20, 1, 8);
 -- GRADES END

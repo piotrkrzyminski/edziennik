@@ -8,24 +8,17 @@ import javax.persistence.*;
 @Table(name = "grades")
 public class GradeModel extends AbstractItemModel {
 
-    @Column(name = "mark")
-    private int mark;
-
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private StudentModel student;
 
     @ManyToOne
-    @JoinColumn(name = "gradeSet_id", nullable = false)
+    @JoinColumn(name = "grade_set_id", nullable = false)
     private GradeSetModel gradeSet;
 
-    public int getMark() {
-        return mark;
-    }
-
-    public void setMark(int mark) {
-        this.mark = mark;
-    }
+    @ManyToOne
+    @JoinColumn(name = "grade_value", nullable = false)
+    private GradeValueModel gradeValue;
 
     public StudentModel getStudent() {
         return student;
@@ -43,5 +36,11 @@ public class GradeModel extends AbstractItemModel {
         this.gradeSet = gradeSet;
     }
 
+    public GradeValueModel getGradeValue() {
+        return gradeValue;
+    }
 
+    public void setGradeValue(GradeValueModel gradeValue) {
+        this.gradeValue = gradeValue;
+    }
 }
