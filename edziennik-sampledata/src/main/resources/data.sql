@@ -256,7 +256,7 @@ INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (25,25);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`)
-              VALUES(26, 'hipolit.jablonski@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Hipolit', null, 'Jabłoński', '56092630074', PARSEDATETIME('26/09/1956','dd/mm/yyyy'));
+              VALUES(26, 'ala.makota@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Ala', null, 'Makota', '123456789', PARSEDATETIME('14/07/1996','dd/mm/yyyy'));
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (26,26);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`)
