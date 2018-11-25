@@ -29,7 +29,7 @@ public interface ClassRepository extends JpaRepository<ClassModel, Long> {
      * @return list of all students from the specified class.
      */
     @Query("SELECT c.students FROM ClassModel c WHERE c.name = ?1")
-    List<StudentModel> getAllStudents(final String className);
+    List<StudentModel> findAllStudents(final String className);
 
     /**
      * Find teacher assigned to class with the specified name.
@@ -38,7 +38,7 @@ public interface ClassRepository extends JpaRepository<ClassModel, Long> {
      * @return teacher associated to class with name from the parameter or null if it is not assigned.
      */
     @Query("SELECT c.teacher FROM ClassModel  c WHERE c.name = ?1")
-    TeacherModel getTeacherFromClassByName(final String className);
+    TeacherModel findTeacherFromClassByName(final String className);
 
     /**
      * Find all meetings associated to class with the specified name.
@@ -55,9 +55,10 @@ public interface ClassRepository extends JpaRepository<ClassModel, Long> {
      *
      * @param className name of class.
      * @param date date of meeting.
-     * @return list of all meetings associated to class with name specified in parameter and in the specific day.
+     * @return list of all meetings sorted by date and associated to class with name specified in parameter and in
+     * the specific day.
      */
-    @Query("SELECT m FROM ClassModel c INNER JOIN c.meetings m WHERE c.name = ?1 AND m.date = ?2")
+    @Query("SELECT m FROM ClassModel c INNER JOIN c.meetings m WHERE c.name = ?1 AND m.date = ?2 ORDER BY m.date ASC")
     List<MeetingModel> findMeetingsForClassByNameAndDate(final String className, final Date date);
 
     /**
@@ -66,8 +67,8 @@ public interface ClassRepository extends JpaRepository<ClassModel, Long> {
      * @param className name of class.
      * @param startDate start date.
      * @param endDate end date.
-     * @return list of meetings for class with name from the parameter and between two dates.
+     * @return list of meetings sorted by date for class with name from the parameter and between two dates.
      */
-    @Query("SELECT m FROM ClassModel c INNER JOIN c.meetings m WHERE c.name = ?1 AND m.date BETWEEN ?2 AND ?3")
+    @Query("SELECT m FROM ClassModel c INNER JOIN c.meetings m WHERE c.name = ?1 AND m.date BETWEEN ?2 AND ?3 ORDER BY m.date ASC")
     List<MeetingModel> findMeetingsForClassBetweenDates(final String className, final Date startDate, final Date endDate);
 }

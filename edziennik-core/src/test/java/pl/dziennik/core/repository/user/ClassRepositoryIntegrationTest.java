@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import pl.dziennik.model.user.*;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -77,7 +76,7 @@ public class ClassRepositoryIntegrationTest {
      */
     @Test
     public void testGetAllStudents() {
-        List<StudentModel> students = classRepository.getAllStudents(CLASS_NAME);
+        List<StudentModel> students = classRepository.findAllStudents(CLASS_NAME);
 
         assertNotNull(students);
         assertEquals(3, students.size());
@@ -89,7 +88,7 @@ public class ClassRepositoryIntegrationTest {
      */
     @Test
     public void testGetAllStudentsNotFound() {
-        List<StudentModel> students =classRepository.getAllStudents(DUMMY_CLASS_NAME);
+        List<StudentModel> students =classRepository.findAllStudents(DUMMY_CLASS_NAME);
 
         assertNotNull(students);
         assertTrue(students.isEmpty());
@@ -101,7 +100,7 @@ public class ClassRepositoryIntegrationTest {
      */
     @Test
     public void testFindTeacherFromClassByName() {
-        TeacherModel teacher = classRepository.getTeacherFromClassByName(CLASS_NAME);
+        TeacherModel teacher = classRepository.findTeacherFromClassByName(CLASS_NAME);
 
         assertNotNull(teacher);
         assertEquals(TEACHER_FIRST_NAME, teacher.getFirstName());
@@ -114,7 +113,7 @@ public class ClassRepositoryIntegrationTest {
      */
     @Test
     public void testFindTeacherFromClassByNameNotFound() {
-        TeacherModel teacher = classRepository.getTeacherFromClassByName(DUMMY_CLASS_NAME);
+        TeacherModel teacher = classRepository.findTeacherFromClassByName(DUMMY_CLASS_NAME);
 
         assertNull(teacher);
     }
