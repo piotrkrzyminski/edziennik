@@ -1,0 +1,31 @@
+tr { display: block; float: left; }
+th, td { display: block; }
+th {
+    float : left;
+}
+
+.table-row {
+    min-width: 100px;
+    min-height: 100px;
+    padding: 16px;
+    text-align: center;
+}
+
+.header {
+    height: 100px;
+}
+
+.nav {
+    width: 400px;
+    float: left;
+}
+
+.content {
+    width: 70%;
+    float: left;
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+}

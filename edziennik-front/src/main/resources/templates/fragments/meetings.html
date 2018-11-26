@@ -7,12 +7,28 @@
     <title>Title</title>
 </head>
 <body>
-    <div th:fragment="meetings">
-        <th:block th:each="meeting : ${meetings}">
-            <div th:text="${#dates.format(meeting.date, 'dd-MM-yyyy')}"></div>
-            <div th:text="${#dates.format(meeting.startTime, 'hh:mm')} + '-'+  ${#dates.format(meeting.endTime, 'hh:mm')}"></div>
-            <div th:text="${meeting.title}"></div>
-        </th:block>
+    <div th:fragment="meetings" class="table-responsive">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="meeting-header"  th:each="meeting: ${meetings}">
+                        <span th:text="${#dates.format(meeting.key, 'dd-MM-yyyy')}"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="meeting: ${meetings}">
+                    <th:block th:each="startHour,iter : ${startHours}">
+                        <td class="table-row">
+                            <div th:if="${iter.index < #lists.size(meeting.value)}">
+                                <div th:text="${#dates.format(meeting.value[iter.index].startTime, 'hh:mm')} + ' - '+  ${#dates.format(meeting.value[iter.index].endTime, 'hh:mm')}"></div>
+                                <div th:text="${meeting.value[iter.index].title}"></div>
+                            </div>
+                        </td>
+                    </th:block>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

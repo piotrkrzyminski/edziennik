@@ -24,10 +24,10 @@ public class DefaultMeetingService implements MeetingService {
     private MeetingRepository meetingRepository;
 
     @Override
-    public List<MeetingModel> getMeetingsByDate(Date date) {
+    public List<MeetingModel> getMeetingsByDateForClass(String className, Date date) {
         Validate.notNull(date);
 
-        final List<MeetingModel> meetings = meetingRepository.findMeetingsByDate(date);
+        final List<MeetingModel> meetings = meetingRepository.findMeetingsByDate(className, date);
         if(meetings == null) {
             LOG.debug("No meetings found in date {}" + date.toString());
         }

@@ -369,6 +369,12 @@ INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (63,114);
 -- TODO: Dodanie nowych przedmiotów (po jednym dla każdego nauczyciela)
 INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (1, 'matematyka', 2);
 INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (2, 'język polski', 3);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (3, 'język angielski', 4);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (4, 'wychowanie fizyczne', 5);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (5, 'religia', 6);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (6, 'historia', 7);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (7, 'przyroda', 8);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (8, 'fizyka', 9);
 
 -- SAMPLE SUBJECTS END
 
@@ -376,6 +382,65 @@ INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (2, 'język polski', 3)
 
 INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
               VALUES (1, 'matematyka', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 2, 1, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (2, 'język polski', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('9:00','hh:mm'), PARSEDATETIME('9:45','hh:mm'), 3, 2, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (3, 'język angielski', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('10:00','hh:mm'), PARSEDATETIME('10:45','hh:mm'), 4, 3, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (4, 'wychowanie fizyczne', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 5, 4, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (5, 'religia', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 6, 5, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (6, 'matematyka', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('13:00','hh:mm'), PARSEDATETIME('13:45','hh:mm'), 2, 1, 1);
+
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (7, 'historia', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 7, 6, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (8, 'język polski', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('9:00','hh:mm'), PARSEDATETIME('9:45','hh:mm'), 3, 2, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (9, 'religia', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('10:00','hh:mm'), PARSEDATETIME('10:45','hh:mm'), 6, 5, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (10, 'przyroda', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 8, 7, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (11, 'fizyka', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 9, 8, 1);
+
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (12, 'język polski', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 3, 2, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (13, 'wychowanie fizyczne', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 5, 4, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (14, 'wychowanie fizyczne', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 5, 4, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (15, 'matematyka', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('13:00','hh:mm'), PARSEDATETIME('13:45','hh:mm'), 2, 1, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (16, 'historia', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('14:00','hh:mm'), PARSEDATETIME('14:45','hh:mm'), 7, 6, 1);
+
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (17, 'język polski', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 3, 2, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (18, 'język polski', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('9:00','hh:mm'), PARSEDATETIME('9:45','hh:mm'), 3, 2, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (19, 'matematyka', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('10:00','hh:mm'), PARSEDATETIME('10:45','hh:mm'), 2, 1, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (20, 'przyroda', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 8, 7, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (21, 'religia', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 6, 5, 1);
+
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (22, 'matematyka', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 2, 1, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (23, 'matematyka', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('9:00','hh:mm'), PARSEDATETIME('9:45','hh:mm'), 2, 1, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (24, 'język angielski', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('10:00','hh:mm'), PARSEDATETIME('10:45','hh:mm'), 4, 3, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (25, 'język angielski', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 4, 3, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (26, 'historia', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 7, 6, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (27, 'wychowanie fizyczne', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('13:00','hh:mm'), PARSEDATETIME('13:45','hh:mm'), 5, 4, 1);
+INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
+              VALUES (28, 'przyroda', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('14:00','hh:mm'), PARSEDATETIME('14:45','hh:mm'), 8, 7, 1);
+-- MEETINGS END
 
 INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
               VALUES (1, 14, true, 1);

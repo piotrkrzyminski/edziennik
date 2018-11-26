@@ -10,10 +10,11 @@ public interface MeetingService {
     /**
      * Get all meetings in date.
      *
+     * @param className name of class.
      * @param date date of meeting.
      * @return list of all meetings in specified date.
      */
-    List<MeetingModel> getMeetingsByDate(final Date date);
+    List<MeetingModel> getMeetingsByDateForClass(final String className, final Date date);
 
     /**
      * Get all meetings for class with the specified name.
