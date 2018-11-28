@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- Fragment komponentu prazentujący listę spotkań dla zalogowanego użytkownika (jeżeli takie spotkania może mieć) -->
+    <div th:fragment="meetings" class="table-responsive">
+        <div class="col meetings-header">
+            <h2>Najbliższe spotkania</h2>
+        </div>
+        <table class="table" align="center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="meeting-header"  th:each="meeting: ${meetings}">
+                        <span th:text="${#dates.format(meeting.key, 'dd-MM-yyyy')}"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="meeting: ${meetings}">
+                    <th:block th:each="startHour,iter : ${startHours}">
+                        <td class="table-row">
+                            <div th:if="${iter.index < #lists.size(meeting.value)}">
+                                <div th:text="${#dates.format(meeting.value[iter.index].startTime, 'hh:mm')} + ' - '+  ${#dates.format(meeting.value[iter.index].endTime, 'hh:mm')}"></div>
+                                <div th:text="${meeting.value[iter.index].title}"></div>
+                            </div>
+                        </td>
+                    </th:block>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

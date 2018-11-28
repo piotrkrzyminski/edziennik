@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Controller for meetings fragment.
+ */
 @Controller
-@RequestMapping(value = "/")
-public class HomeController extends PageController {
+@RequestMapping(value = "/grades")
+public class GradesComponentController extends PageController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getHomePage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
-        currentUserName(model);
+    public String getMeetingPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
 
-        return ControllerConstants.Pages.HomePage;
+        return ControllerConstants.Fragments.gradesFragment;
     }
 }

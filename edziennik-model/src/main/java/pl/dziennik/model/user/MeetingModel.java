@@ -9,20 +9,20 @@ import java.util.Date;
 @Table(name = "meetings")
 public class MeetingModel extends AbstractItemModel {
 
-    @Column(name = "start_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startDate;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "end_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date endDate;
+    @Column(name = "date")
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
-    @Column(name = "is_present")
-    private boolean isPresent;
+    @Column(name = "start_time")
+    @Temporal(TemporalType.TIME)
+    private Date startTime;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
-    private StudentModel student;
+    @Column(name = "end_time")
+    @Temporal(TemporalType.TIME)
+    private Date endTime;
 
     @ManyToOne
     @JoinColumn(name = "teacher_id", nullable = false)
@@ -32,36 +32,28 @@ public class MeetingModel extends AbstractItemModel {
     @JoinColumn(name = "subject_id", nullable = false)
     private SubjectModel subject;
 
-    public Date getStartDate() {
-        return startDate;
+    @OneToOne
+    @JoinColumn(name = "present_id")
+    private PresentModel present;
+
+    @ManyToOne
+    @JoinColumn(name = "class_id", nullable = false)
+    private ClassModel classModel;
+
+    public String getTitle() {
+        return title;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getDate() {
+        return date;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public boolean isPresent() {
-        return isPresent;
-    }
-
-    public void setPresent(boolean present) {
-        isPresent = present;
-    }
-
-    public StudentModel getStudent() {
-        return student;
-    }
-
-    public void setStudent(StudentModel student) {
-        this.student = student;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public TeacherModel getTeacher() {
@@ -80,5 +72,35 @@ public class MeetingModel extends AbstractItemModel {
         this.subject = subject;
     }
 
+    public PresentModel getPresent() {
+        return present;
+    }
 
+    public void setPresent(PresentModel present) {
+        this.present = present;
+    }
+
+    public ClassModel getClassModel() {
+        return classModel;
+    }
+
+    public void setClassModel(ClassModel classModel) {
+        this.classModel = classModel;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 }

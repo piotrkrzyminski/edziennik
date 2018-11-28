@@ -45,12 +45,10 @@ public class DefaultUserService implements UserService {
     }
 
     private List<? extends GrantedAuthority> getAuthorities(final UserModel user) {
-        final List<RoleModel> roles = user.getRoles();
+        final RoleModel role = user.getRole();
         List<GrantedAuthority> authorities = new ArrayList<>();
-        if (roles != null) {
-            for (RoleModel role : roles) {
-                authorities.add(new SimpleGrantedAuthority(role.getName()));
-            }
+        if (role != null) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
         return authorities;

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+</head>
+<body>
+<!-- Fragment - górna belka -->
+<div th:fragment="header">
+    <div class="row">
+        <div class="col-sm logo-header">
+            <img class="logo-image img-fluid" th:src="@{/images/logo.png}" alt="logo"/>
+            <h1>E-dziennik</h1>
+        </div>
+        <div class="col-sm logout">
+            <span th:text="'Zalogowano jako ' +  ${name}"></span>
+        </div>
+        <div class="col-sm logout">
+            <a th:href="@{/logout}">Wyloguj się</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

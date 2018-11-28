@@ -12,7 +12,7 @@ public class RoleModel extends AbstractItemModel {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "role")
     private List<UserModel> users;
 
     public String getName() {

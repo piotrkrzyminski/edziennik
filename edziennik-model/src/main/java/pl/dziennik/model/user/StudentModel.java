@@ -8,7 +8,7 @@ import java.util.Set;
 @Table(name = "Students")
 public class StudentModel extends UserModel {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "class_id", nullable = false)
     private ClassModel classModel;
 
@@ -19,10 +19,10 @@ public class StudentModel extends UserModel {
     private Set<ParentModel> parents;
 
     @OneToMany(mappedBy = "student")
-    private List<MeetingModel> meetings;
+    private List<GradeModel> grades;
 
     @OneToMany(mappedBy = "student")
-    private List<GradeModel> grades;
+    private List<PresentModel> presents;
 
     public ClassModel getClassModel() {
         return classModel;
@@ -40,14 +40,6 @@ public class StudentModel extends UserModel {
         this.parents = parents;
     }
 
-    public List<MeetingModel> getMeetings() {
-        return meetings;
-    }
-
-    public void setMeetings(List<MeetingModel> meetings) {
-        this.meetings = meetings;
-    }
-
     public List<GradeModel> getGrades() {
         return grades;
     }
@@ -56,5 +48,11 @@ public class StudentModel extends UserModel {
         this.grades = grades;
     }
 
+    public List<PresentModel> getPresents() {
+        return presents;
+    }
 
+    public void setPresents(List<PresentModel> presents) {
+        this.presents = presents;
+    }
 }

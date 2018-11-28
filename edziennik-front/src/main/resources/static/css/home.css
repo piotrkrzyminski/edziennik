@@ -1,0 +1,53 @@
+tr { display: block; float: left; }
+th, td { display: block; }
+th {
+    float : left;
+}
+
+.table-row {
+    min-width: 100px;
+    min-height: 100px;
+    padding: 16px;
+    text-align: center;
+}
+
+.nav {
+    width: 400px;
+    float: left;
+}
+
+.content {
+    width: 70%;
+    float: left;
+}
+
+.footer {
+    width: 100%;
+    height: 100px;
+}
+
+.logo-image {
+    padding: 10px;
+    max-height: 80px;
+}
+
+.meetings-header {
+    text-align: center;
+}
+
+.logo-header {
+    float: left;
+}
+
+.logout {
+    padding: 20px;
+    text-align: center;
+}
+
+.nav-node {
+    padding: 16px;
+}
+
+.navigation-container {
+    padding-top: 50px;
+}
