@@ -12,7 +12,9 @@ public interface ControllerConstants {
     }
 
     interface Fragments {
-        String _PREFIX = "/templates/fragments";
+        String _PREFIX = "/fragments";
 
+        String meetingFragment = _PREFIX + "/meetings :: meetings";
+        String gradesFragment = _PREFIX + "/grades :: grades";
     }
 }

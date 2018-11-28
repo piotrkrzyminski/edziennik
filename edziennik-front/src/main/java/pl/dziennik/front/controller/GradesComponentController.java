@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Controller for meetings fragment.
+ */
 @Controller
-@RequestMapping(value = "/shell")
-public class ShellController {
+@RequestMapping(value = "/grades")
+public class GradesComponentController extends PageController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getShellPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
+    public String getMeetingPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
 
-        return ControllerConstants.Pages.Shell;
+        return ControllerConstants.Fragments.gradesFragment;
     }
 }
