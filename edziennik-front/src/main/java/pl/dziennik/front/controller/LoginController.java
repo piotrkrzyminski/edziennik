@@ -25,4 +25,5 @@ public class LoginController {
     public String getLoginPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
         return ControllerConstants.Pages.LoginPage;
     }
+
 }
