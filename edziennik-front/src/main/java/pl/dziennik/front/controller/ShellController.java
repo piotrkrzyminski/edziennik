@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping(value = "/login")
-public class LoginController {
+@RequestMapping(value = "/shell")
+public class ShellController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getLoginPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
+    public String getShellPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
 
-        return ControllerConstants.Pages.LoginPage;
+        return ControllerConstants.Pages.Shell;
     }
-
 }

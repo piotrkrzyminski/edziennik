@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/home")
 public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
