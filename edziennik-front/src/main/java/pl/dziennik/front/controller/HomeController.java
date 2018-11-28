@@ -36,7 +36,7 @@ public class HomeController extends PageController {
     }
 
     private void prepareMeetingData(final Model model) {
-        final String userEmail = currentUserName();
+        final String userEmail = currentUserName(model);
         if(userEmail == null) {
             return;
         }

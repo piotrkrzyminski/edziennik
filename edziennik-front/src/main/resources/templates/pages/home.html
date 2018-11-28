@@ -13,12 +13,12 @@
 <body>
     <div class="container-fluid">
         <div class="row header">
-            <div class="col">
-                <a th:href="@{/logout}">Logout</a>
+            <div class="col" th:insert="~{fragments/header :: header}">
+                HEADER
             </div>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-3" th:insert="~{fragments/navigation :: navigation}">
                 NAVIGATION
             </div>
             <div class="col" th:insert="~{fragments/meetings :: meetings}">
