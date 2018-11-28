@@ -7,23 +7,25 @@
 
 </head>
 <body>
+<!-- Fragment od nawigacji wyświetlający linki do innych funkcjonalności. Każdy link pozwoli na asynchroniczne pobranie
+    zawartości i wklejenie jej w sekcje content -->
 <div th:fragment="navigation">
     <div class="row">
         <div class="col navigation-container">
             <div class="nav-node">
-                <a href="#">Ogłoszenia</a>
+                <a class="section-link" href="/e-dziennik/ogloszenia">Ogłoszenia</a>
             </div>
             <div class="nav-node">
-                <a href="#">Strona domowa</a>
+                <a href="/e-dziennik">Strona domowa</a>
             </div>
             <div class="nav-node">
-                <a href="#">Terminarz spotkań</a>
+                <a class="section-link" href="/e-dziennik/meetings">Terminarz spotkań</a>
             </div>
             <div class="nav-node">
-                <a href="#">Moje oceny</a>
+                <a class="section-link" href="/e-dziennik/grades">Moje oceny</a>
             </div>
             <div class="nav-node">
-                <a href="#">Moja klasa</a>
+                <a class="section-link" href="/e-dziennik/klasa">Moja klasa</a>
             </div>
         </div>
     </div>

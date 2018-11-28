@@ -5,12 +5,16 @@ public interface ControllerConstants {
     interface Pages {
         String _PREFIX = "/pages";
 
+        String Shell = _PREFIX + "/shell";
         String LoginPage = _PREFIX + "/login";
+
         String HomePage = _PREFIX + "/home";
     }
 
     interface Fragments {
-        String _PREFIX = "/templates/fragments";
+        String _PREFIX = "/fragments";
 
+        String meetingFragment = _PREFIX + "/meetings :: meetings";
+        String gradesFragment = _PREFIX + "/grades :: grades";
     }
 }

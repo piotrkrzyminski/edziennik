@@ -1,33 +1,42 @@
+<!-- Szablon strony domowej -->
 <!DOCTYPE html>
 <html
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:th="http://www.thymeleaf.org"
         xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>E-dziennik</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="css/site.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/load.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row header">
-            <div class="col" th:insert="~{fragments/header :: header}">
-                HEADER
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3" th:insert="~{fragments/navigation :: navigation}">
-                NAVIGATION
-            </div>
-            <div class="col" th:insert="~{fragments/meetings :: meetings}">
-                CONTENT
-            </div>
-        </div>
-        <div class="col">
-            footer
-        </div>
+<div class="container-fluid">
+
+</div>
+<header th:insert="~{fragments/header :: header}">
+    <!-- th:insert dla fragmentu wyświetlającego górną belkę. Zawierać będzie logo, kto jest zalogowany i link do wylogowania
+      Umieszczone statycznie bo nie będzie potrzeby zmieniać jego zawartości -->
+</header>
+
+<div class="row">
+    <div class="col-md-2 col-sm2" th:insert="~{fragments/navigation :: navigation}">
+        <!-- th:insert dla fragmentu wyświetlającego menu po lewej stronie. Zawierać będzie linki do funkcjonalności
+            Umieszczone statycznie bo nie będzie potrzeby zmieniać jego zawartości -->
     </div>
+    <div class="col-md-10 col-sm-10">
+        <section id="content" class="main">
+            <!-- Widok wybrany z nawigacji. Będzie dodawany asynchronicznie po wybraniu linka z nawigacji po lewej za pomocą ajax -->
+        </section>
+    </div>
+</div>
+
 </body>
+<script src="css/bootstrap.bundle.min.js"></script>
+<script src="js/links.js"></script> <!-- Funkcja dla linków aby dodawały zawartość do sekcji content -->
 </html>
