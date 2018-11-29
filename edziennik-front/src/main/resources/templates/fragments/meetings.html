@@ -12,7 +12,7 @@
         <div class="col meetings-header">
             <h2>Najbliższe spotkania</h2>
         </div>
-        <table class="table" align="center">
+        <!--<table class="table" align="center">
             <thead class="thead-dark">
                 <tr>
                     <th class="meeting-header"  th:each="meeting: ${meetings}">
@@ -32,7 +32,31 @@
                     </th:block>
                 </tr>
             </tbody>
+        </table>-->
+
+        <table class="table" align="center">
+            <thead class="thead-dark">
+                <tr>
+                    <th th:each="day : ${schedule.scheduleDays}">
+                        <span th:text="${day.weekName}"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="day : ${schedule.scheduleDays}">
+                    <th:block th:each="meeting : ${day.meetings}">
+                        <td class="table-row">
+                            <th:block th:if="${meeting.subjectName != null}">
+                                <div th:text="${#dates.format(meeting.startTime, 'hh:mm')} + ' - ' + ${#dates.format(meeting.endTime, 'hh:mm')}"></div>
+                                <div th:text="${meeting.subjectName}"></div>
+                            </th:block>
+                        </td>
+                    </th:block>
+                </tr>
+            </tbody>
         </table>
+
+
     </div>
 </body>
 </html>

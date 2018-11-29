@@ -1,10 +1,11 @@
 package pl.dziennik.model.user;
 
 import pl.dziennik.model.AbstractItemModel;
+import pl.dziennik.model.meetings.MeetingModel;
+import pl.dziennik.model.meetings.ScheduleModel;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "classes")
@@ -13,7 +14,7 @@ public class ClassModel extends AbstractItemModel {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "classModel", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "classModel")
     private List<StudentModel> students;
 
     @ManyToOne
@@ -24,7 +25,7 @@ public class ClassModel extends AbstractItemModel {
     private List<GradeSetModel> gradeSet;
 
     @OneToMany(mappedBy = "classModel")
-    private List<MeetingModel> meetings;
+    private List<ScheduleModel> schedule;
 
     public String getName() {
         return name;
@@ -58,11 +59,11 @@ public class ClassModel extends AbstractItemModel {
         this.gradeSet = gradeSet;
     }
 
-    public List<MeetingModel> getMeetings() {
-        return meetings;
+    public List<ScheduleModel> getSchedule() {
+        return schedule;
     }
 
-    public void setMeetings(List<MeetingModel> meetings) {
-        this.meetings = meetings;
+    public void setSchedule(List<ScheduleModel> schedule) {
+        this.schedule = schedule;
     }
 }

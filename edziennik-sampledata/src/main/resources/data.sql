@@ -379,110 +379,114 @@ INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (8, 'fizyka', 9);
 -- SAMPLE SUBJECTS END
 
 -- MEETINGS START
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (1, 1, PARSEDATETIME('8:00', 'HH:mm'), PARSEDATETIME('8:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (2, 2, PARSEDATETIME('9:00', 'HH:mm'), PARSEDATETIME('9:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (3, 3, PARSEDATETIME('10:00',  'HH:mm'), PARSEDATETIME('10:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (4, 4, PARSEDATETIME('11:00', 'HH:mm'), PARSEDATETIME('11:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (5, 5, PARSEDATETIME('12:00', 'HH:mm'), PARSEDATETIME('12:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (6, 6, PARSEDATETIME('13:00', 'HH:mm'), PARSEDATETIME('13:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (7, 7, PARSEDATETIME('14:00', 'HH:mm'), PARSEDATETIME('14:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (8, 8, PARSEDATETIME('15:00', 'HH:mm'), PARSEDATETIME('15:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (9, 9, PARSEDATETIME('16:00', 'HH:mm'), PARSEDATETIME('16:45', 'HH:mm'));
+INSERT INTO meeting_hours (`id`, `meeting_number`, `start_time`, `end_time`) VALUES (10, 10, PARSEDATETIME('17:00', 'HH:mm'), PARSEDATETIME('17:45', 'HH:mm'));
 
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (1, 'matematyka', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 2, 1, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (2, 'język polski', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('9:00','hh:mm'), PARSEDATETIME('9:45','hh:mm'), 3, 2, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (3, 'język angielski', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('10:00','hh:mm'), PARSEDATETIME('10:45','hh:mm'), 4, 3, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (4, 'wychowanie fizyczne', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 5, 4, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (5, 'religia', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 6, 5, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (6, 'matematyka', PARSEDATETIME('19/11/2018','dd/MM/yyyy'), PARSEDATETIME('13:00','hh:mm'), PARSEDATETIME('13:45','hh:mm'), 2, 1, 1);
+-- SCHEDULE
+INSERT INTO schedules (`id`, `class_id`) VALUES (1, 1);
 
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (7, 'historia', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 7, 6, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (8, 'język polski', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('9:00','hh:mm'), PARSEDATETIME('9:45','hh:mm'), 3, 2, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (9, 'religia', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('10:00','hh:mm'), PARSEDATETIME('10:45','hh:mm'), 6, 5, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (10, 'przyroda', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 8, 7, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (11, 'fizyka', PARSEDATETIME('20/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 9, 8, 1);
+-- SCHEDULE DAY
+INSERT INTO week_days (`id`, `week_number`, `schedule_id`) VALUES (1, 1, 1);
+INSERT INTO week_days (`id`, `week_number`, `schedule_id`) VALUES (2, 2, 1);
+INSERT INTO week_days (`id`, `week_number`, `schedule_id`) VALUES (3, 3, 1);
+INSERT INTO week_days (`id`, `week_number`, `schedule_id`) VALUES (4, 4, 1);
+INSERT INTO week_days (`id`, `week_number`, `schedule_id`) VALUES (5, 5, 1);
+INSERT INTO week_days (`id`, `week_number`, `schedule_id`) VALUES (6, 6, 1);
+INSERT INTO week_days (`id`, `week_number`, `schedule_id`) VALUES (7, 7, 1);
 
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (12, 'język polski', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 3, 2, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (13, 'wychowanie fizyczne', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 5, 4, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (14, 'wychowanie fizyczne', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 5, 4, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (15, 'matematyka', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('13:00','hh:mm'), PARSEDATETIME('13:45','hh:mm'), 2, 1, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (16, 'historia', PARSEDATETIME('21/11/2018','dd/MM/yyyy'), PARSEDATETIME('14:00','hh:mm'), PARSEDATETIME('14:45','hh:mm'), 7, 6, 1);
+-- PONIEDZIAŁEK
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (1, 1, 1, 1);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (2, 1, 1, 2);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (3, 2, 1, 3);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (4, 6, 1, 4);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (5, 8, 1, 5);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (6, null, 1, 6);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (7, null, 1, 7);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (8, null, 1, 8);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (9, null, 1, 9);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (10, null, 1, 10);
 
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (17, 'język polski', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 3, 2, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (18, 'język polski', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('9:00','hh:mm'), PARSEDATETIME('9:45','hh:mm'), 3, 2, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (19, 'matematyka', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('10:00','hh:mm'), PARSEDATETIME('10:45','hh:mm'), 2, 1, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (20, 'przyroda', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 8, 7, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (21, 'religia', PARSEDATETIME('22/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 6, 5, 1);
+-- WTOREK
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (11, 1, 2, 1);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (12, 3, 2, 2);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (13, 3, 2, 3);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (14, 2, 2, 4);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (15, 6, 2, 5);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (16, 5, 2, 6);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (17, 2, 2, 7);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (18, null, 2, 8);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (19, null, 2, 9);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (20, null, 2, 10);
 
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (22, 'matematyka', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('8:00','hh:mm'), PARSEDATETIME('8:45','hh:mm'), 2, 1, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (23, 'matematyka', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('9:00','hh:mm'), PARSEDATETIME('9:45','hh:mm'), 2, 1, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (24, 'język angielski', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('10:00','hh:mm'), PARSEDATETIME('10:45','hh:mm'), 4, 3, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (25, 'język angielski', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('11:00','hh:mm'), PARSEDATETIME('11:45','hh:mm'), 4, 3, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (26, 'historia', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('12:00','hh:mm'), PARSEDATETIME('12:45','hh:mm'), 7, 6, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (27, 'wychowanie fizyczne', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('13:00','hh:mm'), PARSEDATETIME('13:45','hh:mm'), 5, 4, 1);
-INSERT INTO Meetings (`id`, `title`, `date`, `start_time`, `end_time`, `teacher_id`, `subject_id`, `class_id`)
-              VALUES (28, 'przyroda', PARSEDATETIME('23/11/2018','dd/MM/yyyy'), PARSEDATETIME('14:00','hh:mm'), PARSEDATETIME('14:45','hh:mm'), 8, 7, 1);
--- MEETINGS END
+-- SRODA
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (21, null, 3, 1);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (22, 3, 3, 2);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (23, 3, 3, 3);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (24, null, 3, 4);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (25, 6, 3, 5);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (26, 5, 3, 6);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (27, 2, 3, 7);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (28, null, 3, 8);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (29, null, 3, 9);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (30, null, 3, 10);
 
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (1, 14, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (2, 15, false, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (3, 16, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (4, 17, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (5, 18, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (6, 19, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (7, 20, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (8, 21, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (9, 22, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (10, 23, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (11, 24, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (12, 25, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (13, 26, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (14, 27, false, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (15, 28, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (16, 29, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (17, 30, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (18, 31, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (19, 32, true, 1);
-INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
-              VALUES (20, 33, true, 1);
-              
+-- CZWARTEK
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (31, null, 4, 1);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (32, 1, 4, 2);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (33, 1, 4, 3);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (34, null, 4, 4);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (35, 2, 4, 5);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (36, null, 4, 6);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (37, 8, 4, 7);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (38, 8, 4, 8);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (39, null, 4, 9);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (40, 8, 4, 10);
+
+-- PIATEK
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (41, null, 5, 1);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (42, null, 5, 2);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (43, null, 5, 3);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (44, 1, 5, 4);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (45, 1, 5, 5);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (46, 4, 5, 6);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (47, 5, 5, 7);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (48, 6, 5, 8);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (49, null, 5, 9);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (50, null, 5, 10);
+
+-- SOBOTA
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (51, null, 6, 1);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (52, null, 6, 2);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (53, null, 6, 3);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (54, null, 6, 4);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (55, null, 6, 5);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (56, null, 6, 6);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (57, null, 6, 7);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (58, null, 6, 8);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (59, null, 6, 9);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (60, null, 6, 10);
+
+-- NIEDZIELA
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (61, null, 7, 1);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (62, null, 7, 2);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (63, null, 7, 3);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (64, null, 7, 4);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (65, null, 7, 5);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (66, null, 7, 6);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (67, null, 7, 7);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (68, null, 7, 8);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (69, null, 7, 9);
+INSERT INTO Meetings (`id`, `subject_id`, `schedule_day_id`, `meeting_hour_id`) VALUES (70, null, 7, 10);
+
+
 -- MEETINGS END
 
 -- GRADE SET START

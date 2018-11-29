@@ -29,12 +29,29 @@ public class MeetingsComponentController extends PageController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getMeetingPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
-        prepareMeetingData(model);
+        //prepareMeetingData(model);
+
+        prepareSchedule(model);
 
         return ControllerConstants.Fragments.meetingFragment;
     }
 
-    private void prepareMeetingData(final Model model) {
+    private void prepareSchedule(final Model model) {
+        final String userEmail = currentUserName(model);
+        if(userEmail == null) {
+            return;
+        }
+
+        StudentModel student = studentService.getStudentByEmail(userEmail);
+        if(student != null) {
+            final ClassModel classModel = studentService.getClassByStudentEmail(student.getEmail());
+            if(classModel != null) {
+                model.addAttribute("schedule", meetingFacade.getScheduleByClass(classModel.getName()));
+            }
+        }
+    }
+
+    /*private void prepareMeetingData(final Model model) {
         final String userEmail = currentUserName(model);
         if(userEmail == null) {
             return;
@@ -48,5 +65,5 @@ public class MeetingsComponentController extends PageController {
                 model.addAttribute("startHours", Arrays.asList("08:00", "09:00", "10:00", "11:00", "12:00", "01:00", "02:00"));
             }
         }
-    }
+    }*/
 }
