@@ -127,3 +127,44 @@ form{
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
+.navbar-brand{
+
+    font-family: AllegroPL;
+    font-size: 65px;
+}
+
+.menu {
+    width: 180px !important;
+    position: fixed;
+    margin-left: 15px !important;
+}
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav > li {
+    position: relative;
+    display: block;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+.menu-element {
+    font-size: 14px;
+    text-transform: uppercase;
+    min-width: 140px !important;
+    max-width: 140px !important;
+}
+
+.nav > li > a:hover {
+    text-decoration: none;
+    background-color: #eeeeee;
+}
+
