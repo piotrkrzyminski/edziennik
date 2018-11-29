@@ -1,18 +1,5 @@
 -- Standardowe hasło dla użytkowników: qwerty
 
--- GRADE VALUES START
-INSERT INTO Grade_values (`id`, `name`) VALUES (1, 1);
-INSERT INTO Grade_values (`id`, `name`) VALUES (2, 1.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (3, 2);
-INSERT INTO Grade_values (`id`, `name`) VALUES (4, 2.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (5, 3);
-INSERT INTO Grade_values (`id`, `name`) VALUES (6, 3.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (7, 4);
-INSERT INTO Grade_values (`id`, `name`) VALUES (8, 4.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (9, 5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (10, 5.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (11, 6);
--- GRADE VALUES END
 
 INSERT INTO Roles (`id`, `name`) VALUES (1, 'ADMIN');
 INSERT INTO Roles (`id`, `name`) VALUES (2, 'TEACHER');
@@ -492,6 +479,20 @@ INSERT INTO Presents (`id`, `student_id`, `is_present`, `meeting_id`)
               VALUES (20, 33, true, 1);
               
 -- MEETINGS END
+
+-- GRADE VALUES START
+INSERT INTO Grade_values (`id`, `name`) VALUES (1, 1);
+INSERT INTO Grade_values (`id`, `name`) VALUES (2, 1.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (3, 2);
+INSERT INTO Grade_values (`id`, `name`) VALUES (4, 2.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (5, 3);
+INSERT INTO Grade_values (`id`, `name`) VALUES (6, 3.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (7, 4);
+INSERT INTO Grade_values (`id`, `name`) VALUES (8, 4.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (9, 5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (10, 5.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (11, 6);
+-- GRADE VALUES END
 
 -- GRADE SET START
 -- Kartkówka z funkcji liniowych dnia 19.11.2018 w klasie Ia z matematyki przeprowadzona przez nauczyciela o ID=1
