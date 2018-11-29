@@ -40,7 +40,7 @@ INSERT INTO Teachers (`id`, `email`, `password`, `enabled`, `first_name`, `secon
 INSERT INTO Teachers (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`,`birth_date`, `role_id`)
             VALUES(8, 'eligia.sobczak@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Eligia', null, 'Sobczak', '74021624028', PARSEDATETIME('16/02/1974','dd/MM/yyyy'), 2);
 INSERT INTO Teachers (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`,`birth_date`, `role_id`)
-            VALUES(9, 'weronika.grabowska@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Weronika', null, 'Grabowska', '65121853700', PARSEDATETIME('18/12/1965','dd/MM/yyyy'), 2);
+            VALUES(9, 'weronika.grabowska@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Weronika', null, 'Grabowska', '65121853700', PARSEDATETIME('18/12/1985','dd/MM/yyyy'), 2);
 INSERT INTO Teachers (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`,`birth_date`, `role_id`)
             VALUES(10, 'radomiła.piotrowska@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Radomiła', null, 'Piotrowska', '97011428842', PARSEDATETIME('14/01/1997','dd/MM/yyyy'), 2);
 INSERT INTO Teachers (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`,`birth_date`, `role_id`)
@@ -379,6 +379,10 @@ INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (5, 'religia', 6);
 INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (6, 'historia', 7);
 INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (7, 'przyroda', 8);
 INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (8, 'fizyka', 9);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (9, 'informatyka', 10);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (10, 'chemia', 11);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (11, 'geografia', 12);
+INSERT INTO Subjects (`id`, `name`, `teacher_id`) VALUES (12, 'podstawy przedsiębiorczości', 13);
 
 -- SAMPLE SUBJECTS END
 
