@@ -35,12 +35,12 @@
         <table class="table" align="center">
             <thead class="thead-dark">
                 <tr>
-                    <th th:each="day : ${schedule.scheduleDays}">
+                    <th class="meetings-date" th:each="day : ${schedule.scheduleDays}">
                         <span th:text="${day.weekName}"></span>
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="meetings-tbody">
                 <tr th:each="day : ${schedule.scheduleDays}">
                     <th:block th:each="meeting : ${day.meetings}">
                         <td class="table-row">
@@ -55,7 +55,7 @@
         </table>
 
 
-    </div>
+    <!--</div>
     <table class="table table-responsive" align="center">
         <thead class="meetings-thead">
         <tr>
@@ -74,6 +74,6 @@
             </th:block>
         </tr>
         </tbody>
-    </table>
+    </table>-->
 </section>
 </html>
