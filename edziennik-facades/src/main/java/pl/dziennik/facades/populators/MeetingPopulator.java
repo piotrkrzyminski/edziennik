@@ -1,31 +1,33 @@
 package pl.dziennik.facades.populators;
 
+import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Component;
 import pl.dziennik.facades.data.MeetingData;
 import pl.dziennik.model.i18n.Weeks;
-import pl.dziennik.model.user.MeetingModel;
+import pl.dziennik.model.meetings.MeetingModel;
 
 import java.util.Calendar;
 
 /**
- * Populates meeting data.
+ * Populuje dane z modelu do data.
  */
 @Component
 public class MeetingPopulator implements Populator<MeetingModel, MeetingData> {
 
     @Override
     public void populate(MeetingModel s, MeetingData t) {
-        t.setTitle(s.getTitle());
-        t.setDate(s.getDate());
-        t.setStartTime(s.getStartTime());
-        t.setClassName(s.getClassModel().getName());
-        t.setEndTime(s.getEndTime());
+        Validate.notNull(s);
+        Validate.notNull(t);
 
-        if(t.getDate() != null) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(t.getDate());
-            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-            t.setWeekName(Weeks.values()[dayOfWeek - 1].toString());
+        if(s.getMeetingHour() != null) {
+            t.setMeetingNumber(s.getMeetingHour().getMeetingNumber());
+            t.setStartTime(s.getMeetingHour().getStartTime());
+            t.setEndTime(s.getMeetingHour().getEndDate());
         }
+
+        t.setCanceled(false);
+
+        if(s.getSubject() != null)
+        t.setSubjectName(s.getSubject().getName());
     }
 }

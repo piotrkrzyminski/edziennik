@@ -6,6 +6,55 @@
 <section th:fragment="meetings" class="well">
     <div class="meetings-header">
         <span class="section-title">Najbliższe spotkania</span>
+    <div th:fragment="meetings" class="table-responsive">
+        <div class="col meetings-header">
+            <h2>Najbliższe spotkania</h2>
+        </div>
+        <!--<table class="table" align="center">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="meeting-header"  th:each="meeting: ${meetings}">
+                        <span th:text="${#dates.format(meeting.key, 'dd-MM-yyyy')}"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="meeting: ${meetings}">
+                    <th:block th:each="startHour,iter : ${startHours}">
+                        <td class="table-row">
+                            <div th:if="${iter.index < #lists.size(meeting.value)}">
+                                <div th:text="${#dates.format(meeting.value[iter.index].startTime, 'hh:mm')} + ' - '+  ${#dates.format(meeting.value[iter.index].endTime, 'hh:mm')}"></div>
+                                <div th:text="${meeting.value[iter.index].title}"></div>
+                            </div>
+                        </td>
+                    </th:block>
+                </tr>
+            </tbody>
+        </table>-->
+
+        <table class="table" align="center">
+            <thead class="thead-dark">
+                <tr>
+                    <th th:each="day : ${schedule.scheduleDays}">
+                        <span th:text="${day.weekName}"></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="day : ${schedule.scheduleDays}">
+                    <th:block th:each="meeting : ${day.meetings}">
+                        <td class="table-row">
+                            <th:block th:if="${meeting.subjectName != null}">
+                                <div th:text="${#dates.format(meeting.startTime, 'hh:mm')} + ' - ' + ${#dates.format(meeting.endTime, 'hh:mm')}"></div>
+                                <div th:text="${meeting.subjectName}"></div>
+                            </th:block>
+                        </td>
+                    </th:block>
+                </tr>
+            </tbody>
+        </table>
+
+
     </div>
     <table class="table table-responsive" align="center">
         <thead class="meetings-thead">

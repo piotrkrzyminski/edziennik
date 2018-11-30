@@ -21,7 +21,7 @@ import java.util.Set;
 @Service
 public class DefaultStudentService implements StudentService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(DefaultClassService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultStudentService.class);
 
     @Autowired
     private StudentRepository studentRepository;

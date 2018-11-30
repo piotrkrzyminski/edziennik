@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import pl.dziennik.facades.data.MeetingData;
 import pl.dziennik.facades.populators.Populator;
-import pl.dziennik.model.user.MeetingModel;
+import pl.dziennik.model.meetings.MeetingModel;
 
 @Component("meetingConverter")
 public class MeetingConverter implements Converter<MeetingModel, MeetingData> {

@@ -2,36 +2,50 @@ package pl.dziennik.facades.data;
 
 import java.util.Date;
 
+/**
+ * Reprezentacja spotkania po stronie frontowej.
+ */
 public class MeetingData {
 
-    private String title;
+    /**
+     * numer lekcji. Na przykład 1 oznacza pierwszą lekcję danego dnia.
+     */
+    private int meetingNumber;
 
-    private Date date;
+    /**
+     * Nazwa przedmiotu.
+     */
+    private String subjectName;
 
+    /**
+     * Godzina rozpoczęcia.
+     */
     private Date startTime;
 
+    /**
+     * Godzina zakończenia.
+     */
     private Date endTime;
 
-    private String weekName;
+    /**
+     * Czy zajęcia są anulowane (na przykład z powodu przerwy świątecznej).
+     */
+    private boolean canceled;
 
-    private String subject;
-
-    private String className;
-
-    public String getTitle() {
-        return title;
+    public int getMeetingNumber() {
+        return meetingNumber;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setMeetingNumber(int meetingNumber) {
+        this.meetingNumber = meetingNumber;
     }
 
-    public Date getDate() {
-        return date;
+    public String getSubjectName() {
+        return subjectName;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public Date getStartTime() {
@@ -50,27 +64,11 @@ public class MeetingData {
         this.endTime = endTime;
     }
 
-    public String getWeekName() {
-        return weekName;
+    public boolean isCanceled() {
+        return canceled;
     }
 
-    public void setWeekName(String weekName) {
-        this.weekName = weekName;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-
-    public void setClassName(String className) {
-        this.className = className;
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
     }
 }

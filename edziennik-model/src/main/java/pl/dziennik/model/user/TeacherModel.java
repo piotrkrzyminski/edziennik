@@ -1,8 +1,9 @@
 package pl.dziennik.model.user;
 
+import pl.dziennik.model.meetings.SubjectModel;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import java.util.List;
 import java.util.Set;
