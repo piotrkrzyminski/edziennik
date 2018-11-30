@@ -3,32 +3,26 @@
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:th="http://www.thymeleaf.org"
         xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-
-</head>
-<body>
 <!-- Fragment od nawigacji wyświetlający linki do innych funkcjonalności. Każdy link pozwoli na asynchroniczne pobranie
     zawartości i wklejenie jej w sekcje content -->
 <div th:fragment="navigation">
-    <div class="row">
-        <div class="col navigation-container">
-            <div class="nav-node">
-                <a class="section-link" href="/e-dziennik/ogloszenia">Ogłoszenia</a>
-            </div>
-            <div class="nav-node">
-                <a href="/e-dziennik">Strona domowa</a>
-            </div>
-            <div class="nav-node">
-                <a class="section-link" href="/e-dziennik/meetings">Terminarz spotkań</a>
-            </div>
-            <div class="nav-node">
-                <a class="section-link" href="/e-dziennik/grades">Moje oceny</a>
-            </div>
-            <div class="nav-node">
-                <a class="section-link" href="/e-dziennik/klasa">Moja klasa</a>
-            </div>
+    <div class="row" style="margin-right: 5px;">
+        <div class="menu position-f well">
+            <ul class="nav nav-list">
+                <li>
+                    <a class="menu-element section-link" href="/e-dziennik/meetings">terminarz spotkań</a>
+                </li>
+                <li>
+                    <a class="menu-element section-link" href="/e-dziennik/ogloszenia">Ogłoszenia</a>
+                </li>
+                <li>
+                    <a class="menu-element section-link" href="/e-dziennik/grades">oceny</a>
+                </li>
+                <li>
+                    <a class="menu-element section-link" href="/e-dziennik/klasa">moja klasa</a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
-</body>
 </html>

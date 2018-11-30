@@ -10,34 +10,35 @@
     <link href="CSS/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>
-    <img th:src="@{/images/logo.png}" class="w3-round" alt="logo">
-    e-dziennik</h1>
-<div class="formularz">
-    <div class="alert alert-danger" th:if="${param.error != null}">
-        <p>Podane dane są błędne, lub użytkownik nie istnieje.</p>
-    </div>
-    <div class="alert alert-success" th:if="${param.logout != null}">
-        <p>Wylogowano z systemu.</p>
-    </div>
-    <form id="login" th:action="@{/login}" th:method="post">
-        <div class="header">
-            <h3> logowanie:</h3>
-            <p>Wprowadź następujące pola by zalogować się do systemu</p>
+<header th:insert="~{fragments/header :: header}">
+    <!-- th:insert dla fragmentu wyświetlającego górną belkę. Zawierać będzie logo, kto jest zalogowany i link do wylogowania
+      Umieszczone statycznie bo nie będzie potrzeby zmieniać jego zawartości -->
+</header>
+<section id="formularz">
+    <div class="wrapper">
+        <div class="alert alert-danger"   th:if="${param.error != null}">
+            <p>Podane dane są błędne, lub użytkownik nie istnieje.</p>
         </div>
-        <div class="sep"></div>
-        <div class="imputs">
-            <label for="email">E-mail</label>
-            <input id="email" th:type="email" th:name="email" placeholder="Adres email" autofocus/><br>
-            <div class="sep"></div>
-            <br/>
-            <label for="password">Hasło</label>
-            <input id="password" th:type="password" th:name="password" placeholder="Hasło"/><br>
+        <div class="alert alert-success" th:if="${param.logout != null}">
+            <p>Wylogowano z systemu.</p>
+        </div>
+        <form class="form-signin" th:action="@{/login}" th:method="post">
 
-            <input class="submit-button" th:type="submit" th:value="Logowanie"/>
-        </div>
-    </form>
-</div>
+            <div class="header">
+                <h3> logowanie</h3>
+                <p>Wprowadź następujące pola by zalogować się do systemu</p>
+            </div>
+
+            <label class="control-label" for="email" >E-mail</label>
+            <input class="form-control" id="email" th:type="email" th:name="email"  placeholder="Adres email"  required autofocus/>
+            <label for="password">Hasło</label>
+            <input class="form-control" id="password" th:type="password" th:name="password" required placeholder="Hasło"/>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Logowanie</button>
+
+        </form>
+    </div>
+</section>
 
 </body>
 

@@ -1,17 +1,28 @@
-package pl.dziennik.model.user;
+package pl.dziennik.model.meetings;
 
 import pl.dziennik.model.AbstractItemModel;
+import pl.dziennik.model.user.GradeSetModel;
+import pl.dziennik.model.user.TeacherModel;
 
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Encja opisująca przedmiot szkolny. Na przykład matematyka, język polski itd.
+ */
 @Entity
 @Table(name = "subjects")
 public class SubjectModel extends AbstractItemModel {
 
+    /**
+     * Nazwa przedmiotu. Na przykład matematyka
+     */
     @Column(name = "name")
     private String name;
 
+    /**
+     * Identyfikator nauczyciela prowadzącego przedmiot.
+     */
     @ManyToOne
     @JoinColumn(name = "teacher_id", nullable = false)
     private TeacherModel teacher;

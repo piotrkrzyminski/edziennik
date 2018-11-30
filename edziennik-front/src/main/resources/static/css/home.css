@@ -1,8 +1,4 @@
-tr { display: block; float: left; }
-th, td { display: block; }
-th {
-    float : left;
-}
+
 
 .table-row {
     min-width: 100px;

@@ -1,6 +1,7 @@
 package pl.dziennik.model.user;
 
 import pl.dziennik.model.AbstractItemModel;
+import pl.dziennik.model.meetings.MeetingModel;
 
 import javax.persistence.*;
 
