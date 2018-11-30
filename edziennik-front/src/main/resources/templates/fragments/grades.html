@@ -2,14 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+
 <!-- Fragment komponentu prazentujący listę spotkań dla zalogowanego użytkownika (jeżeli takie spotkania może mieć) -->
-<div th:fragment="grades" class="table-responsive">
-    Pała!
-</div>
-</body>
+<section th:fragment="grades" class="well">
+    <div class="greades-header">
+        <span class="section-title">Oceny</span>
+    </div>
+    <table class="table grades-table">
+        <thead>
+            <tr>
+                <th class="subject"><span>Przedmiot</span></th>
+                <th class="grades"><span>Oceny</span></th>
+                <th class="average-grade"><span>Średnia</span></th>
+                <th class="final-grade"><span>Ocena końcowa</span></th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- foreach -->
+            <tr>
+                <th class="subject"><span>informatyka</span></th>
+                <th class="grades"><div>1</div><div>2</div><span>2</span></th>
+                <th class="average-grade"><span>2</span></th>
+                <th class="final-grade"><span>2</span></th>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
 </html>

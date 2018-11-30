@@ -10,15 +10,18 @@
     <link href="CSS/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>
-    <img th:src="@{/images/logo.png}" class="w3-round" alt="logo">
-    e-dziennik</h1>
+<header th:insert="~{fragments/header :: header}">
+    <!-- th:insert dla fragmentu wyświetlającego górną belkę. Zawierać będzie logo, kto jest zalogowany i link do wylogowania
+      Umieszczone statycznie bo nie będzie potrzeby zmieniać jego zawartości -->
+</header>
 <div class="formularz">
     <div class="alert alert-danger" th:if="${param.error != null}">
         <p>Podane dane są błędne, lub użytkownik nie istnieje.</p>
     </div>
-    <div class="alert alert-success" th:if="${param.logout != null}">
+    <div style="width: 120px !important;">
+    <div class="alert alert-success" th:if="${param.logout != null}" >
         <p>Wylogowano z systemu.</p>
+    </div>
     </div>
     <form id="login" th:action="@{/login}" th:method="post">
         <div class="header">
