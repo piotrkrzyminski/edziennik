@@ -1,9 +1,10 @@
-package pl.dziennik.facades.populators;
+package pl.dziennik.facades.populators.meetings;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dziennik.facades.data.ScheduleData;
-import pl.dziennik.facades.data.ScheduleDayData;
+import pl.dziennik.facades.data.meetings.ScheduleData;
+import pl.dziennik.facades.data.meetings.ScheduleDayData;
+import pl.dziennik.facades.populators.Populator;
 import pl.dziennik.model.meetings.ScheduleDayModel;
 import pl.dziennik.model.meetings.ScheduleModel;
 

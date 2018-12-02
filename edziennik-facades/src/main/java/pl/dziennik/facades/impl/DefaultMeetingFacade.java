@@ -9,7 +9,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import pl.dziennik.core.services.user.ScheduleService;
 import pl.dziennik.facades.MeetingFacade;
-import pl.dziennik.facades.data.ScheduleData;
+import pl.dziennik.facades.data.meetings.ScheduleData;
 import pl.dziennik.model.meetings.ScheduleModel;
 
 /**

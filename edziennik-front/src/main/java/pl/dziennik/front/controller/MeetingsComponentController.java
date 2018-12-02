@@ -7,15 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.facades.MeetingFacade;
-import pl.dziennik.facades.data.MeetingData;
-import pl.dziennik.facades.data.ScheduleData;
-import pl.dziennik.facades.data.ScheduleDayData;
 import pl.dziennik.model.user.ClassModel;
 import pl.dziennik.model.user.StudentModel;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.*;
 
 /**
  * Controller for meetings fragment.

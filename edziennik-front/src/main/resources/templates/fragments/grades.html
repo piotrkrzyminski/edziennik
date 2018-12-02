@@ -18,10 +18,14 @@
             </tr>
         </thead>
         <tbody>
-        <!-- foreach -->
-            <tr>
-                <th class="subject"><span>informatyka</span></th>
-                <th class="grades"><div>1</div><div>2</div><span>2</span></th>
+            <tr th:each="subject : ${grades}">
+                <th class="subject"th:text="${subject.key}"><span>informatyka</span></th>
+
+                    <th class="grades">
+                        <th:block th:each="grade : ${subject.value}">
+                            <div th:text="${#numbers.formatDecimal(grade.gradeDetails.mark, 0, T(Math).round(grade.gradeDetails.mark) == grade.gradeDetails.mark ? 0 : 1)}">1</div>
+                        </th:block>
+                    </th>
                 <th class="average-grade"><span>2</span></th>
                 <th class="final-grade"><span>2</span></th>
             </tr>

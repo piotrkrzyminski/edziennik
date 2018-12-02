@@ -1,12 +1,10 @@
-package pl.dziennik.facades.populators;
+package pl.dziennik.facades.populators.meetings;
 
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Component;
-import pl.dziennik.facades.data.MeetingData;
-import pl.dziennik.model.i18n.Weeks;
+import pl.dziennik.facades.data.meetings.MeetingData;
+import pl.dziennik.facades.populators.Populator;
 import pl.dziennik.model.meetings.MeetingModel;
-
-import java.util.Calendar;
 
 /**
  * Populuje dane z modelu do data.

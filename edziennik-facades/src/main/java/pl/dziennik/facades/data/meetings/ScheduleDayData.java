@@ -1,4 +1,4 @@
-package pl.dziennik.facades.data;
+package pl.dziennik.facades.data.meetings;
 
 import java.util.List;
 
