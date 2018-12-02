@@ -228,6 +228,10 @@ th .grades {
     max-width: 180px !important;
     width: 180px !important;
 }
+
+.insufficient {
+    background-color: lightcoral; !important;
+}
 /*
 .table-responsive > tbody > tr {
     display: block;

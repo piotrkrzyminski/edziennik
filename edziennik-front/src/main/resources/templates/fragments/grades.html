@@ -19,19 +19,24 @@
         </thead>
         <tbody>
             <tr th:each="subject : ${grades}">
-                <th class="subject"th:text="${subject.key}"><span>informatyka</span></th>
+                <th class="subject"th:text="${subject.key.subjectName}"><span>informatyka</span></th>
 
                     <th class="grades">
                         <th:block th:each="grade : ${subject.value}">
-                            <div th:text="${#numbers.formatDecimal(grade.gradeDetails.mark, 0, T(Math).round(grade.gradeDetails.mark) == grade.gradeDetails.mark ? 0 : 1)}">1</div>
+                            <!-- Próbowałem dodać tutaj klasę css jeżeli ocena jest niższa niż 2. Stworzyłem klasę o nazwie 'insufficient', ale kolor jest nadpisywany przez coś innego
+                              więc do poprawy dla frontu -->
+                            <div th:class="${grade.mark} < 2.0 ?insufficient:''"
+                                 th:text="${#numbers.formatDecimal(grade.mark, 0, T(Math).round(grade.mark) == grade.mark ? 0 : 1)}">1</div>
                         </th:block>
-                        <!-- Wyświetlenie informacji o typie oceny: ${grade.gradeDetails.title}-->
-                        <!-- Wyświetlenie informacji o wadze oceny: ${grade.gradeDetails.weight}-->
-                        <!-- Wyświetlenie informacji o dacie oceny: ${grade.gradeDetails.date}-->
-                        <!-- Wyświetlenie informacji o tym kto ją wystawił: ${grade.gradeDetails.teacherName}-->
+                        <!-- Wyświetlenie informacji o typie oceny: ${grade.title}-->
+                        <!-- Wyświetlenie informacji o wadze oceny: ${grade.weight}-->
+                        <!-- Wyświetlenie informacji o dacie oceny: ${grade.date}-->
+                        <!-- Wyświetlenie informacji o tym kto ją wystawił: ${grade.teacherName}-->
                     </th>
-                <th class="average-grade"><span>2</span></th>
-                <th class="final-grade"><span>2</span></th>
+                <th class="average-grade">
+                    <span th:text="${#numbers.formatDecimal(subject.key.avgGrade, 0, T(Math).round(subject.key.avgGrade) == subject.key.avgGrade ? 0 : 2)}">2</span>
+                </th>
+                <th class="final-grade"><span></span></th>
             </tr>
         </tbody>
     </table>

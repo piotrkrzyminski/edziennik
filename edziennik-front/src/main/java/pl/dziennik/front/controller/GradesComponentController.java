@@ -9,15 +9,14 @@ import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.facades.GradeFacade;
 import pl.dziennik.facades.data.grades.GradeData;
 import pl.dziennik.facades.data.grades.GradeDetailsData;
-import pl.dziennik.model.user.ClassModel;
 import pl.dziennik.model.user.StudentModel;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Controller for meetings fragment.
@@ -37,7 +36,7 @@ public class GradesComponentController extends PageController {
 
         final String userEmail = currentUserName(model);
         StudentModel student = studentService.getStudentByEmail(userEmail);
-        if(student != null) {
+        if (student != null) {
             List<GradeData> grades = gradeFacade.getGradesForStudent(userEmail);
             prepareDataForStudent(model, grades);
         }
@@ -46,8 +45,47 @@ public class GradesComponentController extends PageController {
     }
 
     private void prepareDataForStudent(final Model model, final List<GradeData> grades) {
-        Map<String, List<GradeData>> gradeMap = grades.stream().collect(Collectors.groupingBy(GradeData::getSubjectName));
+        Map<GradeData, List<GradeDetailsData>> gradeMap = new HashMap<>();
+
+        for (GradeData grade : grades) {
+            GradeDetailsData gradeDetailsData = grade.getGradeDetails();
+
+            // Jezeli w mapie nie ma jeszcze wpisu dla danego przedmiotu do stworz pamiec na nowa liste ocen
+            if (gradeMap.get(grade) == null) {
+                List<GradeDetailsData> gradeDetailsDataList = new ArrayList<>();
+                gradeDetailsDataList.add(gradeDetailsData);
+                gradeMap.put(grade, gradeDetailsDataList);
+            } else {
+                // dodaj ocene do listy istniejacych
+                List<GradeDetailsData> gradeDetailsDataList = gradeMap.get(grade);
+                gradeDetailsDataList.add(gradeDetailsData);
+                gradeMap.put(grade, gradeDetailsDataList);
+            }
+        }
+
+        for(Map.Entry<GradeData, List<GradeDetailsData>> grade : gradeMap.entrySet()) {
+            double avg = getAverageGrade(grade.getValue());
+            grade.getKey().setAvgGrade(avg);
+        }
 
         model.addAttribute("grades", gradeMap);
+    }
+
+    /**
+     * Calculates average grade for list of grades.
+     *
+     * @param grades list of grades.
+     * @return average value for specified grades.
+     */
+    private double getAverageGrade(List<GradeDetailsData> grades) {
+        double sum = 0;
+        double count = 0;
+
+        for(GradeDetailsData grade : grades) {
+            sum += (grade.getMark() * grade.getWeight());
+            count += grade.getWeight();
+        }
+
+        return sum/count;
     }
 }
