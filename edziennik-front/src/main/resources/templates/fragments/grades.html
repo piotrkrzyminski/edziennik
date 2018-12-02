@@ -25,6 +25,10 @@
                         <th:block th:each="grade : ${subject.value}">
                             <div th:text="${#numbers.formatDecimal(grade.gradeDetails.mark, 0, T(Math).round(grade.gradeDetails.mark) == grade.gradeDetails.mark ? 0 : 1)}">1</div>
                         </th:block>
+                        <!-- Wyświetlenie informacji o typie oceny: ${grade.gradeDetails.title}-->
+                        <!-- Wyświetlenie informacji o wadze oceny: ${grade.gradeDetails.weight}-->
+                        <!-- Wyświetlenie informacji o dacie oceny: ${grade.gradeDetails.date}-->
+                        <!-- Wyświetlenie informacji o tym kto ją wystawił: ${grade.gradeDetails.teacherName}-->
                     </th>
                 <th class="average-grade"><span>2</span></th>
                 <th class="final-grade"><span>2</span></th>
