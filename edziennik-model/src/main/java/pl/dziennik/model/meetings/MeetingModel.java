@@ -1,6 +1,8 @@
 package pl.dziennik.model.meetings;
 
 import pl.dziennik.model.AbstractItemModel;
+import pl.dziennik.model.user.ClassModel;
+import pl.dziennik.model.user.TeacherModel;
 
 import javax.persistence.*;
 
@@ -11,33 +13,31 @@ import javax.persistence.*;
 @Table(name = "meetings")
 public class MeetingModel extends AbstractItemModel {
 
-    /**
-     * Przechowuje informacje o numerze spotkania, godzinie rozpoczęcia i zakończenia.
-     */
-    @ManyToOne
-    @JoinColumn(name = "meeting_hour_id")
-    private MeetingHoursModel meetingHour;
+    @Column(name = "week_number")
+    private int weekNumber;
 
-    /**
-     * Identyfikator przedmiotu, z którego ma odbyć się spotkanie.
-     */
     @ManyToOne
     @JoinColumn(name = "subject_id")
     private SubjectModel subject;
 
-    /**
-     * Dzień tygodnia w jakim odbywa się spotkanie.
-     */
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "schedule_day_id")
-    private ScheduleDayModel day;
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private ClassModel classModel;
 
-    public MeetingHoursModel getMeetingHour() {
-        return meetingHour;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private TeacherModel teacher;
+
+    @ManyToOne
+    @JoinColumn(name = "meeting_hour_id")
+    private MeetingHoursModel meetingHour;
+
+    public int getWeekNumber() {
+        return weekNumber;
     }
 
-    public void setMeetingHour(MeetingHoursModel meetingHour) {
-        this.meetingHour = meetingHour;
+    public void setWeekNumber(int weekNumber) {
+        this.weekNumber = weekNumber;
     }
 
     public SubjectModel getSubject() {
@@ -48,11 +48,27 @@ public class MeetingModel extends AbstractItemModel {
         this.subject = subject;
     }
 
-    public ScheduleDayModel getDay() {
-        return day;
+    public ClassModel getClassModel() {
+        return classModel;
     }
 
-    public void setDay(ScheduleDayModel day) {
-        this.day = day;
+    public void setClassModel(ClassModel classModel) {
+        this.classModel = classModel;
+    }
+
+    public TeacherModel getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(TeacherModel teacher) {
+        this.teacher = teacher;
+    }
+
+    public MeetingHoursModel getMeetingHour() {
+        return meetingHour;
+    }
+
+    public void setMeetingHour(MeetingHoursModel meetingHour) {
+        this.meetingHour = meetingHour;
     }
 }

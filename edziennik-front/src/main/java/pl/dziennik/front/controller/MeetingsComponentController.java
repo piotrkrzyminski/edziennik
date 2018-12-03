@@ -7,11 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.facades.MeetingFacade;
+import pl.dziennik.facades.data.meetings.MeetingData;
 import pl.dziennik.model.user.ClassModel;
-import pl.dziennik.model.user.StudentModel;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controller for meetings fragment.
@@ -28,25 +30,48 @@ public class MeetingsComponentController extends PageController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String getMeetingPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
-        //prepareMeetingData(model);
-
-        prepareSchedule(model);
+        prepareMeetings(model);
 
         return ControllerConstants.Fragments.meetingFragment;
     }
 
-    private void prepareSchedule(final Model model) {
-        final String userEmail = currentUserName(model);
-        if(userEmail == null) {
-            return;
-        }
+    private void prepareMeetings(final Model model) {
 
-        StudentModel student = studentService.getStudentByEmail(userEmail);
-        if(student != null) {
-            final ClassModel classModel = studentService.getClassByStudentEmail(student.getEmail());
-            if(classModel != null) {
-                model.addAttribute("schedule", meetingFacade.getScheduleByClass(classModel.getName()));
+        final String role = getUserRole(model);
+        final String userName = currentUserName(model);
+        if (role != null) {
+
+            model.addAttribute("days", meetingFacade.getWeeksName());
+            model.addAttribute("hours", meetingFacade.getHours());
+            model.addAttribute("activeWeekNumber", meetingFacade.getActiveWeekNumber());
+
+            List<MeetingData> meetingDataList = new ArrayList<>();
+            if (role.equals(STUDENT_TYPE_NAME)) {
+                final ClassModel classModel = studentService.getClassByStudentEmail(userName);
+                if (classModel != null) {
+                    model.addAttribute("className", classModel.getName());
+                    meetingDataList = meetingFacade.getMeetingsForClass(classModel.getName());
+                }
+            } else if (role.equals(TEACHER_TYPE_NAME)) {
+                meetingDataList = meetingFacade.getMeetingsForTeacher(userName);
             }
+
+            MeetingData[][] meetingDataMatrix = new MeetingData[10][7];
+
+            for(int i = 0; i < 10; i++) {
+                for(int j = 0; j < 7; j++) {
+                    MeetingData result = null;
+                    for(MeetingData meetingData : meetingDataList ) {
+                        if(meetingData.getWeekNumber()-1 == j && meetingData.getMeetingNumber()-1 == i) {
+                            result = meetingData;
+                        }
+                    }
+
+                    meetingDataMatrix[i][j] = result;
+                }
+            }
+
+            model.addAttribute("meetings", meetingDataMatrix);
         }
     }
 }

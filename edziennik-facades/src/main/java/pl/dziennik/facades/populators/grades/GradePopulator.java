@@ -17,8 +17,8 @@ public class GradePopulator implements Populator<GradeModel, GradeData> {
     @Override
     public void populate(GradeModel s, GradeData t) {
 
-        if(s.getGradeSet() != null) {
-            if(s.getGradeSet().getSubject() != null) {
+        if (s.getGradeSet() != null) {
+            if (s.getGradeSet().getSubject() != null) {
                 t.setSubjectName(s.getGradeSet().getSubject().getName());
             }
         }

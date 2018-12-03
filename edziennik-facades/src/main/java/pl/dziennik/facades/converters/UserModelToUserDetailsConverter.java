@@ -20,7 +20,7 @@ public class UserModelToUserDetailsConverter implements Converter<UserModel, Use
     public UserDetails convert(UserModel userModel) {
         UserDetailsModel userDetailsModel = new UserDetailsModel();
 
-        if(userModel != null) {
+        if (userModel != null) {
             userDetailsModel.setUsername(userModel.getEmail());
             userDetailsModel.setEnabled(userModel.isEnabled());
             userDetailsModel.setPassword(userModel.getPassword());

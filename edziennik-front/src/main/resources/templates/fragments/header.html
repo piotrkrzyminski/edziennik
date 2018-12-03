@@ -10,8 +10,8 @@
             <img th:src="@{/images/logo.png}" class="logo d-inline-block align-top" alt="logo">
             E-Dziennik
         </a>
-        <span sec:authorize="hasAuthority('ADMIN') || hasAuthority('STUDENT')" class="navbar-text" th:text="'Zalogowano jako ' +  ${name}"></span>
-        <form sec:authorize="hasAuthority('ADMIN') || hasAuthority('STUDENT')" class="form-inline">
+        <span sec:authorize="isAuthenticated()" class="navbar-text" th:text="'Zalogowano jako ' +  ${name}"></span>
+        <form sec:authorize="isAuthenticated()" class="form-inline">
             <button class="btn btn-outline-danger my-2 my-sm-0"><a th:href="@{/logout}">Wyloguj się</a></button>
         </form>
     </nav>

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import pl.dziennik.core.services.user.GradesService;
 import pl.dziennik.facades.GradeFacade;
 import pl.dziennik.facades.data.grades.GradeData;
-import pl.dziennik.facades.data.grades.GradeDetailsData;
 import pl.dziennik.facades.populators.Populator;
 import pl.dziennik.model.user.GradeModel;
 
@@ -28,7 +27,7 @@ public class DefaultGradeFacade implements GradeFacade {
         final List<GradeModel> gradeModelList = gradesService.findGradesForStudent(email);
 
         final List<GradeData> grades = new ArrayList<>();
-        for(GradeModel grade : gradeModelList) {
+        for (GradeModel grade : gradeModelList) {
             GradeData gradeData = new GradeData();
             gradeDataPopulator.populate(grade, gradeData);
             grades.add(gradeData);

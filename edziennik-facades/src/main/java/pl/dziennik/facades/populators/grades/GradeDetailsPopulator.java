@@ -12,7 +12,7 @@ public class GradeDetailsPopulator implements Populator<GradeSetModel, GradeDeta
     public void populate(GradeSetModel s, GradeDetailsData t) {
         t.setDate(s.getDate());
 
-        if(s.getTeacher() != null) {
+        if (s.getTeacher() != null) {
             t.setTeacherName(s.getTeacher().getFirstName() + " " + s.getTeacher().getSurname());
         }
 

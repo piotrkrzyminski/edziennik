@@ -5,56 +5,62 @@
 <!-- Fragment komponentu prazentujący listę spotkań dla zalogowanego użytkownika (jeżeli takie spotkania może mieć) -->
 <section th:fragment="meetings" class="well">
     <div class="meetings-header">
-        <span class="section-title">Najbliższe spotkania</span>
+        <div sec:authorize="hasAuthority('STUDENT')">
+            <span class="section-title" th:text="'Terminarz spotkań dla klasy ' +  ${className}"></span>
+        </div>
     </div>
 
-    <table class="table table-responsive" align="center">
+    <table class="table table-bordered table-responsive" align="center">
         <thead class="thead-dark">
         <tr>
-            <th th:each="day : ${schedule.scheduleDays}">
-                <span th:text="${day.weekName}"></span>
+            <th></th>
+            <th class="meeting-row" th:each="day : ${days}">
+                <span th:text="${day}"></span>
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="i: ${#numbers.sequence(1,10)}">
-            <th:block th:each="day : ${schedule.scheduleDays}">
-                <th:block th:each="meeting : ${day.meetings}">
-                    <th:block th:if="${meeting.meetingNumber == i}">
-                        <td>
-                            <th:block th:if="${meeting.subjectName != null}">
-                                <div th:text="${#dates.format(meeting.startTime, 'HH:mm')} + ' - ' + ${#dates.format(meeting.endTime, 'HH:mm')}"></div>
-                                <div th:text="${meeting.subjectName}"></div>
-                            </th:block>
+            <tr th:each="i: ${#numbers.sequence(1,10)}">
+                <td class="meeting-row">
+                    <span th:text="${hours[i-1].startTime} + ' - ' + ${hours[i-1].endTime}"></span>
+                </td>
+                <th:block th:each="j: ${#numbers.sequence(1,7)}">
+                    <th:block th:if="${meetings[i-1][j-1] != null}">
+                        <td class="meeting-row"
+                            th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')">
+                            <div th:text="${meetings[i-1][j-1].subjectName}"></div>
+                            <div sec:authorize="hasAuthority('TEACHER')" th:text="'Klasa ' + ${meetings[i-1][j-1].className}"></div>
                         </td>
+                    </th:block>
+                    <th:block th:if="${meetings[i-1][j-1] == null}">
+                        <td></td>
+                    </th:block>
+                </th:block>
+            </tr>
+
+        <!--<tr th:each="i: ${#numbers.sequence(1,10)}">
+            <td class="meeting-row">
+                <span th:text="${hours[i-1].startTime} + ' - ' + ${hours[i-1].endTime}"></span>
+            </td>
+            <th:block th:each="period : ${meetings}">
+                <th:block th:if="${period.key == i}">
+                    <th:block th:each="j: ${#numbers.sequence(1,7)}">
+                        <th:block th:if="${period.value[i] != null}">
+                            <td class="meeting-row"
+                                th:classappend="(${period.value[j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${period.value[j].active} ? 'table-primary' : '')">
+                                <th:block th:if="${period.value[j-1].weekNumber == j and period.value[j].subjectName != null}">
+                                    <div th:text="${period.value[j-1].subjectName}"></div>
+                                </th:block>
+                            </td>
+                        </th:block>
+                        <th:block th:if="${period.value[j-1] == null}">
+                            <td></td>
+                        </th:block>
                     </th:block>
                 </th:block>
             </th:block>
-        </tr>
+        </tr>-->
         </tbody>
     </table>
-
-
-        <!--<table class="table table-responsive" align="center">
-            <thead class="thead-dark">
-            <tr>
-                <th th:each="day : ${schedule.scheduleDays}">
-                    <span th:text="${day.weekName}"></span>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="day : ${schedule.scheduleDays}">
-                <th:block th:each="meeting : ${day.meetings}">
-                    <td class="tablechow">
-                        <th:block th:if="${meeting.subjectName != null}">
-                            <div th:text="${#dates.format(meeting.startTime, 'hh:mm')} + ' - ' + ${#dates.format(meeting.endTime, 'hh:mm')}"></div>
-                            <div th:text="${meeting.subjectName}"></div>
-                        </th:block>
-                    </td>
-                </th:block>
-            </tr>
-            </tbody>
-        </table>-->
 </section>
 </html>

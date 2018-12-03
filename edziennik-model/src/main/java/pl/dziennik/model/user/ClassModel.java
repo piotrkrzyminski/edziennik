@@ -2,7 +2,6 @@ package pl.dziennik.model.user;
 
 import pl.dziennik.model.AbstractItemModel;
 import pl.dziennik.model.meetings.MeetingModel;
-import pl.dziennik.model.meetings.ScheduleModel;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,7 +24,7 @@ public class ClassModel extends AbstractItemModel {
     private List<GradeSetModel> gradeSet;
 
     @OneToMany(mappedBy = "classModel")
-    private List<ScheduleModel> schedule;
+    private List<MeetingModel> meeting;
 
     public String getName() {
         return name;
@@ -59,11 +58,11 @@ public class ClassModel extends AbstractItemModel {
         this.gradeSet = gradeSet;
     }
 
-    public List<ScheduleModel> getSchedule() {
-        return schedule;
+    public List<MeetingModel> getMeeting() {
+        return meeting;
     }
 
-    public void setSchedule(List<ScheduleModel> schedule) {
-        this.schedule = schedule;
+    public void setMeeting(List<MeetingModel> meeting) {
+        this.meeting = meeting;
     }
 }

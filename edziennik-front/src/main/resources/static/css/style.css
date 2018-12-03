@@ -240,3 +240,7 @@ th .grades {
 .table-responsive > tbody > th, .table-responsive > tbody > th > td {
     display: block;
 }*/
+
+.meeting-row {
+    text-align: center;
+}

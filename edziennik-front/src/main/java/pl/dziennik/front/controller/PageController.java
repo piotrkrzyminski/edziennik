@@ -9,6 +9,11 @@ import pl.dziennik.model.user.UserModel;
 
 public class PageController {
 
+    public static final String STUDENT_TYPE_NAME = "STUDENT";
+    public static final String TEACHER_TYPE_NAME = "TEACHER";
+    public static final String PARENT_TYPE_NAME = "PARENT";
+    public static final String ADMIN_TYPE_NAME = "ADMIN";
+
     @Autowired
     private UserService userService;
 
@@ -24,6 +29,16 @@ public class PageController {
             }
 
             return authentication.getName();
+        }
+
+        return null;
+    }
+
+    protected String getUserRole(final Model model) {
+        UserModel user = userService.getUserByEmail(currentUserName(model));
+
+        if(user != null) {
+            return user.getRole().getName();
         }
 
         return null;

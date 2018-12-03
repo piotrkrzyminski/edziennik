@@ -8,7 +8,7 @@ public enum WeekNameEnum {
     THURSDAY(4, "Czwartek"),
     FRIDAY(5, "Piątek"),
     SATURDAY(6, "Sobota"),
-    SUNDAY(6, "Niedziela");
+    SUNDAY(7, "Niedziela");
 
     private final int dayNumber;
     private final String dayName;
