@@ -8,6 +8,11 @@ import java.util.Date;
 public class MeetingData {
 
     /**
+     * Data spotkania
+     */
+    private Date date;
+
+    /**
      * numer lekcji. Na przykład 1 oznacza pierwszą lekcję danego dnia.
      */
     private int meetingNumber;
@@ -52,7 +57,18 @@ public class MeetingData {
      */
     private boolean canceled;
 
+    /**
+     * Czy są to zajęcia aktualnie odbywane.
+     */
     private boolean active;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public int getMeetingNumber() {
         return meetingNumber;

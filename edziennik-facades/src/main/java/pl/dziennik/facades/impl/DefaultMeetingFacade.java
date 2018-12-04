@@ -13,10 +13,9 @@ import pl.dziennik.facades.enums.WeekNameEnum;
 import pl.dziennik.model.meetings.MeetingHoursModel;
 import pl.dziennik.model.meetings.MeetingModel;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  * Default implementation for {@link MeetingFacade}.
@@ -34,13 +33,15 @@ public class DefaultMeetingFacade implements MeetingFacade {
     private Converter<MeetingHoursModel, MeetingHourData> meetingHourDataConverter;
 
     @Override
-    public List<MeetingData> getMeetingsForClass(String className) {
+    public List<MeetingData> getMeetingsForClass(String className, Date date) {
         Validate.notBlank(className);
 
         List<MeetingData> meetingDataList = new ArrayList<>();
+        List<Date> weekDates = getDatesForDay(date);
         final List<MeetingModel> meetingModelList = meetingService.getMeetingsByClassName(className);
         for (MeetingModel meetingModel : meetingModelList) {
             final MeetingData meetingData = meetingDataConverter.convert(meetingModel);
+            meetingData.setDate(weekDates.get(meetingData.getWeekNumber() - 1));
             meetingDataList.add(meetingData);
         }
 
@@ -48,13 +49,15 @@ public class DefaultMeetingFacade implements MeetingFacade {
     }
 
     @Override
-    public List<MeetingData> getMeetingsForTeacher(String email) {
+    public List<MeetingData> getMeetingsForTeacher(String email, Date date) {
         Validate.notBlank(email);
 
         List<MeetingData> meetingDataList = new ArrayList<>();
+        List<Date> weekDates = getDatesForDay(date);
         final List<MeetingModel> meetingModelList = meetingService.getMeetingsByTeacherEmail(email);
         for (MeetingModel meetingModel : meetingModelList) {
             final MeetingData meetingData = meetingDataConverter.convert(meetingModel);
+            meetingData.setDate(weekDates.get(meetingData.getWeekNumber() - 1));
             meetingDataList.add(meetingData);
         }
 
@@ -95,5 +98,26 @@ public class DefaultMeetingFacade implements MeetingFacade {
         }
 
         return actualWeekNumber;
+    }
+
+    @Override
+    public List<Date> getDatesForDay(Date date) {
+        Calendar actual = Calendar.getInstance();
+        actual.setTime(date);
+
+        List<Date> weekDates = new ArrayList<>();
+        for(int i = Calendar.SUNDAY; i <= Calendar.SATURDAY; i++) {
+            actual.set(Calendar.DAY_OF_WEEK, i);
+            weekDates.add(actual.getTime());
+        }
+
+        List<Date> result = new ArrayList<>();
+        Date temp = weekDates.get(0);
+        for(int i = 1; i <= 6; i++) {
+            result.add(i-1, weekDates.get(i));
+        }
+        result.add(6, temp);
+
+        return result;
     }
 }

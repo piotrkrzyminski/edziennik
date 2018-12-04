@@ -8,6 +8,12 @@
         <div sec:authorize="hasAuthority('STUDENT')">
             <span class="section-title" th:text="'Terminarz spotkań dla klasy ' +  ${className}"></span>
         </div>
+        <!-- Sekcja zmiany tygodnia planu
+            Aby pobrać spotkania dla danego dnia trzeba zrobić request na taki url : /e-dziennik/meetings?date=10-10-2018
+        -->
+        <div align="center">
+            <span class="section-title" th:text="${#dates.format(weekDates[0], 'dd.MM.yyyy')} + ' - ' + ${#dates.format(weekDates[6], 'dd.MM.yyyy')}"></span>
+        </div>
     </div>
 
     <table class="table table-bordered table-responsive" align="center">
@@ -37,29 +43,6 @@
                     </th:block>
                 </th:block>
             </tr>
-
-        <!--<tr th:each="i: ${#numbers.sequence(1,10)}">
-            <td class="meeting-row">
-                <span th:text="${hours[i-1].startTime} + ' - ' + ${hours[i-1].endTime}"></span>
-            </td>
-            <th:block th:each="period : ${meetings}">
-                <th:block th:if="${period.key == i}">
-                    <th:block th:each="j: ${#numbers.sequence(1,7)}">
-                        <th:block th:if="${period.value[i] != null}">
-                            <td class="meeting-row"
-                                th:classappend="(${period.value[j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${period.value[j].active} ? 'table-primary' : '')">
-                                <th:block th:if="${period.value[j-1].weekNumber == j and period.value[j].subjectName != null}">
-                                    <div th:text="${period.value[j-1].subjectName}"></div>
-                                </th:block>
-                            </td>
-                        </th:block>
-                        <th:block th:if="${period.value[j-1] == null}">
-                            <td></td>
-                        </th:block>
-                    </th:block>
-                </th:block>
-            </th:block>
-        </tr>-->
         </tbody>
     </table>
 </section>
