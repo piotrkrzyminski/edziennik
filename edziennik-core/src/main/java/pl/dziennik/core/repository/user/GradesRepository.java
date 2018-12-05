@@ -3,7 +3,6 @@ package pl.dziennik.core.repository.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import pl.dziennik.model.user.GradeModel;
-import pl.dziennik.model.user.GradeSetModel;
 
 import java.util.List;
 

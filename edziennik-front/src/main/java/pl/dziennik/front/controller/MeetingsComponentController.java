@@ -1,19 +1,28 @@
 package pl.dziennik.front.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.dziennik.core.services.user.StudentService;
+import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.MeetingFacade;
 import pl.dziennik.facades.data.meetings.MeetingData;
+import pl.dziennik.facades.data.user.StudentData;
+import pl.dziennik.front.forms.MeetingForm;
 import pl.dziennik.model.user.ClassModel;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,8 +35,13 @@ import java.util.Optional;
 @RequestMapping(value = "/meetings")
 public class MeetingsComponentController extends PageController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(MeetingsComponentController.class);
+
     @Autowired
     private MeetingFacade meetingFacade;
+
+    @Autowired
+    private ClassFacade classFacade;
 
     @Autowired
     private StudentService studentService;
@@ -36,10 +50,10 @@ public class MeetingsComponentController extends PageController {
      * Zwraca komponent z danymi dotyczącymi spotkań, które odbywają się w tygodniu dla dnia podanego w parametrze.
      * Jeżeli data nie jest podana to zwraca dla aktualnego dnia.
      *
-     * @param date dzień dla którego należy znaleźć spotkania.
-     * @param request http request.
+     * @param date     dzień dla którego należy znaleźć spotkania.
+     * @param request  http request.
      * @param response http response.
-     * @param model model.
+     * @param model    model.
      * @return widok komponentu spotkań.
      */
     @RequestMapping(method = RequestMethod.GET)
@@ -47,13 +61,62 @@ public class MeetingsComponentController extends PageController {
                                  final HttpServletRequest request, final HttpServletResponse response, final Model model) {
 
         Date seachDate = new Date();
-        if(date.isPresent()) {
+        if (date.isPresent()) {
             seachDate = date.get();
         }
 
         prepareMeetings(model, seachDate);
 
         return ControllerConstants.Fragments.meetingFragment;
+    }
+
+    /**
+     * Pobiera, waliduje i zwraca widok dla spotkania w zależności od tego jaki typ użytkownika wywołał akcję.
+     * Nauczyciel zobaczy listę uczniów, którzy powinni pojawić się na zajęciach z możliwością modyfikacji czy dana
+     * osoba jest obecna lub nie. Uczeń będzie mógł obejrzeć statystyki dotyczące danego spotkania, oceny itp.
+     *
+     * @param meetingForm formularz spotkania.
+     * @param model       model.
+     * @return widok szczegółów spotkania określony na podstawie typu użytkownika.
+     */
+    @RequestMapping(method = RequestMethod.POST)
+    public String getMeetingDetailsPage(@Valid MeetingForm meetingForm, final Model model, final BindingResult bindingResult) throws ParseException {
+        if (bindingResult.hasErrors()) {
+            LOG.debug("Meetings form has errors");
+            return "redirect:/";
+        }
+
+        int col = meetingForm.getColumn();
+        int row = meetingForm.getRow();
+        Date date = new SimpleDateFormat("dd.MM.yyyy").parse(meetingForm.getDate());
+        final String role = getUserRole(model);
+        final String userName = currentUserName(model);
+
+        String view = "redirect:/";
+        if (role != null) {
+            MeetingData[][] meetings = new MeetingData[10][7];
+            if (role.equals(STUDENT_TYPE_NAME)) {
+                LOG.debug("Prepare meeting detail view for user with role {}", STUDENT_TYPE_NAME);
+                final ClassModel classModel = studentService.getClassByStudentEmail(userName);
+                meetings = meetingFacade.getMeetingsForClass(classModel.getName(), date);
+                view = ControllerConstants.Fragments.meetingDetailsStudent;
+            } else if (role.equals(TEACHER_TYPE_NAME)) {
+                LOG.debug("Prepare meeting detail view for user with role {}", TEACHER_TYPE_NAME);
+                meetings = meetingFacade.getMeetingsForTeacher(userName, date);
+                view = ControllerConstants.Fragments.meetingDetailsTeacher;
+
+                List<StudentData> students = new ArrayList<>();
+                if (meetings[row][col] != null && meetings[row][col].getClassName() != null) {
+                    students = classFacade.getStudentsFromClass(meetings[row][col].getClassName());
+                }
+                model.addAttribute("students", students);
+            }
+
+            MeetingData choosenMeeting = meetings[row][col];
+            model.addAttribute(choosenMeeting);
+        }
+
+        return view;
     }
 
     private void prepareMeetings(final Model model, Date date) {
@@ -66,34 +129,20 @@ public class MeetingsComponentController extends PageController {
             model.addAttribute("weekDates", meetingFacade.getDatesForDay(date));
             model.addAttribute("hours", meetingFacade.getHours());
             model.addAttribute("activeWeekNumber", meetingFacade.getActiveWeekNumber());
+            model.addAttribute("meetingForm", new MeetingForm());
 
-            List<MeetingData> meetingDataList = new ArrayList<>();
+            MeetingData[][] meetings = new MeetingData[10][7];
             if (role.equals(STUDENT_TYPE_NAME)) {
                 final ClassModel classModel = studentService.getClassByStudentEmail(userName);
                 if (classModel != null) {
                     model.addAttribute("className", classModel.getName());
-                    meetingDataList = meetingFacade.getMeetingsForClass(classModel.getName(), date);
+                    meetings = meetingFacade.getMeetingsForClass(classModel.getName(), date);
                 }
             } else if (role.equals(TEACHER_TYPE_NAME)) {
-                meetingDataList = meetingFacade.getMeetingsForTeacher(userName, date);
+                meetings = meetingFacade.getMeetingsForTeacher(userName, date);
             }
 
-            MeetingData[][] meetingDataMatrix = new MeetingData[10][7];
-
-            for(int i = 0; i < 10; i++) {
-                for(int j = 0; j < 7; j++) {
-                    MeetingData result = null;
-                    for(MeetingData meetingData : meetingDataList ) {
-                        if(meetingData.getWeekNumber()-1 == j && meetingData.getMeetingNumber()-1 == i) {
-                            result = meetingData;
-                        }
-                    }
-
-                    meetingDataMatrix[i][j] = result;
-                }
-            }
-
-            model.addAttribute("meetings", meetingDataMatrix);
+            model.addAttribute("meetings", meetings);
         }
     }
 }

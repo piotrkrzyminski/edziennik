@@ -28,7 +28,7 @@ public class DefaultGradesService implements GradesService {
         Validate.notBlank(email);
 
         final List<GradeModel> grades = gradesRepository.getGradesByStudentEmail(email);
-        if(grades.isEmpty()) {
+        if (grades.isEmpty()) {
             LOG.debug("No grades found for user with email {}", email);
         }
 

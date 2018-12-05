@@ -55,8 +55,8 @@ public class MeetingPopulator implements Populator<MeetingModel, MeetingData> {
     /**
      * Sprawdza czy dane spotkanie jest aktualnie odbywane lub nie.
      *
-     * @param startTime czas rozpoczęcia spotkania.
-     * @param endTime czas zakończenia spotkania.
+     * @param startTime  czas rozpoczęcia spotkania.
+     * @param endTime    czas zakończenia spotkania.
      * @param weekNumber numer tygodnia w którym odbywa się spotkanie.
      * @return true jeżeli spotkanie pokrywa się z aktualnym czasem, lub false jeżeli nie.
      */
@@ -71,7 +71,7 @@ public class MeetingPopulator implements Populator<MeetingModel, MeetingData> {
         int actualWeekNumber = nowDate.get(Calendar.DAY_OF_WEEK) - 1;
         int actualHour = nowDate.get(Calendar.HOUR_OF_DAY);
         int actualMinute = nowDate.get(Calendar.MINUTE);
-        if(actualWeekNumber == 0) {
+        if (actualWeekNumber == 0) {
             actualWeekNumber = 7;
         }
 
@@ -83,8 +83,8 @@ public class MeetingPopulator implements Populator<MeetingModel, MeetingData> {
         int toHour = fromTime.get(Calendar.HOUR_OF_DAY);
         int toMinute = fromTime.get(Calendar.MINUTE);
 
-        if(actualWeekNumber == weekNumber) {
-            if(actualHour >= fromHour && actualHour <= toHour) {
+        if (actualWeekNumber == weekNumber) {
+            if (actualHour >= fromHour && actualHour <= toHour) {
                 return actualMinute >= fromMinute && actualMinute <= toMinute;
             }
         }

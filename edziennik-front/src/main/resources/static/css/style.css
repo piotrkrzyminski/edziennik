@@ -244,3 +244,12 @@ th .grades {
 .meeting-row {
     text-align: center;
 }
+
+.meetings-table td {
+    cursor: pointer;
+    transition: background-color .5s;
+}
+
+.meetings-table td:hover {
+    background-color: #868e96;
+}

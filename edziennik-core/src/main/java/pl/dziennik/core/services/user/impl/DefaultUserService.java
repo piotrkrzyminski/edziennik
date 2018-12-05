@@ -12,7 +12,6 @@ import pl.dziennik.core.services.user.UserService;
 import pl.dziennik.model.user.RoleModel;
 import pl.dziennik.model.user.UserModel;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 

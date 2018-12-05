@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface MeetingFacade {
 
-    List<MeetingData> getMeetingsForClass(final String className, Date date);
+    MeetingData[][] getMeetingsForClass(final String className, Date date);
 
-    List<MeetingData> getMeetingsForTeacher(final String email, Date date);
+    MeetingData[][] getMeetingsForTeacher(final String email, Date date);
 
     List<String> getWeeksName();
 

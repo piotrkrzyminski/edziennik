@@ -31,7 +31,7 @@ public class DefaultStudentService implements StudentService {
         Validate.notBlank(email);
 
         final StudentModel student = studentRepository.findStudentByEmail(email);
-        if(student == null) {
+        if (student == null) {
             LOG.debug("No student with email {} found", email);
         }
 
@@ -43,7 +43,7 @@ public class DefaultStudentService implements StudentService {
         Validate.notBlank(email);
 
         final ClassModel classModel = studentRepository.findClassByEmail(email);
-        if(classModel == null) {
+        if (classModel == null) {
             LOG.debug("Cannot find class which student with email {} is belonging", email);
         }
 
@@ -55,7 +55,7 @@ public class DefaultStudentService implements StudentService {
         Validate.notBlank(email);
         Set<ParentModel> parents = studentRepository.findParentsByEmail(email);
 
-        if(parents.isEmpty()) {
+        if (parents.isEmpty()) {
             LOG.debug("Student with email {} has no assigned parents", email);
         }
 
@@ -68,7 +68,7 @@ public class DefaultStudentService implements StudentService {
 
         List<GradeModel> grades = studentRepository.findAllGradesByEmail(email);
 
-        if(grades.isEmpty()) {
+        if (grades.isEmpty()) {
             LOG.debug("User has no assigned grades");
         }
 

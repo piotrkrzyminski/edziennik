@@ -1,4 +1,4 @@
-package pl.dziennik.facades.converters;
+package pl.dziennik.facades.converters.user;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

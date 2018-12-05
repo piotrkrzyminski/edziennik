@@ -16,5 +16,7 @@ public interface ControllerConstants {
 
         String meetingFragment = _PREFIX + "/meetings :: meetings";
         String gradesFragment = _PREFIX + "/grades :: grades";
+        String meetingDetailsTeacher = _PREFIX + "/meetingsDetailsStudent :: details";
+        String meetingDetailsStudent = _PREFIX + "/meetingsDetailsTeacher :: details";
     }
 }
