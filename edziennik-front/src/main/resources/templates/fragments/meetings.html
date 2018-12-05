@@ -19,8 +19,8 @@
         <input th:type="hidden" th:value="0" name="column">
         <input th:type="hidden" th:value="0" name="row">
         <input th:type="hidden" th:value="0" name="date">
-        <table class="table table-bordered table-responsive meetings-table meetings-thead" align="center">
-            <thead class="thead-dark">
+        <table class="table table-bordered table-responsive meetings-table" align="center" style="display: inline !important;">
+            <thead class="thead-dark meetings-thead">
             <tr>
                 <th></th>
                 <th class="meeting-row" th:each="day : ${days}">
@@ -28,7 +28,7 @@
                 </th>
             </tr>
             </thead>
-            <tbody>
+            <tbody class="meetings-tbody">
             <tr th:each="i: ${#numbers.sequence(1,10)}">
                 <td class="meeting-row">
                     <span th:text="${hours[i-1].startTime} + ' - ' + ${hours[i-1].endTime}"></span>

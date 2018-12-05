@@ -227,6 +227,7 @@ th .grades {
     min-width: 180px !important;
     max-width: 180px !important;
     width: 180px !important;
+    /*display: none !important;*/
 }
 
 .insufficient {
@@ -257,9 +258,6 @@ th .grades {
     text-transform: uppercase;
 }
 
-.meetings-table {
-    display: block !important;
-}
 .meetings-table td {
     cursor: pointer;
     transition: background-color .5s;
