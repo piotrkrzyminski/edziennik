@@ -122,7 +122,7 @@ public class DefaultMeetingFacade implements MeetingFacade {
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 7; j++) {
-                MeetingData result = null;
+                MeetingData result = new MeetingData();
                 for (MeetingData meetingData : meetings) {
                     if (meetingData.getWeekNumber() - 1 == j && meetingData.getMeetingNumber() - 1 == i) {
                         result = meetingData;

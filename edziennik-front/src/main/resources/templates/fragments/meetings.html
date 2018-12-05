@@ -34,13 +34,16 @@
                     <span th:text="${hours[i-1].startTime} + ' - ' + ${hours[i-1].endTime}"></span>
                 </td>
                 <th:block th:each="j: ${#numbers.sequence(1,7)}">
-                    <td th:if="${meetings[i-1][j-1].subjectName != null}" class="meeting-row" th:attr="data-column=${j}, data-row=${i}, data-date=${#dates.format(weekDates[j-1], 'dd.MM.yyyy')}"
-                        th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')">
-                        <div th:text="${meetings[i-1][j-1].subjectName}"></div>
-                        <div sec:authorize="hasAuthority('TEACHER')" th:text="'Klasa ' + ${meetings[i-1][j-1].className}"></div>
-                    </td>
-                    <td th:if="${meetings[i-1][j-1].subjectName == null}"
-                        th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')"></td>
+                    <th:block th:if="${meetings[i-1][j-1].subjectName != null}">
+                        <td class="meeting-row" th:attr="data-column=${j}, data-row=${i}, data-date=${#dates.format(weekDates[j-1], 'dd.MM.yyyy')}"
+                             th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')">
+                            <div th:text="${meetings[i-1][j-1].subjectName}"></div>
+                            <div sec:authorize="hasAuthority('TEACHER')" th:text="'Klasa ' + ${meetings[i-1][j-1].className}"></div>
+                        </td>
+                    </th:block>
+                    <th:block th:if="${meetings[i-1][j-1].subjectName == null}">
+                        <td th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')"></td>
+                    </th:block>
                 </th:block>
             </tr>
             </tbody>
