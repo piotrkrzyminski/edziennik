@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface MeetingFacade {
 
+    MeetingData getMeetingById(Long id);
+
     MeetingData[][] getMeetingsForClass(final String className, Date date);
 
     MeetingData[][] getMeetingsForTeacher(final String email, Date date);

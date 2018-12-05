@@ -44,6 +44,7 @@ public class MeetingPopulator implements Populator<MeetingModel, MeetingData> {
         t.setWeekNumber(s.getWeekNumber());
         t.setWeekName(getWeekName(s.getWeekNumber()));
         t.setActive(isActive(t.getStartTime(), t.getEndTime(), t.getWeekNumber()));
+        t.setId(s.getId());
     }
 
     private String getWeekName(int numerOfWeek) {

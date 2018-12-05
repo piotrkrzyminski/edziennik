@@ -16,8 +16,7 @@
         </div>
     </div>
     <form action="/e-dziennik/meetings" th:method="POST" th:object="${meetingForm}">
-        <input th:type="hidden" th:value="0" name="column">
-        <input th:type="hidden" th:value="0" name="row">
+        <input th:type="hidden" th:value="0" name="id">
         <input th:type="hidden" th:value="0" name="date">
         <table class="table table-bordered table-responsive meetings-table" align="center">
             <thead class="thead-dark">
@@ -35,7 +34,7 @@
                 </td>
                 <th:block th:each="j: ${#numbers.sequence(1,7)}">
                     <th:block th:if="${meetings[i-1][j-1].subjectName != null}">
-                        <td class="meeting-row" th:attr="data-column=${j}, data-row=${i}, data-date=${#dates.format(weekDates[j-1], 'dd.MM.yyyy')}"
+                        <td class="meeting-row" th:attr="data-id=${meetings[i-1][j-1].id}, data-date=${#dates.format(weekDates[j-1], 'dd.MM.yyyy')}"
                              th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')">
                             <div th:text="${meetings[i-1][j-1].subjectName}"></div>
                             <div sec:authorize="hasAuthority('TEACHER')" th:text="'Klasa ' + ${meetings[i-1][j-1].className}"></div>

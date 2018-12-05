@@ -9,6 +9,15 @@ import java.util.List;
 public interface MeetingRepository extends JpaRepository<MeetingModel, Long> {
 
     /**
+     * Zwraca spotkanie o wybranym identyfikatorze.
+     *
+     * @param id identyfikator spotkania.
+     * @return spotkanie o wybranym identyfikatorze.
+     */
+    @Query("SELECT m FROM MeetingModel m WHERE m.id = ?1")
+    MeetingModel getMeetingById(final Long id);
+
+    /**
      * Wyszukuje terminarz spotkań dla klasy o podanym identyfikatorze.
      *
      * @param className identyfikator klasy.

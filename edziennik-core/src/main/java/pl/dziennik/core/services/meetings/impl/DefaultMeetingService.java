@@ -20,6 +20,17 @@ public class DefaultMeetingService implements MeetingService {
     private MeetingRepository meetingRepository;
 
     @Override
+    public MeetingModel getMeetingById(Long id) {
+        MeetingModel meeting = meetingRepository.getMeetingById(id);
+
+        if (meeting == null) {
+            LOG.debug("No meeting found for id {}", id);
+        }
+
+        return meeting;
+    }
+
+    @Override
     public List<MeetingModel> getMeetingsByClassName(String name) {
         Validate.notBlank(name);
 
