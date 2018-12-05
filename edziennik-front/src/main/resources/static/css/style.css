@@ -230,7 +230,7 @@ th .grades {
 }
 
 .insufficient {
-    background-color: lightcoral; !important;
+    background-color: lightcoral !important;
 }
 /*
 .table-responsive > tbody > tr {
@@ -243,4 +243,20 @@ th .grades {
 
 .meeting-row {
     text-align: center;
+}
+
+.meetings-tbody tr td:nth-child(7), .meetings-tbody tr td:nth-child(8) {
+    display: none;
+}
+
+.meetings-thead tr th:nth-child(7), .meetings-thead tr th:nth-child(8) {
+    display: none;
+}
+
+.meetings-thead, .meetings-tbody {
+    text-transform: uppercase;
+}
+
+.meetings-table {
+    display: block !important;
 }
