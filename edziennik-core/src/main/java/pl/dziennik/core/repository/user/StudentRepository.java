@@ -23,8 +23,8 @@ public interface StudentRepository extends JpaRepository<StudentModel, Long> {
 
     /**
      * Find student's class by his email.
-     * @param email student email.
      *
+     * @param email student email.
      * @return class where student is or null if class not found.
      */
     @Query("SELECT s.classModel FROM StudentModel s WHERE s.email = ?1")

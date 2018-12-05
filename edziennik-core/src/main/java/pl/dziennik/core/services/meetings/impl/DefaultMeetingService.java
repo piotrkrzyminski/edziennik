@@ -24,7 +24,7 @@ public class DefaultMeetingService implements MeetingService {
         Validate.notBlank(name);
 
         final List<MeetingModel> meetings = meetingRepository.findMeetingsByClassName(name);
-        if(meetings.isEmpty()) {
+        if (meetings.isEmpty()) {
             LOG.debug("No meetings found for class {}", name);
         }
 
@@ -36,7 +36,7 @@ public class DefaultMeetingService implements MeetingService {
         Validate.notBlank(email);
 
         final List<MeetingModel> meetings = meetingRepository.findMeetingsByTeacherEmail(email);
-        if(meetings.isEmpty()) {
+        if (meetings.isEmpty()) {
             LOG.debug("No meetings found for teacher with email {}", email);
         }
 

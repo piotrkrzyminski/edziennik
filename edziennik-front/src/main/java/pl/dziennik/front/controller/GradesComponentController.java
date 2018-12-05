@@ -63,7 +63,7 @@ public class GradesComponentController extends PageController {
             }
         }
 
-        for(Map.Entry<GradeData, List<GradeDetailsData>> grade : gradeMap.entrySet()) {
+        for (Map.Entry<GradeData, List<GradeDetailsData>> grade : gradeMap.entrySet()) {
             double avg = getAverageGrade(grade.getValue());
             grade.getKey().setAvgGrade(avg);
         }
@@ -81,11 +81,11 @@ public class GradesComponentController extends PageController {
         double sum = 0;
         double count = 0;
 
-        for(GradeDetailsData grade : grades) {
+        for (GradeDetailsData grade : grades) {
             sum += (grade.getMark() * grade.getWeight());
             count += grade.getWeight();
         }
 
-        return sum/count;
+        return sum / count;
     }
 }

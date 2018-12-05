@@ -13,9 +13,10 @@ import pl.dziennik.facades.enums.WeekNameEnum;
 import pl.dziennik.model.meetings.MeetingHoursModel;
 import pl.dziennik.model.meetings.MeetingModel;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Default implementation for {@link MeetingFacade}.
@@ -33,35 +34,23 @@ public class DefaultMeetingFacade implements MeetingFacade {
     private Converter<MeetingHoursModel, MeetingHourData> meetingHourDataConverter;
 
     @Override
-    public List<MeetingData> getMeetingsForClass(String className, Date date) {
+    public MeetingData[][] getMeetingsForClass(String className, Date date) {
         Validate.notBlank(className);
 
-        List<MeetingData> meetingDataList = new ArrayList<>();
-        List<Date> weekDates = getDatesForDay(date);
         final List<MeetingModel> meetingModelList = meetingService.getMeetingsByClassName(className);
-        for (MeetingModel meetingModel : meetingModelList) {
-            final MeetingData meetingData = meetingDataConverter.convert(meetingModel);
-            meetingData.setDate(weekDates.get(meetingData.getWeekNumber() - 1));
-            meetingDataList.add(meetingData);
-        }
+        final List<MeetingData> meetingDataList = convertMeetings(meetingModelList, date);
 
-        return meetingDataList;
+        return getMeetingAsMatrix(meetingDataList);
     }
 
     @Override
-    public List<MeetingData> getMeetingsForTeacher(String email, Date date) {
+    public MeetingData[][] getMeetingsForTeacher(String email, Date date) {
         Validate.notBlank(email);
 
-        List<MeetingData> meetingDataList = new ArrayList<>();
-        List<Date> weekDates = getDatesForDay(date);
         final List<MeetingModel> meetingModelList = meetingService.getMeetingsByTeacherEmail(email);
-        for (MeetingModel meetingModel : meetingModelList) {
-            final MeetingData meetingData = meetingDataConverter.convert(meetingModel);
-            meetingData.setDate(weekDates.get(meetingData.getWeekNumber() - 1));
-            meetingDataList.add(meetingData);
-        }
+        final List<MeetingData> meetingDataList = convertMeetings(meetingModelList, date);
 
-        return meetingDataList;
+        return getMeetingAsMatrix(meetingDataList);
     }
 
     @Override
@@ -93,7 +82,7 @@ public class DefaultMeetingFacade implements MeetingFacade {
         Calendar nowDate = Calendar.getInstance();
         nowDate.setTime(now);
         int actualWeekNumber = nowDate.get(Calendar.DAY_OF_WEEK) - 1;
-        if(actualWeekNumber == 0) {
+        if (actualWeekNumber == 0) {
             actualWeekNumber = 7;
         }
 
@@ -106,18 +95,63 @@ public class DefaultMeetingFacade implements MeetingFacade {
         actual.setTime(date);
 
         List<Date> weekDates = new ArrayList<>();
-        for(int i = Calendar.SUNDAY; i <= Calendar.SATURDAY; i++) {
+        for (int i = Calendar.SUNDAY; i <= Calendar.SATURDAY; i++) {
             actual.set(Calendar.DAY_OF_WEEK, i);
             weekDates.add(actual.getTime());
         }
 
         List<Date> result = new ArrayList<>();
         Date temp = weekDates.get(0);
-        for(int i = 1; i <= 6; i++) {
-            result.add(i-1, weekDates.get(i));
+        for (int i = 1; i <= 6; i++) {
+            result.add(i - 1, weekDates.get(i));
         }
         result.add(6, temp);
 
         return result;
+    }
+
+    /**
+     * Konwertuje listę spotkań na macierz łatwiejszą do zaprezentowania w tabelce w widoku.
+     * Brak spotkania o danej porze definiuje wartość null.
+     *
+     * @param meetings lista spotkań.
+     * @return macierz spotkań.
+     */
+    private MeetingData[][] getMeetingAsMatrix(List<MeetingData> meetings) {
+        MeetingData[][] meetingDataMatrix = new MeetingData[10][7];
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 7; j++) {
+                MeetingData result = new MeetingData();
+                for (MeetingData meetingData : meetings) {
+                    if (meetingData.getWeekNumber() - 1 == j && meetingData.getMeetingNumber() - 1 == i) {
+                        result = meetingData;
+                    }
+                }
+
+                meetingDataMatrix[i][j] = result;
+            }
+        }
+
+        return meetingDataMatrix;
+    }
+
+    /**
+     * Konwertuje listę modeli i dodaje dni tygodnia.
+     *
+     * @param meetingModelList lista spotkań.
+     * @param date             data według której określone będą dni tygodnia.
+     * @return skonfigurowane obiekty spotkań.
+     */
+    private List<MeetingData> convertMeetings(final List<MeetingModel> meetingModelList, final Date date) {
+        List<MeetingData> meetingDataList = new ArrayList<>();
+        List<Date> weekDates = getDatesForDay(date);
+        for (MeetingModel meetingModel : meetingModelList) {
+            final MeetingData meetingData = meetingDataConverter.convert(meetingModel);
+            meetingData.setDate(weekDates.get(meetingData.getWeekNumber() - 1));
+            meetingDataList.add(meetingData);
+        }
+
+        return meetingDataList;
     }
 }

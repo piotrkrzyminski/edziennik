@@ -260,3 +260,11 @@ th .grades {
 .meetings-table {
     display: block !important;
 }
+.meetings-table td {
+    cursor: pointer;
+    transition: background-color .5s;
+}
+
+.meetings-table td:hover {
+    background-color: #868e96;
+}

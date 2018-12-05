@@ -20,11 +20,11 @@ public class PageController {
     protected String currentUserName(final Model model) {
 
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication != null) {
+        if (authentication != null) {
 
             UserModel user = userService.getUserByEmail(authentication.getName());
 
-            if(user != null) {
+            if (user != null) {
                 model.addAttribute("name", user.getFirstName() + " " + user.getSurname());
             }
 
@@ -37,7 +37,7 @@ public class PageController {
     protected String getUserRole(final Model model) {
         UserModel user = userService.getUserByEmail(currentUserName(model));
 
-        if(user != null) {
+        if (user != null) {
             return user.getRole().getName();
         }
 

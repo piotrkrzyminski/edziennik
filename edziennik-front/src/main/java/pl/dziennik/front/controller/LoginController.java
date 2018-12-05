@@ -1,6 +1,5 @@
 package pl.dziennik.front.controller;
 
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +15,9 @@ public class LoginController {
     /**
      * Displays login page if user is not authenticated already.
      *
-     * @param request http request.
+     * @param request  http request.
      * @param response http response.
-     * @param model model.
+     * @param model    model.
      * @return name of login page view.
      */
     @RequestMapping(method = RequestMethod.GET)
