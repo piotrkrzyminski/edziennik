@@ -9,39 +9,23 @@ import javax.validation.constraints.Size;
 public class MeetingForm {
 
     /**
-     * Numer kolumn (dzień tygodnia).
+     * Identyfikator spotkania.
      */
     @NotNull
-    @Size(min = 1, max = 2)
-    private int column;
-
-    /**
-     * Numer wiersza (numer lekcji).
-     */
-    @NotNull
-    @Size(min = 1, max = 2)
-    private int row;
-
+    @Size(min = 1, max = 4)
+    private int id;
     /**
      * Data spotkania.
      */
     @NotNull
     private String date;
 
-    public int getColumn() {
-        return column;
+    public int getId() {
+        return id;
     }
 
-    public void setColumn(int column) {
-        this.column = column;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDate() {

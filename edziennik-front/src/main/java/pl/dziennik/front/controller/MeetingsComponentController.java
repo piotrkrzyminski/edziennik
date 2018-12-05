@@ -86,34 +86,31 @@ public class MeetingsComponentController extends PageController {
             return "redirect:/";
         }
 
-        int col = meetingForm.getColumn();
-        int row = meetingForm.getRow();
+        int id = meetingForm.getId();
         Date date = new SimpleDateFormat("dd.MM.yyyy").parse(meetingForm.getDate());
         final String role = getUserRole(model);
-        final String userName = currentUserName(model);
 
         String view = "redirect:/";
         if (role != null) {
-            MeetingData[][] meetings = new MeetingData[10][7];
+            MeetingData meeting = meetingFacade.getMeetingById((long) id);
             if (role.equals(STUDENT_TYPE_NAME)) {
                 LOG.debug("Prepare meeting detail view for user with role {}", STUDENT_TYPE_NAME);
-                final ClassModel classModel = studentService.getClassByStudentEmail(userName);
-                meetings = meetingFacade.getMeetingsForClass(classModel.getName(), date);
                 view = ControllerConstants.Fragments.meetingDetailsStudent;
             } else if (role.equals(TEACHER_TYPE_NAME)) {
                 LOG.debug("Prepare meeting detail view for user with role {}", TEACHER_TYPE_NAME);
-                meetings = meetingFacade.getMeetingsForTeacher(userName, date);
                 view = ControllerConstants.Fragments.meetingDetailsTeacher;
 
                 List<StudentData> students = new ArrayList<>();
-                if (meetings[row][col] != null && meetings[row][col].getClassName() != null) {
-                    students = classFacade.getStudentsFromClass(meetings[row][col].getClassName());
+                if (meeting != null && meeting.getClassName() != null) {
+                    students = classFacade.getStudentsFromClass(meeting.getClassName());
                 }
                 model.addAttribute("students", students);
             }
 
-            MeetingData choosenMeeting = meetings[row][col];
-            model.addAttribute(choosenMeeting);
+            if (meeting != null) {
+                meeting.setDate(date);
+                model.addAttribute(meeting);
+            }
         }
 
         return view;

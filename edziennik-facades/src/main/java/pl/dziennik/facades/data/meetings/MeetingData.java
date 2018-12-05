@@ -7,6 +7,8 @@ import java.util.Date;
  */
 public class MeetingData {
 
+    private Long id;
+
     /**
      * Data spotkania
      */
@@ -61,6 +63,14 @@ public class MeetingData {
      * Czy są to zajęcia aktualnie odbywane.
      */
     private boolean active;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Date getDate() {
         return date;

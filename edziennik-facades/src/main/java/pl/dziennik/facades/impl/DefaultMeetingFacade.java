@@ -34,6 +34,18 @@ public class DefaultMeetingFacade implements MeetingFacade {
     private Converter<MeetingHoursModel, MeetingHourData> meetingHourDataConverter;
 
     @Override
+    public MeetingData getMeetingById(Long id) {
+        MeetingModel meetingModel = meetingService.getMeetingById(id);
+
+        MeetingData meetingData = null;
+        if(meetingModel != null) {
+            meetingData = meetingDataConverter.convert(meetingModel);
+        }
+
+        return meetingData;
+    }
+
+    @Override
     public MeetingData[][] getMeetingsForClass(String className, Date date) {
         Validate.notBlank(className);
 
