@@ -3,6 +3,7 @@ package pl.dziennik.facades.data.user;
 import java.util.Date;
 
 public class StudentData {
+    private Long id;
 
     private String firstName;
 
@@ -73,4 +74,8 @@ public class StudentData {
     public void setClassName(String className) {
         this.className = className;
     }
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 }

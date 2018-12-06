@@ -22,6 +22,7 @@ public class StudentPopulator implements Populator<StudentModel, StudentData> {
         t.setPesel(s.getPesel());
         t.setEmail(s.getEmail());
         t.setBirthDate(s.getBirthDate());
+        t.setId(s.getId());
 
         if (s.getClassModel() != null) {
             t.setClassName(s.getClassModel().getName());
