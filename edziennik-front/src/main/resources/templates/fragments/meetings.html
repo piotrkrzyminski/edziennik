@@ -39,6 +39,7 @@
                              th:onclick="'openModal(\''+ ${meetings[i-1][j-1].date}+ '\');'">
                             <div th:text="${meetings[i-1][j-1].subjectName}"></div>
                             <div sec:authorize="hasAuthority('TEACHER')" th:text="'Klasa ' + ${meetings[i-1][j-1].className}"></div>
+                            <a th:href="'/edziennik/meetings/details/date=' + ${#dates.format(weekDates[j-1], 'dd.MM.yyyy')} + '&' + 'id=' + ${meetings[i-1][j-1].id}">LINK</a>
                         </td>
                     </th:block>
                     <th:block th:if="${meetings[i-1][j-1].subjectName == null}">

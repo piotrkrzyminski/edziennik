@@ -79,19 +79,21 @@ public class MeetingsComponentController extends PageController {
      * Nauczyciel zobaczy listę uczniów, którzy powinni pojawić się na zajęciach z możliwością modyfikacji czy dana
      * osoba jest obecna lub nie. Uczeń będzie mógł obejrzeć statystyki dotyczące danego spotkania, oceny itp.
      *
-     * @param meetingForm formularz spotkania.
+     * @param date data spotkania
+     * @param id identyfikator spotkania.
      * @param model       model.
      * @return widok szczegółów spotkania określony na podstawie typu użytkownika.
      */
-    @RequestMapping(method = RequestMethod.POST)
-    public String getMeetingDetailsPage(@Valid MeetingForm meetingForm, final Model model, final BindingResult bindingResult) throws ParseException {
+    @RequestMapping(value = "/details", method = RequestMethod.POST)
+    public String getMeetingDetailsPage(@RequestParam(value = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date,
+                                        @RequestParam(value="id") int id, final Model model,
+                                        final BindingResult bindingResult) throws ParseException {
+
         if (bindingResult.hasErrors()) {
             LOG.debug("Meetings form has errors");
             return "redirect:/";
         }
 
-        int id = meetingForm.getId();
-        Date date = new SimpleDateFormat("dd.MM.yyyy").parse(meetingForm.getDate());
         final String role = getUserRole(model);
 
         String view = "redirect:/";
