@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<section th:fragment="classifieds" class="well">
+    <div class="classifieds-header">
+        <span class="section-title">Ogłoszenia</span>
+    </div>
+    <div class="container classifieds-border">
+
+        <div class="row">
+            <div class="col-8 classifieds-title" >
+                Tytuł:
+                <hr />
+            </div>
+
+            <div class="col-4 classifieds-title">
+                Data:
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                Tutaj bedzie treść ogłoszenia...
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col-4">
+                Dodane przez:
+            </div>
+        </div>
+
+    </div>
+</section>
+</html>

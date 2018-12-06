@@ -244,3 +244,31 @@ th .grades {
 .meeting-row {
     text-align: center;
 }
+
+.classifieds-header{
+    text-align: center;
+}
+
+.classifieds-border{
+    border: 1px solid;
+}
+
+.classifieds-title{
+    margin-top: 10px;
+}
+
+.presence-header{
+    text-align: center;
+}
+
+.list-border{
+    border: 1px solid;
+}
+
+.form-check{
+    text-align: center;
+}
+
+.space{
+    margin-bottom: 10px;
+}
