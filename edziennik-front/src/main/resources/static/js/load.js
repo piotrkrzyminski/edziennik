@@ -9,3 +9,4 @@ window.onload = function() {
 function loadComponentByUrl(url) {
     $('#content').load(url);
 }
+
