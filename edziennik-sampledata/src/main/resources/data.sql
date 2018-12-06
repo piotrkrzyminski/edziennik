@@ -381,7 +381,7 @@ INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id
 INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id`, `meeting_hour_id`) VALUES (2, 1, 2, 1, 3, 2);
 INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id`, `meeting_hour_id`) VALUES (3, 1, 4, 1, 5, 3);
 INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id`, `meeting_hour_id`) VALUES (4, 1, 3, 1, 4, 4);
-INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id`, `meeting_hour_id`) VALUES (5, 1, 3, 1, 4, 5);
+INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id`, `meeting_hour_id`) VALUES (5, 1, 9, 1, 4, 5);
 INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id`, `meeting_hour_id`) VALUES (6, 1, 3, 1, 4, 6);
 INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id`, `meeting_hour_id`) VALUES (7, 1, 5, 1, 6, 7);
 INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id`, `meeting_hour_id`) VALUES (8, 1, null, 1, null, 8);
@@ -480,13 +480,21 @@ INSERT INTO Grade_values (`id`, `name`) VALUES (11, 6);
 -- GRADE SET START
 -- Kartkówka z funkcji liniowych dnia 19.11.2018 w klasie Ia z matematyki przeprowadzona przez nauczyciela o ID=1
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
-                VALUES (1, PARSEDATETIME('09/09/2018', 'dd/MM/yyyy'), 'Kartkówka z funkcji liniowych', 1, 1, 1, 2);
+                VALUES (1, PARSEDATETIME('06/09/2018', 'dd/MM/yyyy'), 'Kartkówka z funkcji liniowych', 1, 1, 1, 2);
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
-                VALUES (2, PARSEDATETIME('19/09/2018', 'dd/MM/yyyy'), 'Odpowiedź ustna - funkcje kwadratowe', 2, 1, 1, 2);
+                VALUES (2, PARSEDATETIME('19/09/2018', 'dd/MM/yyyy'), 'Odpowiedź ustna - Znajomość lektury "Dzieci z Bulerbyn"', 2, 1, 2, 3);
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
-                VALUES (3, PARSEDATETIME('23/10/2018', 'dd/MM/yyyy'), 'Sprawdzian z funkcji', 3, 1, 1, 2);
+                VALUES (3, PARSEDATETIME('23/10/2018', 'dd/MM/yyyy'), 'Sprawdzian z dzialu pierwszego', 3, 1, 3, 4);
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
-                VALUES (4, PARSEDATETIME('26/09/2018', 'dd/MM/yyyy'), 'Praca domowa z bezkręgowców', 1, 1, 7, 8);
+                VALUES (4, PARSEDATETIME('26/09/2018', 'dd/MM/yyyy'), 'Praca domowa z bezkręgowców', 1, 2, 7, 8);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (5, PARSEDATETIME('11/09/2018', 'dd/MM/yyyy'), 'Testy sprawnościowe', 2, 1, 4, 5);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (6, PARSEDATETIME('24/09/2018', 'dd/MM/yyyy'), 'Odmawianie modlitwy Ojcze Nasz', 1, 1, 5, 6);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (7, PARSEDATETIME('07/11/2018', 'dd/MM/yyyy'), 'Sprawdzian z działu "Panowanie Piastów"', 3, 3, 6, 7);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (8, PARSEDATETIME('26/09/2018', 'dd/MM/yyyy'), 'Droga i czas - kartkówka z wzorów ', 2, 1, 8, 9);
 
 
 -- TODO: Dodanie kolejnych typów ocen dla różnych przedmiotów, od różnych nauczycieli, o różnych wagach
@@ -535,7 +543,7 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
             VALUES (20, 33, 1, 8);
 
--- OCENY Z "ODPOWIEDZ USTNA Z FUNKCJI KWADRATOWYCH"
+-- OCENY Z "Odpowiedź ustna - Znajomość lektury "Dzieci z Bulerbyn""
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
             VALUES (21, 15, 2, 1);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
@@ -543,7 +551,7 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
             VALUES (23, 24, 2, 4);
 
--- OCENY Z "SPRAWDZIAN Z FUNKCJI"
+-- OCENY Z "Sprawdzian z dzialu pierwszego"
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
             VALUES (24, 14, 3, 8);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
