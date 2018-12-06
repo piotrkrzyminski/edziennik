@@ -86,13 +86,7 @@ public class MeetingsComponentController extends PageController {
      */
     @RequestMapping(value = "/details", method = RequestMethod.GET)
     public String getMeetingDetailsPage(@RequestParam(value = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date,
-                                        @RequestParam(value="id") int id, final Model model,
-                                        final BindingResult bindingResult) throws ParseException {
-
-        if (bindingResult.hasErrors()) {
-            LOG.debug("Meetings form has errors");
-            return "redirect:/";
-        }
+                                        @RequestParam(value="id") int id, final Model model) throws ParseException {
 
         final String role = getUserRole(model);
 
