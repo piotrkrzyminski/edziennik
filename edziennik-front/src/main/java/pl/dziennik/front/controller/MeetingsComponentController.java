@@ -84,15 +84,9 @@ public class MeetingsComponentController extends PageController {
      * @param model       model.
      * @return widok szczegółów spotkania określony na podstawie typu użytkownika.
      */
-    @RequestMapping(value = "/details", method = RequestMethod.POST)
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
     public String getMeetingDetailsPage(@RequestParam(value = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date,
-                                        @RequestParam(value="id") int id, final Model model,
-                                        final BindingResult bindingResult) throws ParseException {
-
-        if (bindingResult.hasErrors()) {
-            LOG.debug("Meetings form has errors");
-            return "redirect:/";
-        }
+                                        @RequestParam(value="id") int id, final Model model) throws ParseException {
 
         final String role = getUserRole(model);
 
@@ -126,7 +120,7 @@ public class MeetingsComponentController extends PageController {
 
             if (meeting != null) {
                 meeting.setDate(date);
-                model.addAttribute(meeting);
+                model.addAttribute("meeting", meeting);
             }
         }
 

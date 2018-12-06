@@ -4,6 +4,7 @@ import pl.dziennik.facades.data.user.StudentData;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class PresentForm {
@@ -15,7 +16,7 @@ public class PresentForm {
     private Long meetingId;
 
     @NotNull
-    private Map<StudentData, Boolean> presents;
+    private Map<StudentData, Boolean> presents = new HashMap<>();
 
     public Date getDate() {
         return date;
