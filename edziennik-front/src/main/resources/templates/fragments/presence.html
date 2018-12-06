@@ -54,14 +54,14 @@
                             <!-- Wylistowanie wszyskich danych -->
                             <tr th:each="student : ${presentForm.presents}">
                                 <!-- Imie -->
-                                <td th:text="${presentForm.key.firstName}"></td>
+                                <td th:text="${student.key.firstName}"></td>
                                 <!-- Nazwisko -->
-                                <td th:text="${presentForm.key.surname}"></td>
+                                <td th:text="${student.key.surname}"></td>
                                 <!--<td>4</td> -->
                                 <td>
                                     <div class="form-check ">
                                         <!-- Dodac zmiane flagi dla danego obiektu -->
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" th:value="${presentForm.value}" th:name="${presentForm.key.id}">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" th:value="${student.value}" th:name="${student.key.id}">
                                     </div>
                                 </td>
                             </tr>
