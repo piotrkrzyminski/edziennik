@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.dziennik.core.exceptions.ItemNotFoundException;
 import pl.dziennik.core.repository.user.StudentRepository;
 import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.model.user.ClassModel;
@@ -25,6 +26,15 @@ public class DefaultStudentService implements StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Override
+    public StudentModel getStudentById(Long id) throws ItemNotFoundException {
+        final StudentModel student = studentRepository.findStudentById(id);
+        if(student == null) {
+            throw new ItemNotFoundException("Uczeń o identyfikatorze " + id + " nie istnieje");
+        }
+        return student;
+    }
 
     @Override
     public StudentModel getStudentByEmail(String email) {
