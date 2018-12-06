@@ -36,7 +36,7 @@
                     <th:block th:if="${meetings[i-1][j-1].subjectName != null}">
                         <td class="meeting-row" th:attr="data-id=${meetings[i-1][j-1].id}, data-date=${#dates.format(weekDates[j-1], 'dd.MM.yyyy')}"
                              th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')"
-                             th:onclick="'openModal(\''+ ${meetings[i-1][j-1].date}+ '\');'">
+                             th:href="'/e-dziennik/meetings/(date='${meetings[i-1][j-1].date}', id='${meetings[i-1][j-1].id})'">
                             <div th:text="${meetings[i-1][j-1].subjectName}"></div>
                             <div sec:authorize="hasAuthority('TEACHER')" th:text="'Klasa ' + ${meetings[i-1][j-1].className}"></div>
                         </td>
