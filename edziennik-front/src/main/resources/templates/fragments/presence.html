@@ -2,29 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-
-
 <section th:fragment="presence" class="well">
-    <div class="presence-header space">
-        <span class="section-title">Sprawdzenie obecności</span>
-    </div>
-    <div class="container">
-        <form class="form-presence" th:action="@{/}" th:method="post">
-        <!--
-        <div class="row">
-            <div class="col-3">
-                <select class="custom-select space">
-                    <option selected>Numer lekcji</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="3">4</option>
-                    <option value="3">5</option>
-                    <option value="3">7</option>
-                    <option value="3">7</option>
-                </select>
-            </div>
-            <div class="col-4"> -->
+    <th:block sec:authorize="hasAuthority('TEACHER')">
+        <div class="presence-header space">
+            <span class="section-title">Sprawdzenie obecności</span>
+        </div>
+        <div class="container">
+                <form action="/e-dziennik/meetings/save" class="form-presence" method="post" th:object="${presentForm}">
+                <!--
+                <div class="row">
+                    <div class="col-3">
+                        <select class="custom-select space">
+                            <option selected>Numer lekcji</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="3">4</option>
+                            <option value="3">5</option>
+                            <option value="3">7</option>
+                            <option value="3">7</option>
+                        </select>
+                    </div>
+                    <div class="col-4"> -->
                 <!-- To powinnismy odebrac z api -->
                 <!--<select class="custom-select space">
                     <option selected>Klasa</option>
@@ -39,50 +38,51 @@
             </div>
         </div> -->
 
-        <div class="row">
-            <div class="col list-border space">
-                <table class="table students-table">
-                    <thead>
-                    <tr>
-                        <th class="name"><span>Imie</span></th>
-                        <th class="surname"><span>Nazwisko</span></th>
-                        <!-- <th class="grades"><span>Oceny</span></th> -->
-                        <th class="presence"><span>Obecność</span></th>
-                    </tr>
-                    </thead>
+                <div class="row">
+                    <div class="col list-border space">
+                        <table class="table students-table">
+                            <thead>
+                            <tr>
+                                <th class="name"><span>Imie</span></th>
+                                <th class="surname"><span>Nazwisko</span></th>
+                                <!-- <th class="grades"><span>Oceny</span></th> -->
+                                <th class="presence"><span>Obecność</span></th>
+                            </tr>
+                            </thead>
 
-                    <tbody>
-                    <!-- Wylistowanie wszyskich danych -->
-                    <tr th:each="">
-                        <!-- Imie -->
-                        <td></td>
-                        <!-- Nazwisko -->
-                        <td></td>
-                        <!--<td>4</td> -->
-                        <td>
-                            <div class="form-check ">
-                                <!-- Dodac zmiane flagi dla danego obiektu -->
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            </div>
-                        </td>
-                    </tr>
+                            <tbody>
+                            <!-- Wylistowanie wszyskich danych -->
+                            <tr th:each="student : ${presentForm.presents}">
+                                <!-- Imie -->
+                                <td th:text="${presentForm.key.firstName}"></td>
+                                <!-- Nazwisko -->
+                                <td th:text="${presentForm.key.surname}"></td>
+                                <!--<td>4</td> -->
+                                <td>
+                                    <div class="form-check ">
+                                        <!-- Dodac zmiane flagi dla danego obiektu -->
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" th:value="${presentForm.value}" th:name="${presentForm.key.id}">
+                                    </div>
+                                </td>
+                            </tr>
 
-                    </tbody>
-                </table>
-            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row justify-content-end">
+                    <div class="col-4">
+                        <!-- href na plan : /edziennik/meetings -->
+                        <button type="button" class="btn btn-lg btn-secondary btn-block">Anuluj</button>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Zapisz</button>
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <div class="row justify-content-end">
-            <div class="col-4">
-                <!-- href na plan? -->
-                <button type="button" class="btn btn-lg btn-secondary btn-block">Anuluj</button>
-            </div>
-            <div class="col-4">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Zapisz</button>
-            </div>
-        </div>
-        </form>
-    </div>
+    </th:block>
 </section>
 
 </html>
