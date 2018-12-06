@@ -1,7 +1,6 @@
 package pl.dziennik.front.forms;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  * Obiekt wykorzystywany przy formularzu spotkań.
@@ -11,8 +10,6 @@ public class MeetingForm {
     /**
      * Identyfikator spotkania.
      */
-    @NotNull
-    @Size(min = 1, max = 4)
     private int id;
     /**
      * Data spotkania.

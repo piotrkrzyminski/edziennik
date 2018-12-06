@@ -35,4 +35,12 @@ public class PresentModel extends AbstractItemModel {
     public void setStudent(StudentModel student) {
         this.student = student;
     }
+
+    public MeetingModel getMeeting() {
+        return meeting;
+    }
+
+    public void setMeeting(MeetingModel meeting) {
+        this.meeting = meeting;
+    }
 }

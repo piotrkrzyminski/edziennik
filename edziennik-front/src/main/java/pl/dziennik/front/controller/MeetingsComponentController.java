@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.MeetingFacade;
+import pl.dziennik.facades.PresentFacade;
 import pl.dziennik.facades.data.meetings.MeetingData;
+import pl.dziennik.facades.data.meetings.PresentData;
 import pl.dziennik.facades.data.user.StudentData;
+import pl.dziennik.facades.exceptions.SaveItemException;
 import pl.dziennik.front.forms.MeetingForm;
+import pl.dziennik.front.forms.PresentForm;
 import pl.dziennik.model.user.ClassModel;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Controller for meetings fragment.
@@ -39,6 +40,9 @@ public class MeetingsComponentController extends PageController {
 
     @Autowired
     private MeetingFacade meetingFacade;
+
+    @Autowired
+    private PresentFacade presentFacade;
 
     @Autowired
     private ClassFacade classFacade;
@@ -100,11 +104,22 @@ public class MeetingsComponentController extends PageController {
                 LOG.debug("Prepare meeting detail view for user with role {}", TEACHER_TYPE_NAME);
                 view = ControllerConstants.Fragments.meetingDetailsTeacher;
 
+                PresentForm presentForm = new PresentForm();
+                presentForm.setDate(date);
+                presentForm.setMeetingId((long) id);
+
                 List<StudentData> students = new ArrayList<>();
-                if (meeting != null && meeting.getClassName() != null) {
+                if (meeting.getClassName() != null) {
                     students = classFacade.getStudentsFromClass(meeting.getClassName());
                 }
-                model.addAttribute("students", students);
+
+                for (StudentData student : students) {
+                    presentForm.getPresents().put(student, false); // każdy uczeń domyślnie zaznaczony jest jako nieobecny
+                }
+
+                model.addAttribute("presentForm", presentForm);
+                model.addAttribute("className", meeting.getClassName());
+                model.addAttribute("subjectName", meeting.getSubjectName());
             }
 
             if (meeting != null) {
@@ -114,6 +129,33 @@ public class MeetingsComponentController extends PageController {
         }
 
         return view;
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String savePresents(@Valid PresentForm presentForm, final Model model, final BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "redirect:/meetings";
+        }
+
+        List<PresentData> presentsList = new ArrayList<>();
+        for (Map.Entry<StudentData, Boolean> presentsMap : presentForm.getPresents().entrySet()) {
+            PresentData presentData = new PresentData();
+            presentData.setMeetingId(presentForm.getMeetingId());
+            presentData.setStudentId(presentsMap.getKey().getId());
+            presentData.setPresent(presentsMap.getValue());
+
+            presentsList.add(presentData);
+        }
+
+        try {
+            presentFacade.saveAll(presentsList);
+            model.addAttribute("success", "Dane zostały poprawnie zapisane");
+        } catch (SaveItemException e) {
+            model.addAttribute("error", "Dane nie zostały zapisane z powodu błędu");
+            return "redirect:/meetings/save";
+        }
+
+        return ControllerConstants.Fragments.meetingFragment;
     }
 
     private void prepareMeetings(final Model model, Date date) {

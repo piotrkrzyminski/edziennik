@@ -13,6 +13,15 @@ import java.util.Set;
 public interface StudentRepository extends JpaRepository<StudentModel, Long> {
 
     /**
+     * Zwraca ucznia na podstawie identyfikatora.
+     *
+     * @param id identyfikator ucznia.
+     * @return obiekt ucznia o wybranym identyfikatorze lub null jeżeli nie istnieje.
+     */
+    @Query("SELECT s FROM StudentModel s WHERE s.id = ?1")
+    StudentModel findStudentById(Long id);
+
+    /**
      * Find student by email.
      *
      * @param email student email.

@@ -1,5 +1,6 @@
 package pl.dziennik.core.services.user;
 
+import pl.dziennik.core.exceptions.ItemNotFoundException;
 import pl.dziennik.model.user.ClassModel;
 import pl.dziennik.model.user.GradeModel;
 import pl.dziennik.model.user.ParentModel;
@@ -9,6 +10,14 @@ import java.util.List;
 import java.util.Set;
 
 public interface StudentService {
+
+    /**
+     * Zwraca ucznia na podstawie unikatowego identyfikatora.
+     *
+     * @param id identyfikator ucznia.
+     * @return uczeń z unikatowym identyfikatorem.
+     */
+    StudentModel getStudentById(Long id) throws ItemNotFoundException;
 
     /**
      * Get student by email.
