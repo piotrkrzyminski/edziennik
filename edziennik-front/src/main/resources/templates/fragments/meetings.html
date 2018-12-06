@@ -35,11 +35,11 @@
                 <th:block th:each="j: ${#numbers.sequence(1,7)}">
                     <th:block th:if="${meetings[i-1][j-1].subjectName != null}">
                         <td class="meeting-row" th:attr="data-id=${meetings[i-1][j-1].id}, data-date=${#dates.format(weekDates[j-1], 'dd.MM.yyyy')}"
-                             th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')"
-                             th:href="'/e-dziennik/meetings/(date='${meetings[i-1][j-1].date}', id='${meetings[i-1][j-1].id})'">
+                             th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')">
+                            <a th:href="'/e-dziennik/meetings/details?date=' + ${#dates.format(weekDates[j-1], 'dd.MM.yyyy')} + '&' + 'id=' + ${meetings[i-1][j-1].id}">
                             <div th:text="${meetings[i-1][j-1].subjectName}"></div>
                             <div sec:authorize="hasAuthority('TEACHER')" th:text="'Klasa ' + ${meetings[i-1][j-1].className}"></div>
-                            <a th:href="'/e-dziennik/meetings/details?date=' + ${#dates.format(weekDates[j-1], 'dd.MM.yyyy')} + '&' + 'id=' + ${meetings[i-1][j-1].id}">LINK</a>
+                            </a>
                         </td>
                     </th:block>
                     <th:block th:if="${meetings[i-1][j-1].subjectName == null}">
