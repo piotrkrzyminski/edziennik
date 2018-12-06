@@ -120,7 +120,7 @@ public class MeetingsComponentController extends PageController {
 
             if (meeting != null) {
                 meeting.setDate(date);
-                model.addAttribute(meeting);
+                model.addAttribute("meeting", meeting);
             }
         }
 

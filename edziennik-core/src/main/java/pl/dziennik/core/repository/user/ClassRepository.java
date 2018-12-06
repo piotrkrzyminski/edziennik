@@ -15,6 +15,6 @@ public interface ClassRepository extends JpaRepository<ClassModel, Long> {
      * @param name nazwa klasy.
      * @return posortowana lista uczniów danej klasy.
      */
-    @Query("SELECT s FROM ClassModel c INNER JOIN c.students s ORDER BY s.surname ASC")
+    @Query("SELECT s FROM ClassModel c INNER JOIN c.students s WHERE c.name = ?1 ORDER BY s.surname ASC")
     List<StudentModel> findAllStudentsFromClassByName(final String name);
 }
