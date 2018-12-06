@@ -1,19 +1,5 @@
 -- Standardowe hasło dla użytkowników: qwerty
 
--- GRADE VALUES START
-INSERT INTO Grade_values (`id`, `name`) VALUES (1, 1);
-INSERT INTO Grade_values (`id`, `name`) VALUES (2, 1.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (3, 2);
-INSERT INTO Grade_values (`id`, `name`) VALUES (4, 2.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (5, 3);
-INSERT INTO Grade_values (`id`, `name`) VALUES (6, 3.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (7, 4);
-INSERT INTO Grade_values (`id`, `name`) VALUES (8, 4.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (9, 5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (10, 5.5);
-INSERT INTO Grade_values (`id`, `name`) VALUES (11, 6);
--- GRADE VALUES END
-
 INSERT INTO Roles (`id`, `name`) VALUES (1, 'ADMIN');
 INSERT INTO Roles (`id`, `name`) VALUES (2, 'TEACHER');
 INSERT INTO Roles (`id`, `name`) VALUES (3, 'STUDENT');
@@ -477,6 +463,20 @@ INSERT INTO Meetings (`id`, `week_number`, `subject_id`, `class_id`, `teacher_id
 
 -- MEETINGS END
 
+-- GRADE VALUES START
+INSERT INTO Grade_values (`id`, `name`) VALUES (1, 1);
+INSERT INTO Grade_values (`id`, `name`) VALUES (2, 1.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (3, 2);
+INSERT INTO Grade_values (`id`, `name`) VALUES (4, 2.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (5, 3);
+INSERT INTO Grade_values (`id`, `name`) VALUES (6, 3.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (7, 4);
+INSERT INTO Grade_values (`id`, `name`) VALUES (8, 4.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (9, 5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (10, 5.5);
+INSERT INTO Grade_values (`id`, `name`) VALUES (11, 6);
+-- GRADE VALUES END
+
 -- GRADE SET START
 -- Kartkówka z funkcji liniowych dnia 19.11.2018 w klasie Ia z matematyki przeprowadzona przez nauczyciela o ID=1
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
@@ -485,9 +485,9 @@ INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id
                 VALUES (2, PARSEDATETIME('19/09/2018', 'dd/MM/yyyy'), 'Odpowiedź ustna - funkcje kwadratowe', 2, 1, 1, 2);
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
                 VALUES (3, PARSEDATETIME('23/10/2018', 'dd/MM/yyyy'), 'Sprawdzian z funkcji', 3, 1, 1, 2);
-
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
                 VALUES (4, PARSEDATETIME('26/09/2018', 'dd/MM/yyyy'), 'Praca domowa z bezkręgowców', 1, 1, 7, 8);
+
 
 -- TODO: Dodanie kolejnych typów ocen dla różnych przedmiotów, od różnych nauczycieli, o różnych wagach
 -- GRADE SET END
@@ -587,9 +587,51 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
 
 -- OCENY Z "Praca domowa z bezkręgowców"
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
-            VALUES (44, 15, 4, 11);
+            VALUES (44, 14, 4, 11);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
-            VALUES (45, 23, 4, 2);
+            VALUES (45, 15, 4, 2);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
-            VALUES (46, 31, 4, 7);
+            VALUES (46, 16, 4, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (47, 17, 4, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (48, 18, 4, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (49, 19, 4, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (50, 20, 4, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (51, 21, 4, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (52, 22, 4, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (53, 23, 4, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (54, 24, 4, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (55, 25, 4, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (56, 26, 4, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (57, 27, 4, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (58, 28, 4, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (59, 29, 4, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (60, 30, 4, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (61, 31, 4, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (62, 32, 4, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (63, 33, 4, 1);
+
+
+
+
+
+
+
 -- GRADES END
+
