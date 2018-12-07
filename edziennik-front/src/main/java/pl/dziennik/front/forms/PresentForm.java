@@ -2,27 +2,22 @@ package pl.dziennik.front.forms;
 
 import pl.dziennik.facades.data.user.StudentData;
 
-import javax.validation.constraints.NotNull;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PresentForm {
 
-    @NotNull
-    private Date date;
+    private String date;
 
-    @NotNull
     private Long meetingId;
 
-    @NotNull
-    private Map<StudentData, Boolean> presents = new HashMap<>();
+    private List<StudentData> students;
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -34,11 +29,11 @@ public class PresentForm {
         this.meetingId = meetingId;
     }
 
-    public Map<StudentData, Boolean> getPresents() {
-        return presents;
+    public List<StudentData> getStudents() {
+        return students;
     }
 
-    public void setPresents(Map<StudentData, Boolean> presents) {
-        this.presents = presents;
+    public void setStudents(List<StudentData> students) {
+        this.students = students;
     }
 }

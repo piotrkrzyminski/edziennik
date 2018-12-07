@@ -2,6 +2,7 @@ package pl.dziennik.core.services.meetings;
 
 import pl.dziennik.model.user.PresentModel;
 
+import java.util.Date;
 import java.util.List;
 
 public interface PresentService {
@@ -23,4 +24,6 @@ public interface PresentService {
             save(present);
         }
     }
+
+    boolean isStudentPresentOnMeeting(final Date date,final Long meetingId, final Long studentId);
 }

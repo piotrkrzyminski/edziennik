@@ -9,6 +9,8 @@
         </div>
         <div class="container">
                 <form action="/e-dziennik/meetings/save" class="form-presence" method="post" th:object="${presentForm}">
+                    <input th:type="hidden" name="date" th:value="${presentForm.date}">
+                    <input th:type="hidden" name="meetingId" th:value="${presentForm.meetingId}">
                 <!--
                 <div class="row">
                     <div class="col-3">
@@ -52,16 +54,17 @@
 
                             <tbody>
                             <!-- Wylistowanie wszyskich danych -->
-                            <tr th:each="student : ${presentForm.presents}">
+                            <tr th:each="student,iterStat : *{students}">
                                 <!-- Imie -->
-                                <td th:text="${student.key.firstName}"></td>
+                                <td th:text="${student.firstName}"></td>
                                 <!-- Nazwisko -->
-                                <td th:text="${student.key.surname}"></td>
+                                <td th:text="${student.surname}"></td>
                                 <!--<td>4</td> -->
                                 <td>
                                     <div class="form-check ">
                                         <!-- Dodac zmiane flagi dla danego obiektu -->
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" th:value="${student.value}" th:name="${student.key.id}">
+                                        <input type="hidden" th:name="studentId" th:field="*{students[__${iterStat.index}__].id}" readonly="true"/>
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" th:field="*{students[__${iterStat.index}__].present}" th:checked="${student.present}"/>
                                     </div>
                                 </td>
                             </tr>

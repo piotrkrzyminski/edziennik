@@ -19,6 +19,8 @@ public class StudentData {
 
     private String className;
 
+    private boolean present;
+
     public String getFirstName() {
         return firstName;
     }
@@ -78,4 +80,12 @@ public class StudentData {
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
+
+    public boolean isPresent() {
+        return present;
+    }
+
+    public void setPresent(boolean present) {
+        this.present = present;
+    }
 }

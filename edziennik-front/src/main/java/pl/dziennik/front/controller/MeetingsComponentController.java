@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.dziennik.core.services.meetings.PresentService;
 import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.MeetingFacade;
@@ -46,6 +47,9 @@ public class MeetingsComponentController extends PageController {
 
     @Autowired
     private ClassFacade classFacade;
+
+    @Autowired
+    private PresentService presentService;
 
     @Autowired
     private StudentService studentService;
@@ -101,7 +105,7 @@ public class MeetingsComponentController extends PageController {
                 view = ControllerConstants.Fragments.meetingDetailsTeacher;
 
                 PresentForm presentForm = new PresentForm();
-                presentForm.setDate(date);
+                presentForm.setDate(new SimpleDateFormat("dd.MM.yyyy").format(date));
                 presentForm.setMeetingId((long) id);
 
                 List<StudentData> students = new ArrayList<>();
@@ -109,9 +113,11 @@ public class MeetingsComponentController extends PageController {
                     students = classFacade.getStudentsFromClass(meeting.getClassName());
                 }
 
-                for (StudentData student : students) {
-                    presentForm.getPresents().put(student, false); // każdy uczeń domyślnie zaznaczony jest jako nieobecny
+                for(StudentData student : students) {
+                    student.setPresent(presentService.isStudentPresentOnMeeting(date, (long) id, student.getId()));
                 }
+
+                presentForm.setStudents(students);
 
                 model.addAttribute("presentForm", presentForm);
                 model.addAttribute("className", meeting.getClassName());
@@ -128,17 +134,18 @@ public class MeetingsComponentController extends PageController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String savePresents(@Valid PresentForm presentForm, final Model model, final BindingResult bindingResult) {
+    public String savePresents(@Valid PresentForm presentForm, final BindingResult bindingResult, final Model model) throws ParseException {
         if (bindingResult.hasErrors()) {
             return "redirect:/meetings";
         }
 
         List<PresentData> presentsList = new ArrayList<>();
-        for (Map.Entry<StudentData, Boolean> presentsMap : presentForm.getPresents().entrySet()) {
+        for(StudentData student : presentForm.getStudents()) {
             PresentData presentData = new PresentData();
             presentData.setMeetingId(presentForm.getMeetingId());
-            presentData.setStudentId(presentsMap.getKey().getId());
-            presentData.setPresent(presentsMap.getValue());
+            presentData.setStudentId(student.getId());
+            presentData.setPresent(student.isPresent());
+            presentData.setDate(new SimpleDateFormat("dd.MM.yyyy").parse(presentForm.getDate()));
 
             presentsList.add(presentData);
         }
@@ -151,7 +158,7 @@ public class MeetingsComponentController extends PageController {
             return "redirect:/meetings/save";
         }
 
-        return ControllerConstants.Fragments.meetingFragment;
+        return "redirect:/";
     }
 
     private void prepareMeetings(final Model model, Date date) {

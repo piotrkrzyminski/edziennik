@@ -35,6 +35,7 @@ public class DefaultPresentFacade implements PresentFacade {
             presentModel.setPresent(presentData.isPresent());
             presentModel.setStudent(studentModel);
             presentModel.setMeeting(meetingModel);
+            presentModel.setDate(presentData.getDate());
 
             presentService.save(presentModel);
         } catch (ItemNotFoundException e) {

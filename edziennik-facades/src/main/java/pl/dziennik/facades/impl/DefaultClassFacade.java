@@ -4,6 +4,7 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
+import pl.dziennik.core.services.meetings.PresentService;
 import pl.dziennik.core.services.user.ClassService;
 import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.data.user.StudentData;
