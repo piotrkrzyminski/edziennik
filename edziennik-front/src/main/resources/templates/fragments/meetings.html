@@ -4,6 +4,12 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <!-- Fragment komponentu prazentujący listę spotkań dla zalogowanego użytkownika (jeżeli takie spotkania może mieć) -->
 <section th:fragment="meetings" class="well">
+    <div class="alert alert-danger"   th:if="${error != null}">
+        <p>Zapisanie obecnośnie nie powiodło się z powodu błędu</p>
+    </div>
+    <div class="alert alert-success" th:if="${success != null}">
+        <p>Zapisanie obecności zakończnone pomyślnie</p>
+    </div>
     <div class="meetings-header">
         <div sec:authorize="hasAuthority('STUDENT')">
             <span class="section-title" th:text="'Terminarz spotkań dla klasy ' +  ${className}"></span>

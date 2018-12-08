@@ -4,13 +4,18 @@ import pl.dziennik.model.AbstractItemModel;
 import pl.dziennik.model.meetings.MeetingModel;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "presents")
 public class PresentModel extends AbstractItemModel {
 
     @Column(name = "is_present")
-    private boolean isPresent;
+    private boolean present;
+
+    @Column(name = "date")
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
@@ -21,11 +26,19 @@ public class PresentModel extends AbstractItemModel {
     private MeetingModel meeting;
 
     public boolean isPresent() {
-        return isPresent;
+        return present;
     }
 
     public void setPresent(boolean present) {
-        isPresent = present;
+        this.present = present;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public StudentModel getStudent() {

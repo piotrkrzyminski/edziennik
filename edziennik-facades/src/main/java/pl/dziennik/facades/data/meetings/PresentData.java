@@ -1,5 +1,7 @@
 package pl.dziennik.facades.data.meetings;
 
+import java.util.Date;
+
 public class PresentData {
 
     private Long studentId;
@@ -7,6 +9,8 @@ public class PresentData {
     private Long meetingId;
 
     private boolean isPresent;
+
+    private Date date;
 
     public Long getStudentId() {
         return studentId;
@@ -30,5 +34,13 @@ public class PresentData {
 
     public void setPresent(boolean present) {
         isPresent = present;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
