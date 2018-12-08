@@ -294,3 +294,14 @@ classifieds-header{
 .space{
     margin-bottom: 10px;
 }
+
+.sticky-top {
+    position: -webkit-sticky !important;
+    position: -moz-sticky !important;
+    position: -o-sticky !important;
+    position: -ms-sticky !important;
+    position: sticky !important;
+    top: 0px !important;
+    left: 0px !important;
+    z-index: 100 !important;
+}
