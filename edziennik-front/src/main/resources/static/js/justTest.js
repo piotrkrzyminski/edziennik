@@ -14,6 +14,28 @@ function returnToMeetings()
     var url = "/e-dziennik/meetings";
     loadComponentByUrl(url);
 }
+
+function nextWeek(date)
+{
+    console.log(date);
+    var dateResult = new Date(date);
+    console.log(dateResult);
+    dateResult.setDate(dateResult.getDate() + 7);
+    console.log(dateResult);
+    var url = "/e-dziennik/???";
+    loadComponentByUrl(url);
+}
+
+function prevWeek(date)
+{
+    var dateResult = new Date(date);
+    dateResult.setDate(dateResult.getDate() - 7);
+    console.log(dateResult);
+    var url = "/e-dziennik/???";
+    loadComponentByUrl(url);
+}
+
+
 $('input.cb-value').prop("checked", true);
 $('.cb-value').click(function() {
     console.log('Im here');
