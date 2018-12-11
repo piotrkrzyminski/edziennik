@@ -21,7 +21,15 @@
             <span class="section-title" th:text="${#dates.format(weekDates[0], 'dd.MM.yyyy')} + ' - ' + ${#dates.format(weekDates[6], 'dd.MM.yyyy')}"></span>
         </div>
     </div>
-    <form action="/e-dziennik/meetings" th:method="POST" th:object="${meetingForm}">
+    <div class="btn-toolbar justify-content-between toolbar-margin" role="toolbar">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-sm btn-secondary" th:onclick="">Poprzedni tydzień</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-sm btn-secondary" th:onclick="">Nastepny tydzień</button>
+        </div>
+    </div>
+    <form action="/e-dziennik/meetings" th:method="POST" th:object="${meetingForm}" style=" max-width: 900px;">
         <input th:type="hidden" th:value="0" name="id">
         <input th:type="hidden" th:value="0" name="date">
         <table class="table table-bordered table-responsive meetings-table" align="center" style="display: inline !important;">

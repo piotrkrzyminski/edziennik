@@ -305,3 +305,8 @@ classifieds-header{
     left: 0px !important;
     z-index: 100 !important;
 }
+
+.toolbar-margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

@@ -14,3 +14,25 @@ function returnToMeetings()
     var url = "/e-dziennik/meetings";
     loadComponentByUrl(url);
 }
+$('input.cb-value').prop("checked", true);
+$('.cb-value').click(function() {
+    console.log('Im here');
+    var mainParent = $(this).parent('.toggle-btn');
+    if($(mainParent).find('input.cb-value').is(':checked')) {
+        $(mainParent).addClass('active');
+    } else {
+        $(mainParent).removeClass('active');
+    }
+
+});
+
+$(".cb-value").click(function() {
+    console.log('Im here2');
+    var mainParent = $(this).parent('.toggle-btn');
+    if($(mainParent).find('input.cb-value').is(':checked')) {
+        $(mainParent).addClass('active');
+    } else {
+        $(mainParent).removeClass('active');
+    }
+
+});
