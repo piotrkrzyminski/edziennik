@@ -21,8 +21,9 @@ function nextWeek(date)
     var dateResult = new Date(date);
     console.log(dateResult);
     dateResult.setDate(dateResult.getDate() + 7);
-    console.log(dateResult);
-    var url = "/e-dziennik/???";
+    console.log(dateResult.toDateString());
+    var url = "/e-dziennik/meetings?date="+ dateResult.getDate() + "-" + (dateResult.getMonth()+1) + "-" + dateResult.getFullYear();
+    console.log(url);
     loadComponentByUrl(url);
 }
 
@@ -30,8 +31,8 @@ function prevWeek(date)
 {
     var dateResult = new Date(date);
     dateResult.setDate(dateResult.getDate() - 7);
-    console.log(dateResult);
-    var url = "/e-dziennik/???";
+    console.log(dateResult.toDateString());
+    var url = "/e-dziennik/meetings?date="+ dateResult.getDate() + "-" + (dateResult.getMonth()+1) + "-" + dateResult.getFullYear();
     loadComponentByUrl(url);
 }
 
