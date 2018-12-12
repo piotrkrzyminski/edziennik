@@ -301,8 +301,8 @@ classifieds-header{
     position: -o-sticky !important;
     position: -ms-sticky !important;
     position: sticky !important;
-    top: 0px !important;
-    left: 0px !important;
+    top: 0 !important;
+    left: 0 !important;
     z-index: 100 !important;
 }
 

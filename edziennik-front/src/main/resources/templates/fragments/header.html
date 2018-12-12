@@ -4,7 +4,7 @@
         xmlns:th="http://www.thymeleaf.org"
         xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <!-- Fragment - górna belka -->
-<section class="navigation-top sticky-top" th:fragment="header">
+<div class="navigation-top" th:fragment="header">
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="/e-dziennik">
             <img th:src="@{/images/logo.png}" class="logo d-inline-block align-top" alt="logo">
@@ -15,5 +15,5 @@
             <button class="btn btn-outline-danger my-2 my-sm-0"><a th:href="@{/logout}">Wyloguj się</a></button>
         </form>
     </nav>
-</section>
+</div>
 </html>

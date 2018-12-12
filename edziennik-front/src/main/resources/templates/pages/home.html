@@ -16,11 +16,11 @@
     <script src="js/load.js"></script>
     <script src="js/justTest.js"></script>
 </head>
-<body style="overflow: unset;">
+<body style="overflow-x: hidden;">
 <div class="container-fluid">
 
 </div>
-<header th:insert="~{fragments/header :: header}">
+<header th:insert="~{fragments/header :: header}" class="sticky-top">
     <!-- th:insert dla fragmentu wyświetlającego górną belkę. Zawierać będzie logo, kto jest zalogowany i link do wylogowania
       Umieszczone statycznie bo nie będzie potrzeby zmieniać jego zawartości -->
 </header>

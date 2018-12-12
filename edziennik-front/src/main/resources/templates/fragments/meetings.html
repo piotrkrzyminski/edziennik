@@ -29,7 +29,7 @@
             <button type="button" class="btn btn-sm btn-secondary" th:onclick="'nextWeek(\'' + ${#dates.format(weekDates[0], 'MM.dd.yyyy')} + '\');'">Nastepny tydzień</button>
         </div>
     </div>
-    <form action="/e-dziennik/meetings" th:method="POST" th:object="${meetingForm}">
+    <form action="/e-dziennik/meetings" th:method="POST" th:object="${meetingForm}" align="center">
         <input th:type="hidden" th:value="0" name="id">
         <input th:type="hidden" th:value="0" name="date">
         <table class="table table-bordered table-responsive meetings-table" align="center" style="display: inline !important;">
