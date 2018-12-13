@@ -59,3 +59,5 @@ $(".cb-value").click(function() {
     }
 
 });
+
+$('#defaultIndeterminate2').prop('indeterminate', true);

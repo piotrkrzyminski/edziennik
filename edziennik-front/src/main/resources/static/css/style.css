@@ -310,3 +310,51 @@ classifieds-header{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.presence{
+    text-align: center;
+}
+
+.custom-control{
+    text-align: center;
+}
+
+.presence-thead{
+    text-transform: uppercase;
+}
+
+.presence-tbody{
+    text-transform: uppercase;
+}
+
+.presence_student-header{
+    text-align: center;
+}
+
+.right{
+    text-align: right;
+}
+
+.center{
+    text-align: center;
+}
+
+.presence_student-thead{
+    text-transform: uppercase;
+}
+
+.presence_student-tbody{
+    text-transform: uppercase;
+}
+
+.presence_parent-header{
+    text-align: center;
+}
+
+.presence_parent-thead{
+    text-transform: uppercase;
+}
+
+.presence_parent-tbody {
+    text-transform: uppercase;
+}

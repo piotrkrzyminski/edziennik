@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+
+<section fragment="presence_parent" class="well">
+    <div class="presence_parent-header space">
+
+        <span class="section-title">Obecność</span>
+    </div>
+
+    <div class="container">
+
+        <div class="row space">
+            <div class="col-4">
+                <button type="button" class="btn btn-sm btn-secondary">Poprzedni tydzień</button>
+            </div>
+            <div class="col-4 center">
+                10.12.2018 - 16.12.2018
+
+            </div>
+
+            <div class="col-4 right">
+                <button type="button" class="btn btn-sm btn-secondary">Następny tydzień</button>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col list-border space">
+
+                <table class="table">
+                    <thead class="parent_student-thead">
+                    <tr>
+                        <th scope="col">Data:</th>
+                        <th scope="col">Dzień:</th>
+                        <th scope="col">Godzina:</th>
+                        <th scope="col">Przedmiot:</th>
+                    </tr>
+                    </thead>
+                    <tbody class="parent_student-tbody">
+                    <tr>
+                        <td>10.12.2018</td>
+                        <td>Poniedziałek</td>
+                        <td>8:00-8:45</td>
+                        <td>Matematyka</td>
+                    </tr>
+                    <tr>
+                        <td>12.12.2018</td>
+                        <td>Środa</td>
+                        <td>16:00-16:45</td>
+                        <td>Historia</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</html>
