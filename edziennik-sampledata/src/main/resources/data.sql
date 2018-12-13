@@ -491,7 +491,7 @@ INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
                 VALUES (3, PARSEDATETIME('23/10/2018', 'dd/MM/yyyy'), 'Sprawdzian z dzialu pierwszego', 3, 1, 3, 4);
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
-                VALUES (4, PARSEDATETIME('26/09/2018', 'dd/MM/yyyy'), 'Praca domowa z bezkręgowcow', 1, 2, 7, 8);
+                VALUES (4, PARSEDATETIME('26/09/2018', 'dd/MM/yyyy'), 'Praca domowa z bezkręgowcow', 1, 1, 7, 8);
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
                 VALUES (5, PARSEDATETIME('11/09/2018', 'dd/MM/yyyy'), 'Testy sprawnościowe', 2, 1, 4, 5);
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
@@ -500,6 +500,25 @@ INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id
                 VALUES (7, PARSEDATETIME('07/11/2018', 'dd/MM/yyyy'), 'Sprawdzian z dzialu "Panowanie Piastow"', 3, 3, 6, 7);
 INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
                 VALUES (8, PARSEDATETIME('26/09/2018', 'dd/MM/yyyy'), 'Droga i czas - kartkowka ze wzorow ', 2, 1, 8, 9);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (9, PARSEDATETIME('21/11/2018', 'dd/MM/yyyy'), 'Kartkowka daty 1 ', 1, 1, 6, 7);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (10, PARSEDATETIME('15/11/2018', 'dd/MM/yyyy'), 'Funkcje - Sprawdzian', 3, 1, 1, 2);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (11, PARSEDATETIME('16/10/2018', 'dd/MM/yyyy'), 'Dyktando 1', 2, 1, 2, 3);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (12, PARSEDATETIME('17/10/2018', 'dd/MM/yyyy'), 'Odpowiedz ustna z pracy domowej 1', 2, 1, 3, 4);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (13, PARSEDATETIME('16/10/2018', 'dd/MM/yyyy'), 'Zawody w piłce ręcznej', 2, 1, 4, 5);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (14, PARSEDATETIME('05/10/2018', 'dd/MM/yyyy'), 'Kartkówka z 10 przykazań', 2, 1, 5, 6);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (15, PARSEDATETIME('05/10/2018', 'dd/MM/yyyy'), 'Sprawdzian z działu "Panowanie Jagielonów"', 3, 1, 6, 7);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (16, PARSEDATETIME('05/10/2018', 'dd/MM/yyyy'), 'Anatomia człowieka - sprawdzian', 2, 1, 7, 8);
+INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id`, `teacher_id`)
+                VALUES (17, PARSEDATETIME('29/10/2018', 'dd/MM/yyyy'), 'Załamania światła - aktywność na zajęciahc', 1, 1, 8, 9);
+
 
 
 -- TODO: Dodanie kolejnych typow ocen dla roznych przedmiotow, od roznych nauczycieli, o roznych wagach
@@ -809,6 +828,375 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
             VALUES (142, 32, 8, 1);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
             VALUES (143, 33, 8, 1);
+
+-- Oceny z KARTKOWKA DATY 1
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (144, 14, 9, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (145, 15, 9, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (146, 16, 9, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (147, 17, 9, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (148, 18, 9, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (149, 19, 9, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (150, 20, 9, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (151, 21, 9, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (152, 22, 9, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (153, 23, 9, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (154, 24, 9, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (155, 25, 9, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (156, 26, 9, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (157, 27, 9, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (158, 28, 9, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (159, 29, 9, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (160, 30, 9, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (161, 31, 9, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (162, 32, 9, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (163, 33, 9, 7);
+
+-- Oceny z "Funkcje - sprawdzian"
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (164, 14, 10, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (165, 15, 10, 6);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (166, 16, 10, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (167, 17, 10, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (168, 18, 10, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (169, 19, 10, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (170, 23, 10, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (171, 24, 10, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (172, 25, 10, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (173, 26, 10, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (174, 27, 10, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (175, 28, 10, 6);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (176, 29, 10, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (177, 30, 10, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (178, 31, 10, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (179, 32, 10, 2);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (180, 33, 10, 8);
+
+-- Oceny z Dyktando 1
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (181, 14, 11, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (182, 15, 11, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (183, 16, 11, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (184, 17, 11, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (185, 18, 11, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (186, 19, 11, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (187, 20, 11, 6);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (188, 21, 11, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (189, 22, 11, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (190, 23, 11, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (191, 24, 11, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (192, 25, 11, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (193, 26, 11, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (194, 27, 11, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (195, 28, 11, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (196, 29, 11, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (197, 30, 11, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (198, 31, 11, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (199, 32, 11, 6);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (200, 33, 11, 5);
+
+-- Oceny z "Odpowiedz ustna z pracy domowej 1"
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (201, 14, 12, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (202, 15, 12, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (203, 16, 12, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (204, 17, 12, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (205, 18, 12, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (206, 19, 12, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (207, 20, 12, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (208, 21, 12, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (209, 22, 12, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (210, 23, 12, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (211, 24, 12, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (212, 25, 12, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (213, 26, 12, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (214, 27, 12, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (215, 28, 12, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (216, 29, 12, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (217, 30, 12, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (218, 31, 12, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (219, 32, 12, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (220, 33, 12, 10);
+
+-- Oceny z "Mecz pilki recznej"
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (221, 14, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (222, 15, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (223, 16, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (224, 17, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (225, 18, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (226, 19, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (227, 20, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (228, 21, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (229, 22, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (230, 23, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (231, 24, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (232, 25, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (233, 26, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (234, 27, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (235, 28, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (236, 29, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (237, 30, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (238, 31, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (239, 32, 13, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (240, 33, 13, 9);
+
+-- "Oceny z kartkówka z 10 przykazan"
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (241, 14, 14, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (242, 15, 14, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (243, 16, 14, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (244, 17, 14, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (245, 18, 14, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (246, 19, 14, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (247, 20, 14, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (248, 21, 14, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (249, 22, 14, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (250, 23, 14, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (251, 24, 14, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (252, 25, 14, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (253, 26, 14, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (254, 27, 14, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (255, 28, 14, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (256, 29, 14, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (257, 30, 14, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (258, 31, 14, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (259, 32, 14, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (260, 33, 14, 1);
+
+-- Oceny z Sprawdzian z dzialu panowanie jagielonow
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (261, 14, 15, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (262, 15, 15, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (263, 16, 15, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (264, 17, 15, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (265, 18, 15, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (266, 19, 15, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (267, 20, 15, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (268, 21, 15, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (269, 22, 15, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (270, 23, 15, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (271, 24, 15, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (272, 25, 15, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (273, 26, 15, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (274, 27, 15, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (275, 28, 15, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (276, 29, 15, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (277, 30, 15, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (278, 31, 15, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (279, 32, 15, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (280, 33, 15, 1);
+
+-- Oceny z Anatomia czlowieka - sprawdzian
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (281, 14, 16, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (282, 15, 16, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (283, 16, 16, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (284, 17, 16, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (285, 18, 16, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (286, 19, 16, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (287, 20, 16, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (288, 21, 16, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (289, 22, 16, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (290, 23, 16, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (291, 24, 16, 3);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (292, 25, 16, 8);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (293, 26, 16, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (294, 27, 16, 7);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (295, 28, 16, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (296, 29, 16, 10);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (297, 30, 16, 11);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (298, 31, 16, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (299, 32, 16, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (300, 33, 16, 1);
+
+-- Oceny z Zalamania swiatla - aktywnosc na zajeciach
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (301, 14, 17, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (302, 25, 17, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (303, 16, 17, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (304, 27, 17, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (305, 28, 17, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (306, 19, 17, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (307, 30, 17, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+            VALUES (308, 33, 17, 9);
+
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (10, 23, 1, 1);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (11, 24, 1, 3);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (12, 25, 1, 8);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (13, 26, 1, 7);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (14, 27, 1, 7);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (15, 28, 1, 5);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (16, 29, 1, 10);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (17, 30, 1, 11);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (18, 31, 1, 9);
+-- INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade_value`)
+--             VALUES (19, 32, 1, 4);
 
 -- GRADES END
 
