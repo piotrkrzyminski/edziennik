@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col list-border space">
                         <table class="table students-table">
-                            <thead>
+                            <thead class="presence-thead">
                             <tr>
                                 <th class="name"><span>Imie</span></th>
                                 <th class="surname"><span>Nazwisko</span></th>
@@ -24,7 +24,7 @@
                             </tr>
                             </thead>
 
-                            <tbody>
+                            <tbody class="presence-tbody">
                             <!-- Wylistowanie wszyskich danych -->
                             <tr th:each="student,iterStat : *{students}">
                                 <!-- Imie -->

@@ -8,8 +8,17 @@
         <div>
             <!-- To jest nagłówek fragmentu szczegółów spotkania. Posiada on dwa przyciski : "lista obecności" oraz "dodaj ocenę"
              Przyciski te ładują odpowiednie fragmenty -->
-            <a th:onclick="'openPresence(\'' + ${#dates.format(date, 'dd.MM.yyyy')} + '\', \'' + ${meetingId} + '\');'">lista obecności</a>
-            <a th:onclick="'openAddGrade(\'' + ${#dates.format(date, 'dd.MM.yyyy')} + '\', \'' + ${meetingId} + '\');'">dodaj ocenę</a>
+            <div id="button-group" class="btn-toolbar center-buttons-group toolbar-margin" role="toolbar">
+                <div class="btn-group" role="group">
+                    <div class="btn-group special-margin" role="group">
+                        <a type="button" class="btn btn-lg btn-secondary" style="color: white !important;" th:onclick="'openPresence(\'' + ${#dates.format(date, 'dd.MM.yyyy')} + '\', \'' + ${meetingId} + '\');'">Lista obecności</a>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <a type="button" class="btn btn-lg btn-secondary" style="color: white !important;" th:onclick="'openAddGrade(\'' + ${#dates.format(date, 'dd.MM.yyyy')} + '\', \'' + ${meetingId} + '\');'">Dodaj ocene</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         <!-- Tutaj ładowny jest widok dla listy obecności oraz dodawania oceny. Domyślnie jest on pusty -->
