@@ -1,4 +1,4 @@
-package pl.dziennik.core.repository.user;
+package pl.dziennik.core.repository.schedule;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.dziennik.core.repository.user.GradesRepository;
-import pl.dziennik.core.repository.user.SubjectRepository;
+import pl.dziennik.core.repository.schedule.SubjectRepository;
 import pl.dziennik.core.services.user.GradesService;
 import pl.dziennik.model.user.GradeModel;
 

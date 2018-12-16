@@ -1,12 +1,12 @@
-package pl.dziennik.core.services.user.impl;
+package pl.dziennik.core.services.schedule.impl;
 
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.dziennik.core.repository.user.ClassRepository;
-import pl.dziennik.core.services.user.ClassService;
+import pl.dziennik.core.repository.schedule.ClassRepository;
+import pl.dziennik.core.services.schedule.ClassService;
 import pl.dziennik.model.user.StudentModel;
 
 import java.util.List;

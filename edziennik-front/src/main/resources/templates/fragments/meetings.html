@@ -14,9 +14,6 @@
         <div sec:authorize="hasAuthority('STUDENT')">
             <span class="section-title" th:text="'Terminarz spotkań dla klasy ' +  ${className}"></span>
         </div>
-        <!-- Sekcja zmiany tygodnia planu
-            Aby pobrać spotkania dla danego dnia trzeba zrobić request na taki url : /e-dziennik/meetings?date=10-10-2018
-        -->
         <div align="center">
             <span class="section-title" th:text="${#dates.format(weekDates[0], 'dd.MM.yyyy')} + ' - ' + ${#dates.format(weekDates[6], 'dd.MM.yyyy')}"></span>
         </div>
@@ -50,7 +47,7 @@
                     <th:block th:if="${meetings[i-1][j-1].subjectName != null}">
                         <td class="meeting-row" th:attr="data-id=${meetings[i-1][j-1].id}, data-date=${#dates.format(weekDates[j-1], 'dd.MM.yyyy')}"
                              th:classappend="(${meetings[i-1][j-1].weekNumber == activeWeekNumber} ? 'table-secondary' : '') + ' ' +  (${meetings[i-1][j-1].active} ? 'table-primary' : '')">
-                            <a th:onclick="'openPresents(\'' + ${#dates.format(weekDates[j-1], 'dd.MM.yyyy')} + '\', \'' + ${meetings[i-1][j-1].id} + '\');'">
+                            <a th:onclick="'openMeetingDetails(\'' + ${#dates.format(weekDates[j-1], 'dd.MM.yyyy')} + '\', \'' + ${meetings[i-1][j-1].id} + '\');'">
                             <div th:text="${meetings[i-1][j-1].subjectName}"></div>
                             <div sec:authorize="hasAuthority('TEACHER')" th:text="'Klasa ' + ${meetings[i-1][j-1].className}"></div>
                             </a>

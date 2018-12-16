@@ -28,7 +28,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Controller for meetings fragment.
@@ -79,58 +82,63 @@ public class MeetingsComponentController extends PageController {
     }
 
     /**
-     * Pobiera, waliduje i zwraca widok dla spotkania w zależności od tego jaki typ użytkownika wywołał akcję.
-     * Nauczyciel zobaczy listę uczniów, którzy powinni pojawić się na zajęciach z możliwością modyfikacji czy dana
-     * osoba jest obecna lub nie. Uczeń będzie mógł obejrzeć statystyki dotyczące danego spotkania, oceny itp.
-     *
-     * @param date data spotkania
-     * @param id identyfikator spotkania.
-     * @param model       model.
-     * @return widok szczegółów spotkania określony na podstawie typu użytkownika.
+     * Zwraca fragment prezentujący szczegóły spotkania. Nauczyciel zobaczy dwa linki. Jeden do sprawdzania obecności,
+     * a drugi do dodawania ocen.
      */
     @RequestMapping(value = "/details", method = RequestMethod.GET)
     public String getMeetingDetailsPage(@RequestParam(value = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date,
-                                        @RequestParam(value="id") int id, final Model model) throws ParseException {
+                                        @RequestParam(value = "id") int id, final Model model) throws ParseException {
 
         final String role = getUserRole(model);
 
         String view = "redirect:/";
         if (role != null) {
-            MeetingData meeting = meetingFacade.getMeetingById((long) id);
             if (role.equals(STUDENT_TYPE_NAME)) {
                 LOG.debug("Prepare meeting detail view for user with role {}", STUDENT_TYPE_NAME);
                 view = ControllerConstants.Fragments.meetingDetailsStudent;
             } else if (role.equals(TEACHER_TYPE_NAME)) {
                 LOG.debug("Prepare meeting detail view for user with role {}", TEACHER_TYPE_NAME);
                 view = ControllerConstants.Fragments.meetingDetailsTeacher;
-
-                PresentForm presentForm = new PresentForm();
-                presentForm.setDate(new SimpleDateFormat("dd.MM.yyyy").format(date));
-                presentForm.setMeetingId((long) id);
-
-                List<StudentData> students = new ArrayList<>();
-                if (meeting.getClassName() != null) {
-                    students = classFacade.getStudentsFromClass(meeting.getClassName());
-                }
-
-                for(StudentData student : students) {
-                    student.setPresent(presentService.isStudentPresentOnMeeting(date, (long) id, student.getId()));
-                }
-
-                presentForm.setStudents(students);
-
-                model.addAttribute("presentForm", presentForm);
-                model.addAttribute("className", meeting.getClassName());
-                model.addAttribute("subjectName", meeting.getSubjectName());
-            }
-
-            if (meeting != null) {
-                meeting.setDate(date);
-                model.addAttribute("meeting", meeting);
             }
         }
 
+        model.addAttribute("meetingId", id);
+        model.addAttribute("date", date);
+
         return view;
+    }
+
+    /**
+     * Zwraca fragment odpowiedzialny za wyświetlenie listy obecności.
+     */
+    @RequestMapping(value = "/presence", method = RequestMethod.GET)
+    public String getPresence(@RequestParam(value = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date,
+                              @RequestParam(value = "id") int id, final Model model) {
+
+        final MeetingData meeting = meetingFacade.getMeetingById((long) id);
+        PresentForm presentForm = new PresentForm();
+        presentForm.setDate(new SimpleDateFormat("dd.MM.yyyy").format(date));
+        presentForm.setMeetingId((long) id);
+
+        List<StudentData> students = new ArrayList<>();
+        if (meeting.getClassName() != null) {
+            students = classFacade.getStudentsFromClass(meeting.getClassName());
+        }
+
+        for (StudentData student : students) {
+            student.setPresent(presentService.isStudentPresentOnMeeting(date, (long) id, student.getId()));
+        }
+
+        presentForm.setStudents(students);
+
+        model.addAttribute("presentForm", presentForm);
+        model.addAttribute("className", meeting.getClassName());
+        model.addAttribute("subjectName", meeting.getSubjectName());
+
+        meeting.setDate(date);
+        model.addAttribute("meeting", meeting);
+
+        return ControllerConstants.Fragments.presence;
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -140,7 +148,7 @@ public class MeetingsComponentController extends PageController {
         }
 
         List<PresentData> presentsList = new ArrayList<>();
-        for(StudentData student : presentForm.getStudents()) {
+        for (StudentData student : presentForm.getStudents()) {
             PresentData presentData = new PresentData();
             presentData.setMeetingId(presentForm.getMeetingId());
             presentData.setStudentId(student.getId());

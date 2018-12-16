@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<section th:fragment="addGrade" class="well">
+
+    <form method="post" action="/e-dziennik/grades/add" th:object="${addGradeForm}">
+        <input type="hidden" th:value="*{meetingId}">
+        <input type="hidden" th:value="${#dates.format(addGradeForm.date, 'dd.MM.yyyy')}">
+        <!-- Input z opisem i wagą -->
+        <div>
+            Opis: <input type="text" th:field="*{description}">
+            Waga: <input type="number" th:field="*{weight}">
+        </div>
+
+        <!-- Tutaj wyświetlana jest lista studentów. Obok każdego wyświetlamy select z dostępnymi ocenami -->
+        <div>
+            <table>
+                <tr th:each="student,iterStat : *{students}">
+                    <!-- Imie -->
+                    <td th:text="${student.firstName}"></td>
+                    <!-- Nazwisko -->
+                    <td th:text="${student.surname}"></td>
+                    <!--<td>4</td> -->
+                    <td>
+                        <div class="form-check ">
+                            <input type="hidden" th:name="studentId" th:field="*{students[__${iterStat.index}__].id}" readonly="true"/>
+                            <select th:field="*{students[__${iterStat.index}__].grade}">
+                                <option th:value="'1'" th:text="1"></option>
+                                <option th:value="'1.5'" th:text="1.5"></option>
+                                <option th:value="'2'" th:text="2"></option>
+                                <option th:value="'2.5'" th:text="2.5"></option>
+                                <option th:value="'3'" th:text="3"></option>
+                                <option th:value="'3.5'" th:text="3.5"></option>
+                                <option th:value="'4'" th:text="4"></option>
+                                <option th:value="'4.5'" th:text="4.5"></option>
+                                <option th:value="'5'" th:text="5"></option>
+                                <option th:value="'5.5'" th:text="5.5"></option>
+                                <option th:value="'6'" th:text="6"></option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-4">
+                <!-- href na plan : /edziennik/meetings -->
+                <button type="button" class="btn btn-sm btn-secondary btn-block" onclick="returnToMeetings();">Anuluj</button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-sm btn-primary btn-block" type="submit">Zapisz</button>
+            </div>
+        </div>
+    </form>
+</section>

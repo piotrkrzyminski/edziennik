@@ -6,21 +6,16 @@
 <section th:fragment="details" class="well">
     <th:block sec:authorize="hasAuthority('TEACHER')">
         <div>
-            <span th:text="'klasa: ' +  ${className}"></span>
-            <span th:text="'Data: ' +  ${#dates.format(presentForm.date, 'dd.MM.yyyy')}"></span>
-            <span th:text="'Przedmiot: ' +  ${subjectName}"></span>
+            <!-- To jest nagłówek fragmentu szczegółów spotkania. Posiada on dwa przyciski : "lista obecności" oraz "dodaj ocenę"
+             Przyciski te ładują odpowiednie fragmenty -->
+            <a th:onclick="'openPresence(\'' + ${#dates.format(date, 'dd.MM.yyyy')} + '\', \'' + ${meetingId} + '\');'">lista obecności</a>
+            <a th:onclick="'openAddGrade(\'' + ${#dates.format(date, 'dd.MM.yyyy')} + '\', \'' + ${meetingId} + '\');'">dodaj ocenę</a>
         </div>
-        <form action="/e-dziennik/meetings/save" method="post" th:object="${presentForm}">
-            <input th:type="hidden" th:name="date" th:value="${#dates.format(presentForm.date, 'dd.MM.yyyy')}">
-            <input th:type="hidden" th:name="meetingId" th:value="${presentForm.meetingId}">
-            <th:block th:each="student : ${presentForm.presents}">
-                <div>
-                    <span th:text="${presentForm.key.firstName} + ' ' + ${presentForm.key.secondName} + ' ' + ${presentForm.key.surname}"></span>
-                    <input th:type="checkbox" th:name="${presentForm.key.id}" th:value="${presentForm.value}">
-                </div>
-            </th:block>
-            <input th:type="submit" th:value="Zapisz">
-        </form>
+
+        <!-- Tutaj ładowny jest widok dla listy obecności oraz dodawania oceny. Domyślnie jest on pusty -->
+        <div id="content-inner">
+
+        </div>
     </th:block>
 </section>
 </html>

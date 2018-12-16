@@ -21,6 +21,8 @@ public class StudentData {
 
     private boolean present;
 
+    private String grade;
+
     public String getFirstName() {
         return firstName;
     }
@@ -87,5 +89,13 @@ public class StudentData {
 
     public void setPresent(boolean present) {
         this.present = present;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 }

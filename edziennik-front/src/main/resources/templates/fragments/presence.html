@@ -11,34 +11,6 @@
                 <form action="/e-dziennik/meetings/save" class="form-presence" method="post" th:object="${presentForm}">
                     <input th:type="hidden" name="date" th:value="${presentForm.date}">
                     <input th:type="hidden" name="meetingId" th:value="${presentForm.meetingId}">
-                <!--
-                <div class="row">
-                    <div class="col-3">
-                        <select class="custom-select space">
-                            <option selected>Numer lekcji</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="3">4</option>
-                            <option value="3">5</option>
-                            <option value="3">7</option>
-                            <option value="3">7</option>
-                        </select>
-                    </div>
-                    <div class="col-4"> -->
-                <!-- To powinnismy odebrac z api -->
-                <!--<select class="custom-select space">
-                    <option selected>Klasa</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="3">4</option>
-                    <option value="3">5</option>
-                    <option value="3">7</option>
-                    <option value="3">7</option>
-                </select>
-            </div>
-        </div> -->
 
                 <div class="row">
                     <div class="col list-border space">
@@ -72,13 +44,6 @@
 
                             </tbody>
                         </table>
-                        <!--
-                        <div class="toggle-btn active">
-                            <input type="checkbox"  checked class="cb-value" id="new-checkbox"/>
-                            <span class="round-btn"></span>
-                        </div>
-                        <p><input type="checkbox" id="test1" /><label for="test1"><span class="ui"></span>Paris</label></p>
-                        -->
                     </div>
                 </div>
 

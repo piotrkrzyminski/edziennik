@@ -1,4 +1,4 @@
-package pl.dziennik.core.services.user;
+package pl.dziennik.core.services.schedule;
 
 import pl.dziennik.model.user.ClassModel;
 import pl.dziennik.model.user.StudentModel;

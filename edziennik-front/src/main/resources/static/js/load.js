@@ -10,3 +10,7 @@ function loadComponentByUrl(url) {
     $('#content').load(url);
 }
 
+function loadInnerComponentByUrl(url) {
+    $('#content-inner').load(url);
+}
+
