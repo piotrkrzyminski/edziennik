@@ -47,14 +47,9 @@ function prevWeek(date)
 }
 
 function myFunction(id) {
-    var popup = document.getElementById("popup1");
-    var popup2 = document.getElementsByClassName("popuptext");
+    var ele = 'popup'+id;
+    console.log(ele);
+    var popup = document.getElementById(ele);
     console.log(popup);
-    popup2[0].classList.toggle("show");
-    //popup.classList.toggle("show");
-    //for(var i = 0; i < popup2.length; i++)
-    //{
-      //  popup2[i].classList.toggle("show");
-    //}
-    //popup2.classList.toggle("show");
+    popup.classList.toggle("show");
 }
