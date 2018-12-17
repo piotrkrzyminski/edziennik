@@ -13,18 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.GradeFacade;
 import pl.dziennik.facades.MeetingFacade;
-import pl.dziennik.facades.data.grades.AddGradeData;
-import pl.dziennik.facades.data.grades.AddGradeSetData;
+import pl.dziennik.facades.data.grades.*;
 import pl.dziennik.facades.data.meetings.MeetingData;
 import pl.dziennik.facades.data.user.StudentData;
 import pl.dziennik.front.forms.AddGradeForm;
+import pl.dziennik.front.utils.AvgGradeCalculator;
 
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/grades")
@@ -54,6 +52,25 @@ public class AddGradeComponent {
                 students = classFacade.getStudentsFromClass(meeting.getClassName());
             }
             form.setStudents(students);
+
+            Map<StudentData, List<GradeData>> gradesMap = new HashMap<>();
+            for(StudentData student : students) {
+                List<GradeData> grades = gradeFacade.getGradesForStudentIdAndSubject(student.getId(), meeting.getSubjectName());
+                gradesMap.put(student, grades);
+            }
+
+            for (Map.Entry<StudentData, List<GradeData>> grade : gradesMap.entrySet()) {
+                List<GradeDetailsData> gradeDetailsDataList = new ArrayList<>();
+                for(GradeData gradeData : grade.getValue()) {
+                    gradeDetailsDataList.add(gradeData.getGradeDetails());
+                }
+                double avg = AvgGradeCalculator.getAverageGrade(gradeDetailsDataList);
+                for(GradeData gradeData : grade.getValue()) {
+                    gradeData.setAvgGrade(avg);
+                }
+            }
+
+            model.addAttribute("gradeMap", gradesMap);
         }
 
         model.addAttribute("addGradeForm", form);
@@ -98,11 +115,13 @@ public class AddGradeComponent {
 
         List<AddGradeData> grades = new ArrayList<>();
         for (StudentData student : addGradeForm.getStudents()) {
-            AddGradeData grade = new AddGradeData();
-            grade.setStudentId(student.getId());
-            grade.setMark(student.getGrade());
+            if(!student.getGrade().equals("0")) {
+                AddGradeData grade = new AddGradeData();
+                grade.setStudentId(student.getId());
+                grade.setMark(student.getGrade());
 
-            grades.add(grade);
+                grades.add(grade);
+            }
         }
 
         addGradeSetData.setGrades(grades);

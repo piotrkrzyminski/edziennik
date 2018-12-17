@@ -64,6 +64,19 @@ public class DefaultGradeFacade implements GradeFacade {
         gradesService.save(gradeSetModel);
     }
 
+    @Override
+    public List<GradeData> getGradesForStudentIdAndSubject(Long id, String subjectName) {
+        final List<GradeModel> gradeModelList = gradesService.findGradesForStudentIdAndSubject(id, subjectName);
+        List<GradeData> grades = new ArrayList<>();
+        for(GradeModel gradeModel : gradeModelList) {
+            GradeData grade = new GradeData();
+            gradeDataPopulator.populate(gradeModel, grade);
+            grades.add(grade);
+        }
+
+        return grades;
+    }
+
     private GradeSetModel createGrade(AddGradeSetData gradeSetData) {
         GradeSetModel gradeSetModel = new GradeSetModel();
 

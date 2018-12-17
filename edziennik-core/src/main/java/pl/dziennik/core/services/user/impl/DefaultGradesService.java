@@ -11,6 +11,7 @@ import pl.dziennik.core.services.user.GradesService;
 import pl.dziennik.model.user.GradeModel;
 import pl.dziennik.model.user.GradeSetModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,6 +35,19 @@ public class DefaultGradesService implements GradesService {
         }
 
         return grades;
+    }
+
+    @Override
+    public List<GradeModel> findGradesForStudentIdAndSubject(long id, String subjectName) {
+        final List<GradeModel> grades = gradesRepository.getGradesByStudentId(id);
+        List<GradeModel> result = new ArrayList<>();
+        for(GradeModel grade : grades) {
+            if(grade.getGradeSet().getSubject().getName().equals(subjectName)) {
+                result.add(grade);
+            }
+        }
+
+        return result;
     }
 
     @Override

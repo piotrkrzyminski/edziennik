@@ -16,4 +16,7 @@ public interface GradesRepository extends JpaRepository<GradeModel, Long> {
      */
     @Query("SELECT g FROM GradeModel g INNER JOIN g.student s WHERE s.email = ?1")
     List<GradeModel> getGradesByStudentEmail(final String email);
+
+    @Query("SELECT g FROM GradeModel g INNER JOIN g.student s WHERE s.id = ?1")
+    List<GradeModel> getGradesByStudentId(final Long id);
 }

@@ -1,6 +1,7 @@
 package pl.dziennik.facades.data.user;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class StudentData {
     private Long id;
@@ -97,5 +98,18 @@ public class StudentData {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudentData that = (StudentData) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

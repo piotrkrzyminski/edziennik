@@ -497,51 +497,51 @@ INSERT INTO Grades_Set (`id`, `date`, `title`, `weight`, `class_id`, `subject_id
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (1, 14, 1, 2);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (2, 15, 1, 1);
+            VALUES (2, 15, 1, 1.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (3, 16, 1, 1);
+            VALUES (3, 16, 1, 4.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (4, 17, 1, 4);
+            VALUES (4, 17, 1, 5.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (5, 18, 1, 4);
+            VALUES (5, 18, 1, 6);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (6, 19, 1, 5);
+            VALUES (6, 19, 1, 2.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (7, 20, 1, 6);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (8, 21, 1, 6);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (9, 22, 1, 1);
+            VALUES (9, 22, 1, 1.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (10, 23, 1, 1);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (11, 24, 1, 3);
+            VALUES (11, 24, 1, 3.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (12, 25, 1, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (13, 26, 1, 4);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (14, 27, 1, 4);
+            VALUES (14, 27, 1, 4.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (15, 28, 1, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (16, 29, 1, 5);
+            VALUES (16, 29, 1, 5.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (17, 30, 1, 6);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (18, 31, 1, 9);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (19, 32, 1, 4);
+            VALUES (19, 32, 1, 4.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (20, 33, 1, 4);
 
 -- OCENY Z "Odpowiedz ustna - Znajomość lektury "Dzieci z Bulerbyn""
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (21, 15, 2, 1);
+            VALUES (21, 15, 2, 1.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (22, 16, 2, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (23, 24, 2, 4);
+            VALUES (23, 24, 2, 4.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (24, 14, 2, 5);
 
@@ -556,15 +556,15 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (28, 17, 3, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (29, 18, 3, 5);
+            VALUES (29, 18, 3, 5.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (30, 19, 3, 5);
+            VALUES (30, 19, 3, 5.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (31, 20, 3, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (32, 21, 3, 4);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (33, 22, 3, 4);
+            VALUES (33, 22, 3, 4.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (34, 23, 3, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
@@ -572,7 +572,7 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (36, 25, 3, 6);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (37, 26, 3, 3);
+            VALUES (37, 26, 3, 3.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (38, 27, 3, 4);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
@@ -580,13 +580,13 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (40, 29, 3, 6);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (41, 30, 3, 2);
+            VALUES (41, 30, 3, 2.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (42, 31, 3, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (43, 32, 3, 6);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (44, 33, 3, 2);
+            VALUES (44, 33, 3, 2.5);
 
 -- OCENY Z "Praca domowa z bezkręgowcow"
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
@@ -602,7 +602,7 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (50, 19, 4, 4);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (51, 20, 4, 4);
+            VALUES (51, 20, 4, 4.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (52, 21, 4, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
@@ -610,7 +610,7 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (54, 23, 4, 5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (55, 24, 4, 5);
+            VALUES (55, 24, 4, 5.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (56, 25, 4, 3.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)

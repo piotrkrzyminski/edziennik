@@ -9,6 +9,7 @@ import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.facades.GradeFacade;
 import pl.dziennik.facades.data.grades.GradeData;
 import pl.dziennik.facades.data.grades.GradeDetailsData;
+import pl.dziennik.front.utils.AvgGradeCalculator;
 import pl.dziennik.model.user.StudentModel;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,28 +65,10 @@ public class GradesComponentController extends PageController {
         }
 
         for (Map.Entry<GradeData, List<GradeDetailsData>> grade : gradeMap.entrySet()) {
-            double avg = getAverageGrade(grade.getValue());
+            double avg = AvgGradeCalculator.getAverageGrade(grade.getValue());
             grade.getKey().setAvgGrade(avg);
         }
 
         model.addAttribute("grades", gradeMap);
-    }
-
-    /**
-     * Calculates average grade for list of grades.
-     *
-     * @param grades list of grades.
-     * @return average value for specified grades.
-     */
-    private double getAverageGrade(List<GradeDetailsData> grades) {
-        double sum = 0;
-        double count = 0;
-
-        for (GradeDetailsData grade : grades) {
-            sum += (grade.getMark() * grade.getWeight());
-            count += grade.getWeight();
-        }
-
-        return sum / count;
     }
 }

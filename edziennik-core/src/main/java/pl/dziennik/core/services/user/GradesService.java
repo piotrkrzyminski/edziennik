@@ -15,5 +15,7 @@ public interface GradesService {
      */
     List<GradeModel> findGradesForStudent(String email);
 
+    List<GradeModel> findGradesForStudentIdAndSubject(long id, String subjectName);
+
     void save(GradeSetModel grade);
 }

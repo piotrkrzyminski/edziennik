@@ -15,6 +15,8 @@ public interface GradeFacade {
      * @return list of grades.
      */
     List<GradeData> getGradesForStudent(final String email);
+
+    List<GradeData> getGradesForStudentIdAndSubject(final Long id, final String subjectName);
     
     void saveAllGrades(AddGradeSetData grades);
 }
