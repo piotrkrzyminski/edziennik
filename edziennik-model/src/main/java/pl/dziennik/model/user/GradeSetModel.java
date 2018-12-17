@@ -15,7 +15,7 @@ public class GradeSetModel extends AbstractItemModel {
     private String title;
 
     @Column(name = "weight")
-    private int weight;
+    private double weight;
 
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
@@ -44,11 +44,11 @@ public class GradeSetModel extends AbstractItemModel {
         this.title = title;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 

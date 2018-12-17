@@ -5,11 +5,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.dziennik.core.repository.user.GradeSetRepository;
 import pl.dziennik.core.repository.user.GradesRepository;
-import pl.dziennik.core.repository.schedule.SubjectRepository;
 import pl.dziennik.core.services.user.GradesService;
 import pl.dziennik.model.user.GradeModel;
+import pl.dziennik.model.user.GradeSetModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +23,7 @@ public class DefaultGradesService implements GradesService {
     private GradesRepository gradesRepository;
 
     @Autowired
-    private SubjectRepository subjectRepository;
+    private GradeSetRepository gradeSetRepository;
 
     @Override
     public List<GradeModel> findGradesForStudent(String email) {
@@ -33,5 +35,24 @@ public class DefaultGradesService implements GradesService {
         }
 
         return grades;
+    }
+
+    @Override
+    public List<GradeModel> findGradesForStudentIdAndSubject(long id, String subjectName) {
+        final List<GradeModel> grades = gradesRepository.getGradesByStudentId(id);
+        List<GradeModel> result = new ArrayList<>();
+        for(GradeModel grade : grades) {
+            if(grade.getGradeSet().getSubject().getName().equals(subjectName)) {
+                result.add(grade);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public void save(GradeSetModel grade) {
+        gradeSetRepository.save(grade);
+        gradesRepository.saveAll(grade.getGrades());
     }
 }

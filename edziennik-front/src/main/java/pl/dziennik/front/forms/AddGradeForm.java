@@ -1,15 +1,16 @@
 package pl.dziennik.front.forms;
 
+import pl.dziennik.facades.data.grades.GradeData;
 import pl.dziennik.facades.data.user.StudentData;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class AddGradeForm {
 
     private long meetingId;
 
-    private Date date;
+    private String date;
 
     private String description;
 
@@ -25,11 +26,11 @@ public class AddGradeForm {
         this.meetingId = meetingId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

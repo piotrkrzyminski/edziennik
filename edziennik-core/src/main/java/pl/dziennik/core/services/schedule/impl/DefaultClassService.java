@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.dziennik.core.repository.schedule.ClassRepository;
 import pl.dziennik.core.services.schedule.ClassService;
+import pl.dziennik.model.user.ClassModel;
 import pl.dziennik.model.user.StudentModel;
 
 import java.util.List;
@@ -29,5 +30,17 @@ public class DefaultClassService implements ClassService {
         }
 
         return students;
+    }
+
+    @Override
+    public ClassModel getClassForName(String name) {
+        Validate.notBlank(name);
+
+        final ClassModel classModel = classRepository.findClassByName(name);
+        if(classModel == null) {
+            LOG.debug("No class found for name {}", name);
+        }
+
+        return classModel;
     }
 }

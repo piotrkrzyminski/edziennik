@@ -13,4 +13,12 @@ public interface SubjectService {
      * @return lista przedmiotów prowadzonych przez danego nauczyciela.
      */
     List<SubjectModel> getSubjectsForTeacherWithEmail(final String email);
+
+    /**
+     * Zwraca przedmiot o podanej nazwie.
+     *
+     * @param name nazwa przedmiotu.
+     * @return przedmiot o podanej nazwie.
+     */
+    SubjectModel getSubjectForName(final String name);
 }

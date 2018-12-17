@@ -9,6 +9,7 @@ import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.facades.GradeFacade;
 import pl.dziennik.facades.data.grades.GradeData;
 import pl.dziennik.facades.data.grades.GradeDetailsData;
+import pl.dziennik.front.utils.AvgGradeCalculator;
 import pl.dziennik.model.user.StudentModel;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +23,7 @@ import java.util.Map;
  * Controller for meetings fragment.
  */
 @Controller
-@RequestMapping(value = "/grades")
+@RequestMapping(value = "/grade")
 public class GradesComponentController extends PageController {
 
     @Autowired
@@ -32,7 +33,7 @@ public class GradesComponentController extends PageController {
     private StudentService studentService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getMeetingPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
+    public String getGradeFragment(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
 
         final String userEmail = currentUserName(model);
         StudentModel student = studentService.getStudentByEmail(userEmail);
@@ -64,28 +65,10 @@ public class GradesComponentController extends PageController {
         }
 
         for (Map.Entry<GradeData, List<GradeDetailsData>> grade : gradeMap.entrySet()) {
-            double avg = getAverageGrade(grade.getValue());
+            double avg = AvgGradeCalculator.getAverageGrade(grade.getValue());
             grade.getKey().setAvgGrade(avg);
         }
 
         model.addAttribute("grades", gradeMap);
-    }
-
-    /**
-     * Calculates average grade for list of grades.
-     *
-     * @param grades list of grades.
-     * @return average value for specified grades.
-     */
-    private double getAverageGrade(List<GradeDetailsData> grades) {
-        double sum = 0;
-        double count = 0;
-
-        for (GradeDetailsData grade : grades) {
-            sum += (grade.getMark() * grade.getWeight());
-            count += grade.getWeight();
-        }
-
-        return sum / count;
     }
 }
