@@ -14,4 +14,6 @@ public interface ClassService {
      * @return lista studentów przypisana do klasy lub pusta lista, jeżeli klasa nie istnieje.
      */
     List<StudentModel> getStudentsFromClass(final String className);
+
+    ClassModel getClassForName(final String name);
 }

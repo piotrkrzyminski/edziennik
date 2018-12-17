@@ -1,6 +1,7 @@
 package pl.dziennik.core.services.user;
 
 import pl.dziennik.model.user.GradeModel;
+import pl.dziennik.model.user.GradeSetModel;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface GradesService {
      * @return list of all student's grades.
      */
     List<GradeModel> findGradesForStudent(String email);
+
+    void save(GradeSetModel grade);
 }

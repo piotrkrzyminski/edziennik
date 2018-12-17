@@ -22,7 +22,7 @@ import java.util.Map;
  * Controller for meetings fragment.
  */
 @Controller
-@RequestMapping(value = "/grades")
+@RequestMapping(value = "/grade")
 public class GradesComponentController extends PageController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class GradesComponentController extends PageController {
     private StudentService studentService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getMeetingPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
+    public String getGradeFragment(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
 
         final String userEmail = currentUserName(model);
         StudentModel student = studentService.getStudentByEmail(userEmail);

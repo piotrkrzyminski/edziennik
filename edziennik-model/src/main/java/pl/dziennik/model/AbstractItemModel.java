@@ -1,14 +1,13 @@
 package pl.dziennik.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @MappedSuperclass
 public abstract class AbstractItemModel {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name="seq", initialValue=1000)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     private Long id;
 
     public Long getId() {

@@ -16,9 +16,8 @@ public class GradeModel extends AbstractItemModel {
     @JoinColumn(name = "grade_set_id", nullable = false)
     private GradeSetModel gradeSet;
 
-    @ManyToOne
-    @JoinColumn(name = "grade_value", nullable = false)
-    private GradeValueModel gradeValue;
+    @Column(name = "grade")
+    private Double grade;
 
     public StudentModel getStudent() {
         return student;
@@ -36,11 +35,11 @@ public class GradeModel extends AbstractItemModel {
         this.gradeSet = gradeSet;
     }
 
-    public GradeValueModel getGradeValue() {
-        return gradeValue;
+    public Double getGrade() {
+        return grade;
     }
 
-    public void setGradeValue(GradeValueModel gradeValue) {
-        this.gradeValue = gradeValue;
+    public void setGrade(Double grade) {
+        this.grade = grade;
     }
 }
