@@ -4,11 +4,21 @@ import java.util.Objects;
 
 public class GradeData {
 
+    private Long id;
+
     private String subjectName;
 
     private GradeDetailsData gradeDetails;
 
     private double avgGrade;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getSubjectName() {
         return subjectName;

@@ -27,5 +27,6 @@ public class GradePopulator implements Populator<GradeModel, GradeData> {
         gradeDetailsDataPopulator.populate(s.getGradeSet(), gradeDetailsData);
         gradeDetailsData.setMark(s.getGrade());
         t.setGradeDetails(gradeDetailsData);
+        t.setId(s.getId());
     }
 }
