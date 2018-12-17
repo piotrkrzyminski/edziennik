@@ -25,8 +25,12 @@
                         <th:block th:each="grade : ${subject.value}">
                             <!-- Próbowałem dodać tutaj klasę css jeżeli ocena jest niższa niż 2. Stworzyłem klasę o nazwie 'insufficient', ale kolor jest nadpisywany przez coś innego
                               więc do poprawy dla frontu -->
-                            <div th:class="${grade.mark} < 2.0 ?insufficient:''"
-                                 th:text="${#numbers.formatDecimal(grade.mark, 0, T(Math).round(grade.mark) == grade.mark ? 0 : 1)}">1</div>
+                            <div class="popup" th:onclick="'myFunction(\'' + ${grade.mark} + '\');'" th:class="${grade.mark} < 2.0 ?insufficient:' popup'"
+                                 >
+                                <span th:text="${#numbers.formatDecimal(grade.mark, 0, T(Math).round(grade.mark) == grade.mark ? 0 : 1)}"></span>
+                                <span class="popuptext" id="popup1" th:text="'Ocena: ' + ${#numbers.formatDecimal(grade.mark, 0, T(Math).round(grade.mark) == grade.mark ? 0 : 1)} + ' Waga: ' + ${grade.weight} + ' Opis: ' + ${grade.title}"></span>
+                            </div>
+
                         </th:block>
                         <!-- Wyświetlenie informacji o typie oceny: ${grade.title}-->
                         <!-- Wyświetlenie informacji o wadze oceny: ${grade.weight}-->
