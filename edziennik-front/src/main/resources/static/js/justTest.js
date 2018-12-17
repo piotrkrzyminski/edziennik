@@ -45,3 +45,16 @@ function prevWeek(date)
     var url = "/e-dziennik/meetings?date="+ dateResult.getDate() + "-" + (dateResult.getMonth()+1) + "-" + dateResult.getFullYear();
     loadComponentByUrl(url);
 }
+
+function myFunction(id) {
+    var popup = document.getElementById("popup1");
+    var popup2 = document.getElementsByClassName("popuptext");
+    console.log(popup);
+    popup2[0].classList.toggle("show");
+    //popup.classList.toggle("show");
+    //for(var i = 0; i < popup2.length; i++)
+    //{
+      //  popup2[i].classList.toggle("show");
+    //}
+    //popup2.classList.toggle("show");
+}
