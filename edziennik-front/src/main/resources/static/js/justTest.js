@@ -47,6 +47,7 @@ function prevWeek(date)
 }
 
 function myFunction(id) {
+    console.log(id);
     var ele = 'popup'+id;
     console.log(ele);
     var popup = document.getElementById(ele);
