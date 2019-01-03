@@ -5,8 +5,8 @@ INSERT INTO Roles (`id`, `name`) VALUES (2, 'TEACHER');
 INSERT INTO Roles (`id`, `name`) VALUES (3, 'STUDENT');
 INSERT INTO Roles (`id`, `name`) VALUES (4, 'PARENT');
 
-INSERT INTO Administrators (`id`, `email`, `password`,`enabled`, `role_id`)
-                      VALUES (1, 'admin@dziennik.pl', '$2a$04$upfx5f.u7zQEEu2eE3/aEu30KMlaNBd8pwwXx6UalY3nMYlJwgL7O', true, 1);
+INSERT INTO Administrators (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`,`birth_date`, `role_id`)
+                      VALUES (1, 'admin@dziennik.pl', '$2a$04$upfx5f.u7zQEEu2eE3/aEu30KMlaNBd8pwwXx6UalY3nMYlJwgL7O', true, 'Adam', null, 'Nowak', '96082873678', null, 1);
 -- haslo: nimda
 
 -- SAMPLE TEACHERS START
@@ -155,11 +155,11 @@ INSERT INTO Students (`id`, `email`, `password`, `enabled`, `first_name`, `secon
 -- SAMPLE PARENTS START
 -- TODO: Dodanie rodzicow dla kazdego z uczniow (kilka przypadkow, gdy rodzicow przypisanych do ucznia jest dwoch
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
-              VALUES(64, 'miloslaw.borkowski@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Miloslaw', null, 'Borkowski', '88100990179', PARSEDATETIME('09/10/1988','dd/MM/yyyy'), 4);
+              VALUES(64, 'wielisław.borkowski@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Miloslaw', null, 'Borkowski', '88100990179', PARSEDATETIME('09/10/1988','dd/MM/yyyy'), 4);
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (14,64);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
-              VALUES(65, 'hipolit.jablonski@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Hipolit', null, 'Jabloński', '56092630074', PARSEDATETIME('26/09/1956','dd/MM/yyyy'), 4);
+              VALUES(65, 'hipolit.michalski@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Wielisław', null, 'Michalski', '83021755713', PARSEDATETIME('26/09/1956','dd/MM/yyyy'), 4);
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (15,65);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
@@ -187,7 +187,7 @@ INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (21,71);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
-              VALUES(72, 'miloslaw.borkowski@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Miloslaw', null, 'Borkowski', '88100990179', PARSEDATETIME('09/10/1988','dd/MM/yyyy'), 4);
+              VALUES(72, 'milos.zzarnecki@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Miłosz', null, 'Czarnecki', '07251999237', PARSEDATETIME('09/10/1988','dd/MM/yyyy'), 4);
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (22,72);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
@@ -227,7 +227,7 @@ INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (31,81);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
-              VALUES(82, 'miloslaw.borkowski@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Miloslaw', null, 'Borkowski', '88100990179', PARSEDATETIME('09/10/1988','dd/MM/yyyy'), 4);
+              VALUES(82, 'miloslaw.borkowski@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Miloslaw', null, 'Borkowski', '88021195770', PARSEDATETIME('09/10/1988','dd/MM/yyyy'), 4);
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (32,82);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
@@ -235,7 +235,7 @@ INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (33,83);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
-              VALUES(84, 'ela.majewska@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Ela', null, 'Majewska', '88100990179', PARSEDATETIME('06/06/1984','dd/MM/yyyy'), 4);
+              VALUES(84, 'ela.majewska@edziennik.pl', '$2a$04$tzZaS0wCxdyU7UWjLxaw7uVWbHhJ0duyGOGI/0eWfwUNtAYPqFvqa', true, 'Ela', null, 'Majewska', '92121246483', PARSEDATETIME('06/06/1984','dd/MM/yyyy'), 4);
 INSERT INTO Students_Parents (`student_id`, `parent_id`) VALUES (34,84);
 
 INSERT INTO Parents (`id`, `email`, `password`, `enabled`, `first_name`, `second_name`, `surname`, `pesel`, `birth_date`, `role_id`)
@@ -535,15 +535,47 @@ INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
             VALUES (20, 33, 1, 4);
 
--- OCENY Z "Odpowiedz ustna - Znajomość lektury "Dzieci z Bulerbyn""
+-- OCENY Z "Odpowiedz ustna - Znajomość lektury "Dzieci z Bulerbyn"
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (21, 15, 2, 1.5);
+            VALUES (145, 14, 2, 0);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (22, 16, 2, 5);
+            VALUES (146, 15, 2, 0);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (23, 24, 2, 4.5);
+            VALUES (147, 16, 2, 4.5);
 INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
-            VALUES (24, 14, 2, 5);
+            VALUES (148, 17, 2, 0);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (149, 18, 2, 0);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (150, 19, 2, 0);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (151, 20, 2, 0);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (152, 21, 2, 6);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (153, 22, 2, 1.5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (154, 23, 2, 1);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (155, 24, 2, 0);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (156, 25, 2, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (157, 26, 2, 4);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (158, 27, 2, 4.5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (159, 28, 2, 5);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (160, 29, 2, 0);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (161, 30, 2, 6);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (162, 31, 2, 9);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (163, 32, 2, 0);
+INSERT INTO Grades (`id`, `student_id`, `grade_set_id`, `grade`)
+            VALUES (164, 33, 2, 0);
 
 
 -- OCENY Z "Sprawdzian z dzialu pierwszego"

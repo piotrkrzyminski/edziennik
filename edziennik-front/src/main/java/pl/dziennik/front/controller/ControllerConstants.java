@@ -20,5 +20,7 @@ public interface ControllerConstants {
         String presence = _PREFIX + "/presence :: presence";
         String meetingDetailsStudent = _PREFIX + "/meetingsDetailsStudent :: details";
         String addGradeFragment = _PREFIX + "/addGradeComponent :: addGrade";
+        String studentGradesForSubject = _PREFIX + "/editGrades :: editGrades";
+        String setGradesEditInitData = _PREFIX + "/setGradesEditInitData :: selectData";
     }
 }

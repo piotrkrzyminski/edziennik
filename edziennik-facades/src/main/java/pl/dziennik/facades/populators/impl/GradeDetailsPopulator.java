@@ -1,4 +1,4 @@
-package pl.dziennik.facades.populators.grades;
+package pl.dziennik.facades.populators.impl;
 
 import org.springframework.stereotype.Component;
 import pl.dziennik.facades.data.grades.GradeDetailsData;

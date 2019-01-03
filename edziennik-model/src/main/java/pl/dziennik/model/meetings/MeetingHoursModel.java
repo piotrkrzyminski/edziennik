@@ -7,30 +7,29 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Encja przechowuje informacje na temat numeru spotkania i godzinach w jakich się odbywa.
- * Na przykład spotkanie pierwsze odbywa się w godzinach 8:00 - 8:45, kolejne od 9:00 do 9:45 itd.
+ * Stores information's about schedule hours.
  */
 @Entity
 @Table(name = "meeting_hours")
 public class MeetingHoursModel extends AbstractItemModel {
 
     /**
-     * numer spotkania numerowany od 1 (1 oznacza pierwsze spotkanie danego dnia).
+     * Number of meeting in a day.
      */
-    @Column(name = "meeting_number")
+    @Column(name = "meeting_number", unique = true, nullable = false)
     private int meetingNumber;
 
     /**
-     * Godzina rozpoczęcia spotkania.
+     * meeting start time.
      */
-    @Column(name = "start_time")
+    @Column(name = "start_time", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date startTime;
 
     /**
-     * Godzina zakończenia spotkania.
+     * meeting end time.
      */
-    @Column(name = "end_time")
+    @Column(name = "end_time", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date endDate;
 

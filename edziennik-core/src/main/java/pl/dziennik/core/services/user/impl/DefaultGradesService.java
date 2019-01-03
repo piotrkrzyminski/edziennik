@@ -55,4 +55,14 @@ public class DefaultGradesService implements GradesService {
         gradeSetRepository.save(grade);
         gradesRepository.saveAll(grade.getGrades());
     }
+
+    @Override
+    public GradeModel findGradeById(long id) {
+        return gradesRepository.findById(id).get();
+    }
+
+    @Override
+    public void save(GradeModel gradeModel) {
+        gradesRepository.save(gradeModel);
+    }
 }

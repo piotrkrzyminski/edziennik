@@ -8,20 +8,20 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Encja opisująca przedmiot szkolny. Na przykład matematyka, język polski itd.
+ * Stores information's about school subject.
  */
 @Entity
 @Table(name = "subjects")
 public class SubjectModel extends AbstractItemModel {
 
     /**
-     * Nazwa przedmiotu. Na przykład matematyka
+     * Name of subject
      */
-    @Column(name = "name")
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
 
     /**
-     * Identyfikator nauczyciela prowadzącego przedmiot.
+     * Teacher conducting a subject.
      */
     @ManyToOne
     @JoinColumn(name = "teacher_id", nullable = false)

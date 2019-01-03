@@ -54,3 +54,17 @@ function myFunction(id) {
     console.log(popup);
     popup.classList.toggle("show");
 }
+
+function processSelectedOptionsForGrades() {
+    var classSelect = document.getElementById("class-select");
+    var subjectSelect = document.getElementById("subject-select");
+
+    var location = "/e-dziennik/grades/edit?";
+    if(subjectSelect == null) {
+        location += "classId=" + classSelect.value;
+    } else {
+        location += "classId=" + classSelect.value + "&subjectId=" + subjectSelect.value;
+    }
+
+    loadComponentByUrl(location);
+}

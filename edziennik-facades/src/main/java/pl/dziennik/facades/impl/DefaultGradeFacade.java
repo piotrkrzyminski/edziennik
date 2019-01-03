@@ -10,14 +10,15 @@ import pl.dziennik.core.services.user.GradesService;
 import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.core.services.user.TeacherService;
 import pl.dziennik.facades.GradeFacade;
+import pl.dziennik.facades.converters.CustomConverter;
 import pl.dziennik.facades.data.grades.AddGradeData;
 import pl.dziennik.facades.data.grades.AddGradeSetData;
 import pl.dziennik.facades.data.grades.GradeData;
-import pl.dziennik.facades.populators.Populator;
+import pl.dziennik.facades.data.user.StudentData;
 import pl.dziennik.model.meetings.SubjectModel;
 import pl.dziennik.model.user.*;
 
-import java.util.ArrayList;
+import javax.persistence.NoResultException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,37 +26,20 @@ import java.util.Set;
 @Component
 public class DefaultGradeFacade implements GradeFacade {
 
-    @Autowired
     private GradesService gradesService;
-
-    @Autowired
     private ClassService classService;
-
-    @Autowired
     private TeacherService teacherService;
-
-    @Autowired
     private StudentService studentService;
-
-    @Autowired
     private SubjectService subjectService;
-
-    @Autowired
-    private Populator<GradeModel, GradeData> gradeDataPopulator;
+    private CustomConverter<GradeModel, GradeData> gradeDataCustomConverter;
+    private CustomConverter<StudentModel, StudentData> studentDataCustomConverter;
 
     @Override
     public List<GradeData> getGradesForStudent(String email) {
         Validate.notBlank(email);
         final List<GradeModel> gradeModelList = gradesService.findGradesForStudent(email);
 
-        final List<GradeData> grades = new ArrayList<>();
-        for (GradeModel grade : gradeModelList) {
-            GradeData gradeData = new GradeData();
-            gradeDataPopulator.populate(grade, gradeData);
-            grades.add(gradeData);
-        }
-
-        return grades;
+        return gradeDataCustomConverter.convertAll(gradeModelList);
     }
 
     @Override
@@ -67,14 +51,33 @@ public class DefaultGradeFacade implements GradeFacade {
     @Override
     public List<GradeData> getGradesForStudentIdAndSubject(Long id, String subjectName) {
         final List<GradeModel> gradeModelList = gradesService.findGradesForStudentIdAndSubject(id, subjectName);
-        List<GradeData> grades = new ArrayList<>();
-        for(GradeModel gradeModel : gradeModelList) {
-            GradeData grade = new GradeData();
-            gradeDataPopulator.populate(gradeModel, grade);
-            grades.add(grade);
-        }
+        return gradeDataCustomConverter.convertAll(gradeModelList);
+    }
 
-        return grades;
+    @Override
+    public StudentData getStudentWithGrades(long studentId, long subjectId) throws NoResultException {
+
+        try {
+            final StudentModel student = studentService.getStudentById(studentId);
+            final SubjectModel subject = subjectService.getSubjectForId(subjectId);
+            final List<GradeModel> grades = gradesService.findGradesForStudentIdAndSubject(studentId, subject.getName());
+            List<GradeData> gradeDataList = gradeDataCustomConverter.convertAll(grades);
+            StudentData studentData = studentDataCustomConverter.convert(student);
+            studentData.setGrades(gradeDataList);
+
+            return studentData;
+        } catch (ItemNotFoundException e) {
+            throw new NoResultException("No student found for id " + studentId);
+        }
+    }
+
+    @Override
+    public void updateGradesForStudents(List<GradeData> grades) {
+        for(GradeData grade : grades) {
+            GradeModel gradeModel = gradesService.findGradeById(grade.getId());
+            gradeModel.setGrade(grade.getGradeDetails().getMark());
+            gradesService.save(gradeModel);
+        }
     }
 
     private GradeSetModel createGrade(AddGradeSetData gradeSetData) {
@@ -100,12 +103,10 @@ public class DefaultGradeFacade implements GradeFacade {
         }
 
         Set<GradeModel> grades = new HashSet<>();
-        for(AddGradeData gradeData : gradeSetData.getGrades()) {
+        for (AddGradeData gradeData : gradeSetData.getGrades()) {
             GradeModel gradeModel = new GradeModel();
             gradeModel.setGradeSet(gradeSetModel);
-            if (!gradeData.getMark().equals("0")) {
-                gradeModel.setGrade(Double.parseDouble(gradeData.getMark()));
-            }
+            gradeModel.setGrade(Double.parseDouble(gradeData.getMark()));
 
             gradeModel.setGradeSet(gradeSetModel);
 
@@ -123,5 +124,40 @@ public class DefaultGradeFacade implements GradeFacade {
         gradeSetModel.setGrades(grades);
 
         return gradeSetModel;
+    }
+
+    @Autowired
+    public void setGradesService(GradesService gradesService) {
+        this.gradesService = gradesService;
+    }
+
+    @Autowired
+    public void setClassService(ClassService classService) {
+        this.classService = classService;
+    }
+
+    @Autowired
+    public void setTeacherService(TeacherService teacherService) {
+        this.teacherService = teacherService;
+    }
+
+    @Autowired
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
+    @Autowired
+    public void setSubjectService(SubjectService subjectService) {
+        this.subjectService = subjectService;
+    }
+
+    @Autowired
+    public void setGradeDataCustomConverter(CustomConverter<GradeModel, GradeData> gradeDataCustomConverter) {
+        this.gradeDataCustomConverter = gradeDataCustomConverter;
+    }
+
+    @Autowired
+    public void setStudentDataCustomConverter(CustomConverter<StudentModel, StudentData> studentDataCustomConverter) {
+        this.studentDataCustomConverter = studentDataCustomConverter;
     }
 }

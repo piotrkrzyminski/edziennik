@@ -11,8 +11,10 @@ public class AvgGradeCalculator {
         double count = 0;
 
         for (GradeDetailsData grade : grades) {
-            sum += (grade.getMark() * grade.getWeight());
-            count += grade.getWeight();
+            if(grade.getMark() != 0) {
+                sum += (grade.getMark() * grade.getWeight());
+                count += grade.getWeight();
+            }
         }
 
         return sum / count;

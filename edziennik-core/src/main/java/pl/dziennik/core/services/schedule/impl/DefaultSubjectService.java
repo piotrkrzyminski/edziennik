@@ -58,4 +58,14 @@ public class DefaultSubjectService implements SubjectService {
 
         return subject;
     }
+
+    @Override
+    public SubjectModel getSubjectForId(long id) {
+        final SubjectModel subject = subjectRepository.findSubjectById(id);
+        if(subject == null) {
+            LOG.debug("Cannot find subject with id {}", id);
+        }
+
+        return subject;
+    }
 }

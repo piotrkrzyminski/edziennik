@@ -8,16 +8,28 @@ import javax.persistence.Table;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Teacher entity.
+ */
 @Entity
 @Table(name = "Teachers")
 public class TeacherModel extends UserModel {
 
+    /**
+     * Class whose guardian is the teacher.
+     */
     @OneToMany(mappedBy = "teacher")
     private Set<ClassModel> classModel;
 
+    /**
+     * Subject that the teacher leads
+     */
     @OneToMany(mappedBy = "teacher")
-    private Set<SubjectModel> subjects;
+    private List<SubjectModel> subjects;
 
+    /**
+     * Grades created by this teacher.
+     */
     @OneToMany(mappedBy = "teacher")
     private List<GradeSetModel> grades;
 
@@ -29,11 +41,11 @@ public class TeacherModel extends UserModel {
         this.classModel = classModel;
     }
 
-    public Set<SubjectModel> getSubjects() {
+    public List<SubjectModel> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(Set<SubjectModel> subjects) {
+    public void setSubjects(List<SubjectModel> subjects) {
         this.subjects = subjects;
     }
 

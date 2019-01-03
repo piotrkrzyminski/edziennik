@@ -6,14 +6,20 @@ import pl.dziennik.model.meetings.MeetingModel;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Presence entity.
+ */
 @Entity
 @Table(name = "presents")
-public class PresentModel extends AbstractItemModel {
+public class PresenceModel extends AbstractItemModel {
 
-    @Column(name = "is_present")
+    /**
+     * Is student was present on meeting.
+     */
+    @Column(name = "is_present", nullable = false)
     private boolean present;
 
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date date;
 

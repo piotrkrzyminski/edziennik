@@ -1,6 +1,9 @@
 package pl.dziennik.facades.data.user;
 
+import pl.dziennik.facades.data.grades.GradeData;
+
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class StudentData {
@@ -23,6 +26,8 @@ public class StudentData {
     private boolean present;
 
     private String grade;
+
+    private List<GradeData> grades;
 
     public String getFirstName() {
         return firstName;
@@ -98,6 +103,14 @@ public class StudentData {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public List<GradeData> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(List<GradeData> grades) {
+        this.grades = grades;
     }
 
     @Override
