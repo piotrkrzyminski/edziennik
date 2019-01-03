@@ -1,9 +1,11 @@
 package pl.dziennik.core.services.schedule;
 
+import pl.dziennik.model.meetings.SubjectModel;
 import pl.dziennik.model.user.ClassModel;
 import pl.dziennik.model.user.StudentModel;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ClassService {
 
@@ -15,5 +17,13 @@ public interface ClassService {
      */
     List<StudentModel> getStudentsFromClass(final String className);
 
+    List<StudentModel> getStudentsFromClass(final long classId);
+
     ClassModel getClassForName(final String name);
+
+    List<ClassModel> findAll();
+
+    ClassModel findById(final long id);
+
+    Set<SubjectModel> getAllSubjectsForClassById(final long id);
 }

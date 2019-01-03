@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<section th:fragment="selectData" class="well">
+    <th:block sec:authorize="hasAuthority('TEACHER')">
+        <div>
+            <div class="form-group">
+                <div class="input-group">
+                    <th:block th:if="${param.classId == null}">
+                        <label for="class-select">Wybierz klasę</label>
+                        <select class="form-control" id="class-select" onchange="processSelectedOptionsForGrades()">
+                            <option value="-" th:text="'-'" selected></option>
+                            <option th:each="schoolClass : ${classes}" th:value="${schoolClass.id}" th:text="${schoolClass.name}"></option>
+                        </select>
+                    </th:block>
+                    <th:block th:unless="${param.classId == null}">
+                        <input type="hidden" id="class-select" th:value="${selectedClassId}"/>
+                        <label for="class-select">Wybierz przedmiot</label>
+                        <select class="form-control" id="subject-select" onchange="processSelectedOptionsForGrades()">
+                            <option value="-" th:text="'-'" selected></option>
+                            <option th:each="schoolClass : ${subjects}" th:value="${schoolClass.id}" th:text="${schoolClass.name}"></option>
+                        </select>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutaj ładowny jest widok dla listy obecności oraz dodawania oceny. Domyślnie jest on pusty -->
+        <div id="content-inner">
+
+        </div>
+    </th:block>
+</section>
+</html>

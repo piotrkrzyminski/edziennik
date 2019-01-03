@@ -7,27 +7,42 @@ import pl.dziennik.model.user.TeacherModel;
 import javax.persistence.*;
 
 /**
- * Encja przechująca informacje na temat spotkania takie jak tego data i z jakiego przedmiotu.
+ * Stores each meeting information's.
  */
 @Entity
 @Table(name = "meetings")
 public class MeetingModel extends AbstractItemModel {
 
-    @Column(name = "week_number")
+    /**
+     * Week number. 1 is monday, 7 is sunday.
+     */
+    @Column(name = "week_number", nullable = false)
     private int weekNumber;
 
+    /**
+     * Subject name which take place.
+     */
     @ManyToOne
     @JoinColumn(name = "subject_id")
     private SubjectModel subject;
 
+    /**
+     * Class that has this meeting.
+     */
     @ManyToOne
     @JoinColumn(name = "class_id")
     private ClassModel classModel;
 
+    /**
+     * Teacher leading this meeting.
+     */
     @ManyToOne
     @JoinColumn(name = "teacher_id")
     private TeacherModel teacher;
 
+    /**
+     * Time of meeting.
+     */
     @ManyToOne
     @JoinColumn(name = "meeting_hour_id")
     private MeetingHoursModel meetingHour;

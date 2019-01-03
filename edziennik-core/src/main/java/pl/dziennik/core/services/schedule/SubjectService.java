@@ -21,4 +21,6 @@ public interface SubjectService {
      * @return przedmiot o podanej nazwie.
      */
     SubjectModel getSubjectForName(final String name);
+
+    SubjectModel getSubjectForId(final long id);
 }

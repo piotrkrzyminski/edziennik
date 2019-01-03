@@ -18,4 +18,8 @@ public interface GradesService {
     List<GradeModel> findGradesForStudentIdAndSubject(long id, String subjectName);
 
     void save(GradeSetModel grade);
+
+    GradeModel findGradeById(final long id);
+
+    void save(GradeModel gradeModel);
 }

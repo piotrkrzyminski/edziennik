@@ -10,7 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.dziennik.core.services.meetings.PresentService;
+import pl.dziennik.core.services.meetings.PresenceService;
 import pl.dziennik.core.services.user.StudentService;
 import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.MeetingFacade;
@@ -52,7 +52,7 @@ public class MeetingsComponentController extends PageController {
     private ClassFacade classFacade;
 
     @Autowired
-    private PresentService presentService;
+    private PresenceService presenceService;
 
     @Autowired
     private StudentService studentService;
@@ -126,7 +126,7 @@ public class MeetingsComponentController extends PageController {
         }
 
         for (StudentData student : students) {
-            student.setPresent(presentService.isStudentPresentOnMeeting(date, (long) id, student.getId()));
+            student.setPresent(presenceService.isStudentPresentOnMeeting(date, (long) id, student.getId()));
         }
 
         presentForm.setStudents(students);

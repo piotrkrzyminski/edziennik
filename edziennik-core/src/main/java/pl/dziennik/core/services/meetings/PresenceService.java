@@ -1,26 +1,26 @@
 package pl.dziennik.core.services.meetings;
 
-import pl.dziennik.model.user.PresentModel;
+import pl.dziennik.model.user.PresenceModel;
 
 import java.util.Date;
 import java.util.List;
 
-public interface PresentService {
+public interface PresenceService {
 
     /**
      * Zapisuje informacje o obecnosci.
      *
      * @param present obiekt przechowujący informacje o obecności.
      */
-    void save(PresentModel present);
+    void save(PresenceModel present);
 
     /**
      * Zapisuje listę danych.
      *
      * @param presentList lista informacji o obecnosci.
      */
-    default void saveAll(List<PresentModel> presentList) {
-        for (PresentModel present : presentList) {
+    default void saveAll(List<PresenceModel> presentList) {
+        for (PresenceModel present : presentList) {
             save(present);
         }
     }

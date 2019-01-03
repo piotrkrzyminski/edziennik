@@ -26,4 +26,7 @@ public interface SubjectRepository extends JpaRepository<SubjectModel, Long> {
      */
     @Query("SELECT s FROM SubjectModel s WHERE s.name = ?1")
     SubjectModel findSubjectByName(final String name);
+
+    @Query("SELECT s FROM SubjectModel s WHERE s.id = ?1")
+    SubjectModel findSubjectById(final long id);
 }

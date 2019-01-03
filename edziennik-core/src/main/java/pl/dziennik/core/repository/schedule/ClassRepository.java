@@ -18,6 +18,9 @@ public interface ClassRepository extends JpaRepository<ClassModel, Long> {
     @Query("SELECT s FROM ClassModel c INNER JOIN c.students s WHERE c.name = ?1 ORDER BY s.surname ASC")
     List<StudentModel> findAllStudentsFromClassByName(final String name);
 
+    @Query("SELECT s FROM ClassModel c INNER JOIN c.students s WHERE c.id = ?1 ORDER BY s.surname ASC")
+    List<StudentModel> findAllStudentsFromClassById(final long classId);
+
     @Query("SELECT c FROM ClassModel c WHERE c.name = ?1")
     ClassModel findClassByName(final String name);
 }

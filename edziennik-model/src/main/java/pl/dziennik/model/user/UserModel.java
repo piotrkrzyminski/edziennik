@@ -5,32 +5,59 @@ import pl.dziennik.model.AbstractItemModel;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Entity stores shared basic user data.
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class UserModel extends AbstractItemModel {
 
-    @Column(name = "first_name")
+    /**
+     * First name of user.
+     */
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
+    /**
+     * Second name
+     */
     @Column(name = "second_name")
     private String secondName;
 
-    @Column(name = "surname")
+    /**
+     * User's surname.
+     */
+    @Column(name = "surname", nullable = false)
     private String surname;
 
-    @Column(name = "pesel")
+    /**
+     * User's pesel.
+     */
+    @Column(name = "pesel", nullable = false)
     private String pesel;
 
+    /**
+     * Birth date of user.
+     */
     @Column(name = "birth_date")
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
-    @Column(name = "email")
+    /**
+     * User's email.
+     */
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "password")
+    /**
+     * User's password.
+     */
+    @Column(name = "password", nullable = false)
     private String password;
 
+    /**
+     * User's role.
+     */
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private RoleModel role;

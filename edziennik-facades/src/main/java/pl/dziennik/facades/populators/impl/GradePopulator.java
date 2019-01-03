@@ -1,4 +1,4 @@
-package pl.dziennik.facades.populators.grades;
+package pl.dziennik.facades.populators.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -7,17 +7,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import pl.dziennik.core.services.user.TeacherService;
 import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.GradeFacade;
 import pl.dziennik.facades.MeetingFacade;
-import pl.dziennik.facades.data.grades.*;
+import pl.dziennik.facades.data.grades.AddGradeData;
+import pl.dziennik.facades.data.grades.AddGradeSetData;
+import pl.dziennik.facades.data.grades.GradeData;
+import pl.dziennik.facades.data.grades.GradeDetailsData;
 import pl.dziennik.facades.data.meetings.MeetingData;
+import pl.dziennik.facades.data.user.ClassData;
 import pl.dziennik.facades.data.user.StudentData;
 import pl.dziennik.front.forms.AddGradeForm;
+import pl.dziennik.front.forms.StudentGradesForm;
 import pl.dziennik.front.utils.AvgGradeCalculator;
+import pl.dziennik.model.user.TeacherModel;
 
 import javax.validation.Valid;
 import java.text.ParseException;
@@ -26,7 +31,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping(value = "/grades")
-public class AddGradeComponent {
+public class AddGradeComponentController extends PageController {
 
     @Autowired
     private ClassFacade classFacade;
@@ -36,6 +41,59 @@ public class AddGradeComponent {
 
     @Autowired
     private GradeFacade gradeFacade;
+
+    @Autowired
+    private TeacherService teacherService;
+
+    @GetMapping(value = "/edit")
+    public String getAllGrades(@RequestParam(required = false) Long classId, @RequestParam(required = false) Long subjectId, final Model model) {
+
+        if (classId == null) {
+            model.addAttribute("dataNotSet", true);
+            model.addAttribute("classes", classFacade.findAll());
+
+            return ControllerConstants.Fragments.setGradesEditInitData;
+        }
+
+        if (subjectId == null) {
+            model.addAttribute("dataNotSet", true);
+            model.addAttribute("selectedClassId", classId);
+            model.addAttribute("subjects", classFacade.findSubjectsForClass(classId));
+
+            return ControllerConstants.Fragments.setGradesEditInitData;
+        }
+
+        final String userEmail = currentUserName(model);
+        TeacherModel teacher = teacherService.getTeacherForEmail(userEmail);
+        if (teacher == null) {
+            return "redirect:/";
+        }
+
+        StudentGradesForm studentGradesForm = new StudentGradesForm();
+        final List<StudentData> students = classFacade.getStudentsFromClas(classId);
+        List<StudentData> studentsWithGrades = new ArrayList<>();
+        for (StudentData studentData : students) {
+            studentsWithGrades.add(gradeFacade.getStudentWithGrades(studentData.getId(), subjectId));
+        }
+
+        studentGradesForm.setStudents(studentsWithGrades);
+        model.addAttribute("studentsGradesForm", studentGradesForm);
+
+        return ControllerConstants.Fragments.studentGradesForSubject;
+    }
+
+    @PostMapping(value = "/edit")
+    public String processGradesEdit(@ModelAttribute StudentGradesForm studentGradesForm, final Model model) {
+
+        List<GradeData> gradesToUpdate = new ArrayList<>();
+        for(StudentData student : studentGradesForm.getStudents()) {
+            gradesToUpdate.addAll(student.getGrades());
+        }
+
+        gradeFacade.updateGradesForStudents(gradesToUpdate);
+
+        return "redirect:/";
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String getView(@RequestParam(value = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date,
@@ -54,18 +112,18 @@ public class AddGradeComponent {
             form.setStudents(students);
 
             Map<StudentData, List<GradeData>> gradesMap = new HashMap<>();
-            for(StudentData student : students) {
+            for (StudentData student : students) {
                 List<GradeData> grades = gradeFacade.getGradesForStudentIdAndSubject(student.getId(), meeting.getSubjectName());
                 gradesMap.put(student, grades);
             }
 
             for (Map.Entry<StudentData, List<GradeData>> grade : gradesMap.entrySet()) {
                 List<GradeDetailsData> gradeDetailsDataList = new ArrayList<>();
-                for(GradeData gradeData : grade.getValue()) {
+                for (GradeData gradeData : grade.getValue()) {
                     gradeDetailsDataList.add(gradeData.getGradeDetails());
                 }
                 double avg = AvgGradeCalculator.getAverageGrade(gradeDetailsDataList);
-                for(GradeData gradeData : grade.getValue()) {
+                for (GradeData gradeData : grade.getValue()) {
                     gradeData.setAvgGrade(avg);
                 }
             }
@@ -115,10 +173,16 @@ public class AddGradeComponent {
 
         List<AddGradeData> grades = new ArrayList<>();
         for (StudentData student : addGradeForm.getStudents()) {
-            if(!student.getGrade().equals("0")) {
+            if (!student.getGrade().equals("0")) {
                 AddGradeData grade = new AddGradeData();
                 grade.setStudentId(student.getId());
                 grade.setMark(student.getGrade());
+
+                grades.add(grade);
+            } else {
+                AddGradeData grade = new AddGradeData();
+                grade.setStudentId(student.getId());
+                grade.setMark(String.valueOf(0));
 
                 grades.add(grade);
             }

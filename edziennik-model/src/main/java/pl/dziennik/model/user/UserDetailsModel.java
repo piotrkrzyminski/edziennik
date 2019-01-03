@@ -10,12 +10,24 @@ import java.util.Collection;
  */
 public class UserDetailsModel implements UserDetails {
 
+    /**
+     * Collection of user's roles.
+     */
     private Collection<SimpleGrantedAuthority> authorities;
 
+    /**
+     * User's email.
+     */
     private String username;
 
+    /**
+     * User's password.
+     */
     private String password;
 
+    /**
+     * Is user account enabled.
+     */
     private boolean enabled = true;
 
     @Override

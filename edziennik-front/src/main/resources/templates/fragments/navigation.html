@@ -3,8 +3,6 @@
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:th="http://www.thymeleaf.org"
         xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<!-- Fragment od nawigacji wyświetlający linki do innych funkcjonalności. Każdy link pozwoli na asynchroniczne pobranie
-    zawartości i wklejenie jej w sekcje content -->
 <div th:fragment="navigation">
     <div class="row" style="margin-right: 5px;">
         <div class="menu position-f well">
@@ -16,7 +14,12 @@
                     <a class="menu-element section-link" href="/e-dziennik/ogloszenia">Ogłoszenia</a>
                 </li>
                 <li>
-                    <a class="menu-element section-link" href="/e-dziennik/grade">oceny</a>
+                    <th:block sec:authorize="hasAuthority('TEACHER')">
+                        <a class="menu-element section-link" href="/e-dziennik/grades/edit">Edycja ocen</a>
+                    </th:block>
+                    <th:block sec:authorize="hasAuthority('STUDENT')">
+                        <a class="menu-element section-link" href="/e-dziennik/grade">Moje oceny</a>
+                    </th:block>
                 </li>
                 <li>
                     <a class="menu-element section-link" href="/e-dziennik/klasa">moja klasa</a>

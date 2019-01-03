@@ -4,19 +4,31 @@ import pl.dziennik.model.AbstractItemModel;
 
 import javax.persistence.*;
 
+/**
+ * School grade entity.
+ */
 @Entity
 @Table(name = "grades")
 public class GradeModel extends AbstractItemModel {
 
+    /**
+     * The student who got the grade
+     */
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private StudentModel student;
 
+    /**
+     * Details information about grade like title, weight etc.
+     */
     @ManyToOne
     @JoinColumn(name = "grade_set_id", nullable = false)
     private GradeSetModel gradeSet;
 
-    @Column(name = "grade")
+    /**
+     * Grade value.
+     */
+    @Column(name = "grade", nullable = false)
     private Double grade;
 
     public StudentModel getStudent() {

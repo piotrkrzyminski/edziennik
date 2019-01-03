@@ -6,8 +6,8 @@ import javax.persistence.*;
 public abstract class AbstractItemModel {
 
     @Id
-    @SequenceGenerator(name="seq", initialValue=1000)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+    @SequenceGenerator(name = "seq", initialValue = 1000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     private Long id;
 
     public Long getId() {
