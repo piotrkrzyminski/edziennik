@@ -1,9 +1,9 @@
 package pl.dziennik.facades.populators.impl;
 
 import org.springframework.stereotype.Component;
-import pl.dziennik.facades.data.grades.SubjectData;
+import pl.dziennik.facades.data.SubjectData;
 import pl.dziennik.facades.populators.Populator;
-import pl.dziennik.model.meetings.SubjectModel;
+import pl.dziennik.model.SubjectModel;
 
 @Component
 public class SubjectPopulator implements Populator<SubjectModel, SubjectData> {

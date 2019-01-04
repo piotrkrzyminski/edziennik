@@ -1,9 +1,8 @@
 package pl.dziennik.front.forms;
 
-import pl.dziennik.facades.data.user.StudentData;
+import pl.dziennik.facades.data.StudentData;
 
 import java.util.List;
-import java.util.Map;
 
 public class PresentForm {
 

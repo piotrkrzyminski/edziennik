@@ -10,21 +10,19 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.dziennik.core.services.meetings.PresenceService;
-import pl.dziennik.core.services.user.StudentService;
+import pl.dziennik.core.services.PresenceService;
+import pl.dziennik.core.services.StudentService;
 import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.MeetingFacade;
 import pl.dziennik.facades.PresentFacade;
-import pl.dziennik.facades.data.meetings.MeetingData;
-import pl.dziennik.facades.data.meetings.PresentData;
-import pl.dziennik.facades.data.user.StudentData;
+import pl.dziennik.facades.data.MeetingData;
+import pl.dziennik.facades.data.PresentData;
+import pl.dziennik.facades.data.StudentData;
 import pl.dziennik.facades.exceptions.SaveItemException;
 import pl.dziennik.front.forms.MeetingForm;
 import pl.dziennik.front.forms.PresentForm;
-import pl.dziennik.model.user.ClassModel;
+import pl.dziennik.model.ClassModel;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,34 +40,23 @@ public class MeetingsComponentController extends PageController {
 
     private static final Logger LOG = LoggerFactory.getLogger(MeetingsComponentController.class);
 
-    @Autowired
     private MeetingFacade meetingFacade;
-
-    @Autowired
     private PresentFacade presentFacade;
-
-    @Autowired
     private ClassFacade classFacade;
-
-    @Autowired
     private PresenceService presenceService;
-
-    @Autowired
     private StudentService studentService;
 
     /**
      * Zwraca komponent z danymi dotyczącymi spotkań, które odbywają się w tygodniu dla dnia podanego w parametrze.
      * Jeżeli data nie jest podana to zwraca dla aktualnego dnia.
      *
-     * @param date     dzień dla którego należy znaleźć spotkania.
-     * @param request  http request.
-     * @param response http response.
-     * @param model    model.
+     * @param date  dzień dla którego należy znaleźć spotkania.
+     * @param model model.
      * @return widok komponentu spotkań.
      */
     @RequestMapping(method = RequestMethod.GET)
     public String getMeetingPage(@RequestParam("date") @DateTimeFormat(pattern = "dd-MM-yyyy") Optional<Date> date,
-                                 final HttpServletRequest request, final HttpServletResponse response, final Model model) {
+                                 final Model model) {
 
         Date seachDate = new Date();
         if (date.isPresent()) {
@@ -87,7 +74,7 @@ public class MeetingsComponentController extends PageController {
      */
     @RequestMapping(value = "/details", method = RequestMethod.GET)
     public String getMeetingDetailsPage(@RequestParam(value = "date") @DateTimeFormat(pattern = "dd.MM.yyyy") Date date,
-                                        @RequestParam(value = "id") int id, final Model model) throws ParseException {
+                                        @RequestParam(value = "id") int id, final Model model) {
 
         final String role = getUserRole(model);
 
@@ -194,5 +181,30 @@ public class MeetingsComponentController extends PageController {
 
             model.addAttribute("meetings", meetings);
         }
+    }
+
+    @Autowired
+    public void setMeetingFacade(MeetingFacade meetingFacade) {
+        this.meetingFacade = meetingFacade;
+    }
+
+    @Autowired
+    public void setPresentFacade(PresentFacade presentFacade) {
+        this.presentFacade = presentFacade;
+    }
+
+    @Autowired
+    public void setClassFacade(ClassFacade classFacade) {
+        this.classFacade = classFacade;
+    }
+
+    @Autowired
+    public void setPresenceService(PresenceService presenceService) {
+        this.presenceService = presenceService;
+    }
+
+    @Autowired
+    public void setStudentService(StudentService studentService) {
+        this.studentService = studentService;
     }
 }

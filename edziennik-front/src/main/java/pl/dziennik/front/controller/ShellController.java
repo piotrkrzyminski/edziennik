@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ShellController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getShellPage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
+    public String getShellPage() {
 
         return ControllerConstants.Pages.Shell;
     }

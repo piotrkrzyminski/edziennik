@@ -1,9 +1,9 @@
 package pl.dziennik.facades.populators.impl;
 
 import org.springframework.stereotype.Component;
-import pl.dziennik.facades.data.meetings.MeetingHourData;
+import pl.dziennik.facades.data.MeetingHourData;
 import pl.dziennik.facades.populators.Populator;
-import pl.dziennik.model.meetings.MeetingHoursModel;
+import pl.dziennik.model.MeetingHoursModel;
 
 import java.text.SimpleDateFormat;
 

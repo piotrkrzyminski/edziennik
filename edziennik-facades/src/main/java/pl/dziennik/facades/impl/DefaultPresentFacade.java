@@ -3,15 +3,15 @@ package pl.dziennik.facades.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dziennik.core.exceptions.ItemNotFoundException;
-import pl.dziennik.core.services.meetings.MeetingService;
-import pl.dziennik.core.services.meetings.PresenceService;
-import pl.dziennik.core.services.user.StudentService;
+import pl.dziennik.core.services.MeetingService;
+import pl.dziennik.core.services.PresenceService;
+import pl.dziennik.core.services.StudentService;
 import pl.dziennik.facades.PresentFacade;
-import pl.dziennik.facades.data.meetings.PresentData;
+import pl.dziennik.facades.data.PresentData;
 import pl.dziennik.facades.exceptions.SaveItemException;
-import pl.dziennik.model.meetings.MeetingModel;
-import pl.dziennik.model.user.PresenceModel;
-import pl.dziennik.model.user.StudentModel;
+import pl.dziennik.model.MeetingModel;
+import pl.dziennik.model.PresenceModel;
+import pl.dziennik.model.StudentModel;
 
 @Component
 public class DefaultPresentFacade implements PresentFacade {

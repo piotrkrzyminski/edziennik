@@ -2,9 +2,9 @@ package pl.dziennik.facades.populators.impl;
 
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Component;
-import pl.dziennik.facades.data.user.StudentData;
+import pl.dziennik.facades.data.StudentData;
 import pl.dziennik.facades.populators.Populator;
-import pl.dziennik.model.user.StudentModel;
+import pl.dziennik.model.StudentModel;
 
 /**
  * Populator dla obiektów studenta.

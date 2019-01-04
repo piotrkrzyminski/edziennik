@@ -8,21 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.dziennik.core.services.user.TeacherService;
+import pl.dziennik.core.services.TeacherService;
 import pl.dziennik.facades.ClassFacade;
 import pl.dziennik.facades.GradeFacade;
 import pl.dziennik.facades.MeetingFacade;
-import pl.dziennik.facades.data.grades.AddGradeData;
-import pl.dziennik.facades.data.grades.AddGradeSetData;
-import pl.dziennik.facades.data.grades.GradeData;
-import pl.dziennik.facades.data.grades.GradeDetailsData;
-import pl.dziennik.facades.data.meetings.MeetingData;
-import pl.dziennik.facades.data.user.ClassData;
-import pl.dziennik.facades.data.user.StudentData;
+import pl.dziennik.facades.data.*;
 import pl.dziennik.front.forms.AddGradeForm;
 import pl.dziennik.front.forms.StudentGradesForm;
 import pl.dziennik.front.utils.AvgGradeCalculator;
-import pl.dziennik.model.user.TeacherModel;
+import pl.dziennik.model.TeacherModel;
 
 import javax.validation.Valid;
 import java.text.ParseException;
@@ -33,16 +27,9 @@ import java.util.*;
 @RequestMapping(value = "/grades")
 public class AddGradeComponentController extends PageController {
 
-    @Autowired
     private ClassFacade classFacade;
-
-    @Autowired
     private MeetingFacade meetingFacade;
-
-    @Autowired
     private GradeFacade gradeFacade;
-
-    @Autowired
     private TeacherService teacherService;
 
     @GetMapping(value = "/edit")
@@ -72,25 +59,29 @@ public class AddGradeComponentController extends PageController {
         StudentGradesForm studentGradesForm = new StudentGradesForm();
         final List<StudentData> students = classFacade.getStudentsFromClas(classId);
         List<StudentData> studentsWithGrades = new ArrayList<>();
+        List<FinalGradeData> finalGrades = new ArrayList<>();
         for (StudentData studentData : students) {
             studentsWithGrades.add(gradeFacade.getStudentWithGrades(studentData.getId(), subjectId));
+            finalGrades.add(gradeFacade.getFinalGradeForSubjectAndStudent(subjectId, studentData.getId()));
         }
 
         studentGradesForm.setStudents(studentsWithGrades);
+        studentGradesForm.setFinalGrades(finalGrades);
         model.addAttribute("studentsGradesForm", studentGradesForm);
 
         return ControllerConstants.Fragments.studentGradesForSubject;
     }
 
     @PostMapping(value = "/edit")
-    public String processGradesEdit(@ModelAttribute StudentGradesForm studentGradesForm, final Model model) {
+    public String processGradesEdit(@ModelAttribute StudentGradesForm studentGradesForm) {
 
         List<GradeData> gradesToUpdate = new ArrayList<>();
-        for(StudentData student : studentGradesForm.getStudents()) {
+        for (StudentData student : studentGradesForm.getStudents()) {
             gradesToUpdate.addAll(student.getGrades());
         }
 
         gradeFacade.updateGradesForStudents(gradesToUpdate);
+        gradeFacade.saveFinalGrades(studentGradesForm.getFinalGrades());
 
         return "redirect:/";
     }
@@ -139,7 +130,7 @@ public class AddGradeComponentController extends PageController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveGrade(@Valid AddGradeForm addGradeForm, final BindingResult bindingResult, final Model model)
+    public String saveGrade(@Valid AddGradeForm addGradeForm, final BindingResult bindingResult)
             throws ParseException {
 
         if (bindingResult.hasErrors()) {
@@ -191,5 +182,25 @@ public class AddGradeComponentController extends PageController {
         addGradeSetData.setGrades(grades);
 
         return addGradeSetData;
+    }
+
+    @Autowired
+    public void setClassFacade(ClassFacade classFacade) {
+        this.classFacade = classFacade;
+    }
+
+    @Autowired
+    public void setMeetingFacade(MeetingFacade meetingFacade) {
+        this.meetingFacade = meetingFacade;
+    }
+
+    @Autowired
+    public void setGradeFacade(GradeFacade gradeFacade) {
+        this.gradeFacade = gradeFacade;
+    }
+
+    @Autowired
+    public void setTeacherService(TeacherService teacherService) {
+        this.teacherService = teacherService;
     }
 }

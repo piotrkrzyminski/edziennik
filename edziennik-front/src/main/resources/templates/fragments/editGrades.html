@@ -13,20 +13,40 @@
                     <th style="width: 170px !important;">Imię</th>
                     <th style="width: 170px !important;">Nazwisko</th>
                     <th style="width: 320px !important;">Oceny</th>
+                    <th style="width: 320px !important;">Ocena końcowa</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="student,iterStat : *{students}">
-                    <input type="hidden" th:name="studentId" th:field="*{students[__${iterStat.index}__].id}" readonly="true"/>
+                    <input type="hidden" th:name="studentId" th:field="*{students[__${iterStat.index}__].id}"
+                           readonly="true"/>
                     <td th:text="${student.firstName}"></td>
                     <td th:text="${student.surname}"></td>
                     <td>
                         <th:block th:each="grade, gradeIter : ${student.grades}">
-                            <input type="hidden" th:name="gradeId" th:field="*{students[__${iterStat.index}__].grades[__${gradeIter.index}__].id}" readonly="true"/>
-                            <input th:value="${grade.gradeDetails.mark}" th:field="*{students[__${iterStat.index}__].grades[__${gradeIter.index}__].gradeDetails.mark}"
-                                   style="width: 50px !important;" type="text" data-toggle="tooltip" data-placement="top" th:title="${grade.gradeDetails.title} +
+                            <input type="hidden" th:name="gradeId"
+                                   th:field="*{students[__${iterStat.index}__].grades[__${gradeIter.index}__].id}"
+                                   readonly="true"/>
+                            <input class="form-control" th:value="${grade.gradeDetails.mark}"
+                                   th:field="*{students[__${iterStat.index}__].grades[__${gradeIter.index}__].gradeDetails.mark}"
+                                   style="width: 50px !important; float: left;" type="text" data-toggle="tooltip"
+                                   data-placement="top" th:title="${grade.gradeDetails.title} +
                                    ', waga: ' + ${grade.gradeDetails.weight}"/>
                         </th:block>
+                    </td>
+                    <td>
+                        <input type="hidden" th:name="id"
+                               th:field="*{finalGrades[__${iterStat.index}__].id}"
+                               readonly="true"/>
+                        <input type="hidden" th:name="studentId"
+                               th:field="*{finalGrades[__${iterStat.index}__].studentId}"
+                               readonly="true"/>
+                        <input type="hidden" th:name="subjectId"
+                               th:field="*{finalGrades[__${iterStat.index}__].subjectId}"
+                               readonly="true"/>
+                        <input class="form-control" th:value="*{finalGrades[__${iterStat.index}__].mark}"
+                               th:field="*{finalGrades[__${iterStat.index}__].mark}"
+                               style="width: 50px !important; float: left;" type="text"/>
                     </td>
                 </tr>
                 </tbody>
@@ -34,8 +54,8 @@
         </div>
         <div class="row justify-content-end">
             <div class="col-4">
-                <!-- href na plan : /edziennik/meetings -->
-                <button type="button" class="btn btn-sm btn-secondary btn-block" onclick="returnToMeetings();">Anuluj</button>
+                <button type="button" class="btn btn-sm btn-secondary btn-block" onclick="returnToMeetings();">Anuluj
+                </button>
             </div>
             <div class="col-4">
                 <button class="btn btn-sm btn-primary btn-block" type="submit">Zapisz</button>

@@ -3,9 +3,9 @@ package pl.dziennik.facades.converters.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dziennik.facades.converters.CustomConverter;
-import pl.dziennik.facades.data.grades.GradeData;
+import pl.dziennik.facades.data.GradeData;
 import pl.dziennik.facades.populators.Populator;
-import pl.dziennik.model.user.GradeModel;
+import pl.dziennik.model.GradeModel;
 
 @Component
 public class GradeConverter implements CustomConverter<GradeModel, GradeData> {

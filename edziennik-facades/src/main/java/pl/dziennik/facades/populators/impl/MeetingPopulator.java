@@ -2,10 +2,10 @@ package pl.dziennik.facades.populators.impl;
 
 import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Component;
-import pl.dziennik.facades.data.meetings.MeetingData;
+import pl.dziennik.facades.data.MeetingData;
 import pl.dziennik.facades.enums.WeekNameEnum;
 import pl.dziennik.facades.populators.Populator;
-import pl.dziennik.model.meetings.MeetingModel;
+import pl.dziennik.model.MeetingModel;
 
 import java.util.Calendar;
 import java.util.Date;

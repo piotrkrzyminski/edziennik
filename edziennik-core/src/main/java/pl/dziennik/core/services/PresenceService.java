@@ -1,0 +1,29 @@
+package pl.dziennik.core.services;
+
+import pl.dziennik.model.PresenceModel;
+
+import java.util.Date;
+import java.util.List;
+
+public interface PresenceService {
+
+    /**
+     * Zapisuje informacje o obecnosci.
+     *
+     * @param present obiekt przechowujący informacje o obecności.
+     */
+    void save(PresenceModel present);
+
+    /**
+     * Zapisuje listę danych.
+     *
+     * @param presentList lista informacji o obecnosci.
+     */
+    default void saveAll(List<PresenceModel> presentList) {
+        for (PresenceModel present : presentList) {
+            save(present);
+        }
+    }
+
+    boolean isStudentPresentOnMeeting(final Date date,final Long meetingId, final Long studentId);
+}

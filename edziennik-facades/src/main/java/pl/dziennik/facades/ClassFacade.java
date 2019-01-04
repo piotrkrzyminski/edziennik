@@ -1,8 +1,8 @@
 package pl.dziennik.facades;
 
-import pl.dziennik.facades.data.grades.SubjectData;
-import pl.dziennik.facades.data.user.ClassData;
-import pl.dziennik.facades.data.user.StudentData;
+import pl.dziennik.facades.data.SubjectData;
+import pl.dziennik.facades.data.ClassData;
+import pl.dziennik.facades.data.StudentData;
 
 import java.util.List;
 

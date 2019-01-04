@@ -1,9 +1,6 @@
 package pl.dziennik.facades;
 
-import pl.dziennik.facades.data.grades.AddGradeData;
-import pl.dziennik.facades.data.grades.AddGradeSetData;
-import pl.dziennik.facades.data.grades.GradeData;
-import pl.dziennik.facades.data.user.StudentData;
+import pl.dziennik.facades.data.*;
 
 import javax.persistence.NoResultException;
 import java.util.List;
@@ -25,4 +22,8 @@ public interface GradeFacade {
     void saveAllGrades(AddGradeSetData grades);
 
     void updateGradesForStudents(List<GradeData> grades);
+
+    void saveFinalGrades(List<FinalGradeData> finalGradeDataList);
+
+    FinalGradeData getFinalGradeForSubjectAndStudent(final long subjectId, final long studentId);
 }

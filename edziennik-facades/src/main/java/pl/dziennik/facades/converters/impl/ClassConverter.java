@@ -2,8 +2,8 @@ package pl.dziennik.facades.converters.impl;
 
 import org.springframework.stereotype.Component;
 import pl.dziennik.facades.converters.CustomConverter;
-import pl.dziennik.facades.data.user.ClassData;
-import pl.dziennik.model.user.ClassModel;
+import pl.dziennik.facades.data.ClassData;
+import pl.dziennik.model.ClassModel;
 
 @Component
 public class ClassConverter implements CustomConverter<ClassModel, ClassData> {

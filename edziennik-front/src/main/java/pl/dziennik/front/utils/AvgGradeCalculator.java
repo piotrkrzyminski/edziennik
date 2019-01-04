@@ -1,6 +1,6 @@
 package pl.dziennik.front.utils;
 
-import pl.dziennik.facades.data.grades.GradeDetailsData;
+import pl.dziennik.facades.data.GradeDetailsData;
 
 import java.util.List;
 
@@ -17,6 +17,10 @@ public class AvgGradeCalculator {
             }
         }
 
-        return sum / count;
+        if(count > 0) {
+            return sum / count;
+        }
+
+        return 0;
     }
 }

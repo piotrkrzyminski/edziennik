@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class HomeController extends PageController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getHomePage(final HttpServletRequest request, final HttpServletResponse response, final Model model) {
+    public String getHomePage(final Model model) {
         currentUserName(model);
 
         return ControllerConstants.Pages.HomePage;

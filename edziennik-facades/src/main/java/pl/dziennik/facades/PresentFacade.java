@@ -1,6 +1,6 @@
 package pl.dziennik.facades;
 
-import pl.dziennik.facades.data.meetings.PresentData;
+import pl.dziennik.facades.data.PresentData;
 import pl.dziennik.facades.exceptions.SaveItemException;
 
 import java.util.List;

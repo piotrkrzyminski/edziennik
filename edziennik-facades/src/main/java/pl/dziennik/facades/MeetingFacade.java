@@ -1,7 +1,7 @@
 package pl.dziennik.facades;
 
-import pl.dziennik.facades.data.meetings.MeetingData;
-import pl.dziennik.facades.data.meetings.MeetingHourData;
+import pl.dziennik.facades.data.MeetingData;
+import pl.dziennik.facades.data.MeetingHourData;
 
 import java.util.Date;
 import java.util.List;

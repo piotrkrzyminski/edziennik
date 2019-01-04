@@ -2,11 +2,11 @@ package pl.dziennik.facades.populators.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dziennik.facades.data.grades.GradeData;
-import pl.dziennik.facades.data.grades.GradeDetailsData;
+import pl.dziennik.facades.data.GradeData;
+import pl.dziennik.facades.data.GradeDetailsData;
 import pl.dziennik.facades.populators.Populator;
-import pl.dziennik.model.user.GradeModel;
-import pl.dziennik.model.user.GradeSetModel;
+import pl.dziennik.model.GradeModel;
+import pl.dziennik.model.GradeSetModel;
 
 @Component
 public class GradePopulator implements Populator<GradeModel, GradeData> {

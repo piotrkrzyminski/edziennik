@@ -1,5 +1,8 @@
 package pl.dziennik.core.services.exception;
 
+/**
+ * Exception thrown when User cannot be found in datasource.
+ */
 public class UserNotFoundException extends Exception {
 
     /**

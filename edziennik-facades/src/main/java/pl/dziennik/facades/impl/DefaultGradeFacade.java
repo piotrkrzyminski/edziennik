@@ -4,19 +4,15 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dziennik.core.exceptions.ItemNotFoundException;
-import pl.dziennik.core.services.schedule.ClassService;
-import pl.dziennik.core.services.schedule.SubjectService;
-import pl.dziennik.core.services.user.GradesService;
-import pl.dziennik.core.services.user.StudentService;
-import pl.dziennik.core.services.user.TeacherService;
+import pl.dziennik.core.services.ClassService;
+import pl.dziennik.core.services.SubjectService;
+import pl.dziennik.core.services.GradesService;
+import pl.dziennik.core.services.StudentService;
+import pl.dziennik.core.services.TeacherService;
 import pl.dziennik.facades.GradeFacade;
 import pl.dziennik.facades.converters.CustomConverter;
-import pl.dziennik.facades.data.grades.AddGradeData;
-import pl.dziennik.facades.data.grades.AddGradeSetData;
-import pl.dziennik.facades.data.grades.GradeData;
-import pl.dziennik.facades.data.user.StudentData;
-import pl.dziennik.model.meetings.SubjectModel;
-import pl.dziennik.model.user.*;
+import pl.dziennik.facades.data.*;
+import pl.dziennik.model.*;
 
 import javax.persistence.NoResultException;
 import java.util.HashSet;
@@ -33,6 +29,7 @@ public class DefaultGradeFacade implements GradeFacade {
     private SubjectService subjectService;
     private CustomConverter<GradeModel, GradeData> gradeDataCustomConverter;
     private CustomConverter<StudentModel, StudentData> studentDataCustomConverter;
+    private CustomConverter<FinalGradeModel, FinalGradeData> finalGradeDataCustomConverter;
 
     @Override
     public List<GradeData> getGradesForStudent(String email) {
@@ -78,6 +75,40 @@ public class DefaultGradeFacade implements GradeFacade {
             gradeModel.setGrade(grade.getGradeDetails().getMark());
             gradesService.save(gradeModel);
         }
+    }
+
+    @Override
+    public void saveFinalGrades(List<FinalGradeData> finalGradeDataList) {
+        for(FinalGradeData finalGradeData : finalGradeDataList) {
+            try {
+                StudentModel studentModel = studentService.getStudentById(finalGradeData.getStudentId());
+                SubjectModel subjectModel = subjectService.getSubjectForId(finalGradeData.getSubjectId());
+                FinalGradeModel gradeModel = new FinalGradeModel();
+                gradeModel.setId(finalGradeData.getId());
+                gradeModel.setMark(finalGradeData.getMark());
+                gradeModel.setSubject(subjectModel);
+                gradeModel.setStudent(studentModel);
+
+                gradesService.save(gradeModel);
+            } catch (ItemNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public FinalGradeData getFinalGradeForSubjectAndStudent(long subjectId, long studentId) {
+        FinalGradeModel finalGradeModel = gradesService.getGradeForSubjectAndStudent(subjectId, studentId);
+        FinalGradeData finalGradeData = new FinalGradeData();
+        if(finalGradeModel == null) {
+            finalGradeData.setMark(0.0);
+            finalGradeData.setSubjectId(subjectId);
+            finalGradeData.setStudentId(studentId);
+        } else {
+            finalGradeData = finalGradeDataCustomConverter.convert(finalGradeModel);
+        }
+
+        return finalGradeData;
     }
 
     private GradeSetModel createGrade(AddGradeSetData gradeSetData) {
@@ -159,5 +190,10 @@ public class DefaultGradeFacade implements GradeFacade {
     @Autowired
     public void setStudentDataCustomConverter(CustomConverter<StudentModel, StudentData> studentDataCustomConverter) {
         this.studentDataCustomConverter = studentDataCustomConverter;
+    }
+
+    @Autowired
+    public void setFinalGradeDataCustomConverter(CustomConverter<FinalGradeModel, FinalGradeData> finalGradeDataCustomConverter) {
+        this.finalGradeDataCustomConverter = finalGradeDataCustomConverter;
     }
 }

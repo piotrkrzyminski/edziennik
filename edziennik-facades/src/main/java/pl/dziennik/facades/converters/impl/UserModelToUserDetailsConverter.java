@@ -4,29 +4,29 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import pl.dziennik.model.user.UserDetailsModel;
-import pl.dziennik.model.user.UserModel;
+import pl.dziennik.model.UserDetailsModel;
+import pl.dziennik.model.AbstractUserModel;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Conversion from {@link UserModel} to {@link UserDetails}.
+ * Conversion from {@link AbstractUserModel} to {@link UserDetails}.
  */
 @Component
-public class UserModelToUserDetailsConverter implements Converter<UserModel, UserDetails> {
+public class UserModelToUserDetailsConverter implements Converter<AbstractUserModel, UserDetails> {
 
     @Override
-    public UserDetails convert(UserModel userModel) {
+    public UserDetails convert(AbstractUserModel abstractUserModel) {
         UserDetailsModel userDetailsModel = new UserDetailsModel();
 
-        if (userModel != null) {
-            userDetailsModel.setUsername(userModel.getEmail());
-            userDetailsModel.setEnabled(userModel.isEnabled());
-            userDetailsModel.setPassword(userModel.getPassword());
+        if (abstractUserModel != null) {
+            userDetailsModel.setUsername(abstractUserModel.getEmail());
+            userDetailsModel.setEnabled(abstractUserModel.isEnabled());
+            userDetailsModel.setPassword(abstractUserModel.getPassword());
 
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority(userModel.getRole().getName()));
+            authorities.add(new SimpleGrantedAuthority(abstractUserModel.getRole().getName()));
 
             userDetailsModel.setAuthorities(authorities);
         }
